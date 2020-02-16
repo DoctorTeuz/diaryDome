@@ -1,0 +1,115 @@
+@import '../../../../assets/theme/variables';
+
+.workerContainer{
+    display: flex;
+    flex-flow: row wrap;
+    margin: 4px;
+    align-content: center;
+    .headerRow{
+        width: 100%;
+        text-align: center;
+        margin-bottom: 15px;
+        .headImage{
+            width: 130px;
+            border-radius: 20px;
+        }
+        .nameRow{
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            font-size: 17px;
+        }
+        .championRow{
+            width: 100%;
+            font-size: 10px;
+            text-align: center;
+        }
+    }
+    .infoAccordion{
+        width: 100%;
+        background-color: $diaryDome_backgroundComponent !important;
+        .matExpPanel{
+            width: 100%;
+            background-color: $diaryDome_backgroundComponent !important;
+            .header{
+                width: 100%;
+                color: $diaryDome_textColor !important;
+                mat-panel-title{
+                    width: 100%;
+                    color: $diaryDome_textColor !important;
+                }
+                .mat-expansion-indicator{
+                    color: $diaryDome_textColor !important;
+                }
+            }
+            .matExpDescr{
+                width: 100%;
+            }
+        }
+    }
+    .moveSet{
+        width: 100%;
+        display:flex;
+        flex-flow: row wrap;
+        background-color: $diaryDome_backgroundComponent !important;
+        color: $diaryDome_textColor !important;
+        .move{
+            width: 25%;
+            font-size: 11px;
+            margin-bottom: 2px;
+        }
+        .finisher{
+            font-weight: bold;
+        }
+    }
+    .alboDoro{
+        width: 100%;
+        display:flex;
+        flex-flow: row wrap;
+        background-color: $diaryDome_backgroundComponent !important;
+        color: $diaryDome_textColor !important;
+        .titles{
+            width: 33%;
+            font-size: 11px;
+            margin-bottom: 2px;
+        }
+    }
+    .anagrafica{
+        width: 100%;
+        display:flex;
+        flex-flow: row wrap;
+        background-color: $diaryDome_backgroundComponent !important;
+        color: $diaryDome_textColor !important;
+        .name{
+            width: 30%;
+            .label{
+                font-size: 10px;
+                color: $diaryDome_labelTextColor;
+            }
+            .description{
+                font-size: 14px;
+            }
+        }
+        .age{
+            width: 10%;
+            .label{
+                font-size: 10px;
+                color: $diaryDome_labelTextColor;
+            }
+            .description{
+                font-size: 14px;
+            }
+        }
+        .nicknames{
+            width: 60%;
+            .label{
+                font-size: 10px;
+                color: $diaryDome_labelTextColor;
+            }
+            .description{
+                font-size: 11px;
+            }
+        }
+    }
+
+}

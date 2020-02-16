@@ -1,0 +1,20 @@
+<div class="imageRow">
+    <img *ngFor="let img of imgArray" 
+    class='brandIcon' 
+    [ngClass]="{'usedImage': img == pickedBrand}"
+    [src]="GFService.createPath(1, img, 'png', 'Loghi')"
+    (click)="pickBrand(img)">
+</div>
+
+<div class="headerImage">
+    <img class='headerIcon' 
+    [src]="GFService.createPath(1, pickedBrand, 'png', 'Loghi')">
+</div>
+
+<div class="workerList">
+    <ng-container *ngFor="let worker of filteredWorkerList">
+        <img class="workerImage"
+            [src]="GFService.createPath(1, worker.ImageLink, 'jpg', null)"
+            (click)="openWorkerInformation(worker)">
+    </ng-container>
+</div>

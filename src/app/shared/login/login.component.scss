@@ -1,0 +1,44 @@
+@import '../../../assets/theme/variables';
+
+.loginWrapper{
+    display:flex;
+    height: 100%;;
+    align-items: center;
+    justify-content: center;
+    .loginCard{
+        border-radius: 30px;
+        background-color: $diaryDome_Primary;
+        color: $diaryDome_textColor;
+        width: 300px;
+        .header{
+            font-size: 25px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .formField{
+            margin-bottom: 16px;
+            width: 100%;
+        }
+        .button{
+            width: 100%;
+        }
+        .errors{
+            color: $diaryDome_red;
+            width: 100%;
+            text-align: center;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+        .registerBox{
+            width: 100%;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .clickableText{
+            color:$diaryDome_blue;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    }
+}

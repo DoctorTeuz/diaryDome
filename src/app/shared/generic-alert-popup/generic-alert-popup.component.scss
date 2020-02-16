@@ -1,0 +1,32 @@
+.alert{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    .header{
+        width: 100%;
+        display: flex;
+        flex-flow: row;
+        .title{
+            width: 60%;
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+        .icon{
+            width: 15%;
+        }
+    }
+    .content{
+        width: 100%;
+        justify-content: flex-start;
+        margin-bottom: 12px;
+    }
+    .buttonRow{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 20px;
+        button{
+            margin-left: 10px;
+        }
+    }
+}

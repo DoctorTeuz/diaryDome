@@ -1,0 +1,77 @@
+<div class='workerContainer'>
+    <div class="headerRow">
+        <img class="headImage" [src]="GFService.createPath(1, worker.ImageLink, 'jpg', null)">
+        <div class="nameRow">
+            {{worker.Ringname}}
+        </div>
+        <div class="championRow" *ngIf="currentTitles.length > 0">
+            {{currentlyHolding()}}
+        </div>
+    </div>
+    <mat-accordion class="infoAccordion">
+        <mat-expansion-panel class="matExpPanel">
+            <mat-expansion-panel-header class="header">
+              <mat-panel-title class="title">
+                  Anagrafica
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-panel-description class="matExpDescr">
+                <div class="anagrafica">
+                    <div class="name">
+                        <div class="label">
+                            Nome
+                        </div>
+                        <div class="description">
+                            {{worker.Realname}}
+                        </div>
+                    </div>
+                    <div class="age">
+                        <div class="label">
+                            Età
+                        </div>
+                        <div class="description">
+                            {{GFService.ageCalculation(worker, GFService.lastShowDate)}}
+                        </div>
+                    </div>
+                    <div class="nicknames">
+                        <div class="label">
+                            Soprannomi
+                        </div>
+                        <div class="description">
+                            <ng-container *ngFor="let nick of worker.Nicknames">
+                                {{nick}}<br>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </mat-panel-description>
+          </mat-expansion-panel>
+        <mat-expansion-panel class="matExpPanel" *ngIf="worker.Finisher.length + worker.Trademark.length > 0">
+          <mat-expansion-panel-header class="header">
+            <mat-panel-title class="title">
+                Moveset
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-panel-description class="matExpDescr">
+            <div class="moveSet">
+                <div class="move finisher" *ngFor="let fin of worker.Finisher">{{fin}}</div>
+                <div class="move" *ngFor="let trad of worker.Trademark">{{trad}}</div>
+            </div>
+          </mat-panel-description>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="matExpPanel" *ngIf="worker.Albo.length > 0">
+            <mat-expansion-panel-header class="header">
+              <mat-panel-title class="title">
+                  Albo d'Oro
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-panel-description class="matExpDescr">
+                <div class="alboDoro">
+                    <div class="titles" *ngFor="let title of worker.Albo">
+                        {{GFService.titleStringGenerator(title, GFService.lastShowDate)}}                        
+                    </div>
+                </div>
+            </mat-panel-description>
+          </mat-expansion-panel>
+      </mat-accordion>
+</div>

@@ -1,0 +1,104 @@
+<mat-accordion class="alboAccordion">
+    <mat-expansion-panel class="matExpPanel">
+        <mat-expansion-panel-header class="header" 
+            [collapsedHeight]="'120px'" [expandedHeight]="'140px'">
+            <mat-panel-title class="title" *ngIf="MR == 1">
+                <img [src]="GFService.createPath(1, 'WWELogo', 'png', 'Loghi')"
+                    class="titleImage">
+            </mat-panel-title>
+            <mat-panel-title class="title" *ngIf="MR == 0">
+                <img [src]="GFService.createPath(1, 'NXT', 'png', 'Loghi')"
+                    class="titleImage">
+                <img [src]="GFService.createPath(1, 'NXTPC', 'png', 'Loghi')"
+                    class="titleImage">
+                <img [src]="GFService.createPath(1, 'NXTEU', 'png', 'Loghi')"
+                    class="titleImage">
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-panel-description class="matExpDescr">
+            <div class="pickedTitleAlboPlate" *ngIf="pickedTitle">
+                <div class="titlePlate expandedPlate">
+                    <div class="imagePlate">
+                        <img 
+                        [src]="GFService.createPath(1, TitlesEnum[pickedTitle], 'jpg', 'Belts')"
+                        class="image">
+                    </div>
+                    <div class="actualChampionPlate" [id]="'picketTitlePlate' + MR">
+                        {{pickedTitleAlbo[0].Title}}<br><br>
+                        {{pickedTitleAlbo[0].Type == 'Belt' ? 'Current Champion' : 
+                        (pickedTitleAlbo[0].Type == 'MITB' && pickedTitleAlbo[0].CashIn == 'Wait' ? 'Owner' : 
+                        (pickedTitleAlbo[0].Type == 'MITB' ? 'No Owner' : 
+                        (pickedTitleAlbo[0].Type == 'Tournament' || pickedTitleAlbo[0].Type == 'Rumble' ? 'Last Winner' : '')))}}
+                        <br>
+                        <ng-container *ngIf="!(pickedTitleAlbo[0].Type == 'MITB' && pickedTitleAlbo[0].CashIn != 'Wait')">
+                            <img *ngFor="let champ of pickedTitleAlbo[0].ChampionsImageLink"
+                            [src]="GFService.createPath(1, champ, 'jpg', null)"
+                            class="champion">
+                        </ng-container>
+                        <ng-container *ngIf="(pickedTitleAlbo[0].Type == 'MITB' && pickedTitleAlbo[0].CashIn != 'Wait')">
+                            <img *ngFor="let champ of pickedTitleAlbo[0].ChampionsImageLink"
+                            [src]="GFService.createPath(1, 'Unknownkyky_2', 'jpg', null)"
+                            class="champion">
+                        </ng-container>
+
+                    </div>
+                    <div class="actualChampionDataPlate" 
+                    *ngIf="!(pickedTitleAlbo[0].Type == 'MITB' && pickedTitleAlbo[0].CashIn != 'Wait')">
+                        <div>
+                            {{pickedTitleAlbo[0].Type == 'Belt' ? 'Campione' : 'Winner'}}: 
+                            {{pickedTitleAlbo[0].Champion}} {{calcoloRegni(pickedTitleAlbo[0], 'Single')}}
+                        </div>
+                        <div *ngIf="pickedTitleAlbo[0].TagComposition">
+                            Componenti: {{calcoloRegni(pickedTitleAlbo[0], 'Tag')}}
+                        </div>
+                        <div>
+                            Evento: {{pickedTitleAlbo[0].Date}} @ {{pickedTitleAlbo[0].ChangeShow}}
+                        </div>
+                        <div *ngIf="pickedTitleAlbo[0].Type =='Belt'">
+                            Durata Regno: {{GFService.calculateReingLenght(pickedTitleAlbo[0].Date)}}+ days
+                        </div>
+                        <div *ngIf="pickedTitleAlbo[0].Type =='Tournament' || pickedTitleAlbo[0].Type == 'Rumble'">
+                            {{pickedTitleAlbo[0].Type =='Tournament' ? 'Secondo Classificato' : 'Ultimo Eliminato'}}: 
+                                {{pickedTitleAlbo[0].RunnerUp}}
+                        </div>
+                    </div>
+                </div>
+                <div class="listPlate">
+                    <div class="rowPlate headerPlate">
+                        <div class="cell number"></div>
+                        <div class="cell champion">Campione</div>
+                        <div class="cell date">Data</div>
+                        <div class="cell event">Evento</div>
+                        <div class="cell days">Durata Regno</div>
+                        <div class="cell note">Note</div>
+                    </div>
+                    <div class="rowPlate" *ngFor="let title of pickedTitleAlbo; let i = index">
+                        <div class="cell number">{{pickedTitleAlbo.length - (i)}}. </div>
+                        <div class="cell champion">
+                            {{title.Champion}} {{calcoloRegni(title, 'Single')}}
+                            <ng-container *ngIf="title.TagComposition">
+                                <span class="labels"> [{{calcoloRegni(title, 'Tag')}}]</span>
+                            </ng-container>
+                        </div>
+                        <div class="cell date">{{title.Date}}</div>
+                        <div class="cell event">{{title.ChangeShow}}</div>
+                        <div class="days">{{title.Current ? GFService.calculateReingLenght(title.Date) + '+' : title.Duration}}</div>
+                        <div class="cell note"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="alboPlate">
+                <div class="titlePlate" 
+                    *ngFor="let title of distinctTitles">
+                    <div class="imagePlate">
+                        <img 
+                        [src]="GFService.createPath(1, TitlesEnum[title], 'jpg', 'Belts')"
+                        class="image"
+                        [ngClass]="{'picked': pickedTitle == title}"
+                        (click)="pickTitle(title)">
+                    </div>
+                </div>
+            </div>
+        </mat-panel-description>
+    </mat-expansion-panel>
+</mat-accordion>

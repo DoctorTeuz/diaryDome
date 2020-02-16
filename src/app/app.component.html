@@ -1,0 +1,14 @@
+<diaryDome-loading-wheel class="overlay" *ngIf="GFService.thread > 0"></diaryDome-loading-wheel>
+<mat-sidenav-container class="allHeight">
+    <mat-sidenav mode="side" 
+    opened disableClose="true" class="menu piston" [ngClass]="{'menuOpen': openMenu}"
+    *ngIf="GFService.actualMenu?.length > 0">
+    <diaryDome-menu class="allHeight piston"  (opening)="updateOpen($event)">
+    </diaryDome-menu>
+    </mat-sidenav>
+    <mat-sidenav-content class="contentSidenav piston" [ngClass]="{'openSide': openMenu}">
+        <diaryDome-top-bar class="topBar"></diaryDome-top-bar>
+        <div class="wrapper"><router-outlet></router-outlet>   </div>
+        
+    </mat-sidenav-content>
+</mat-sidenav-container>

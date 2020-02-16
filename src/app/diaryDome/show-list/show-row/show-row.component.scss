@@ -1,0 +1,61 @@
+@import '../../../../assets/theme/variables';
+
+.showLogo{
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .image{
+        width: 90%;
+    }
+}
+.dataBlock{
+    width: 25%;
+    padding-left: 10px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.audienceBlock{
+    width: 20%;
+}
+.checkBlock{
+    width: 5%;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .icon{
+        font-size: 40px;
+        width: 40px;
+        height: 40px;
+        
+    }
+
+
+}
+.voteBlock{
+    width: 10%;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconBlock{
+    width: 15%;
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: flex-start;
+    align-items: center;
+    padding-right: 10px;
+    .icon{
+        cursor: pointer;
+        font-size: 26px;
+        width: 26px;
+        height: 26px;
+    }
+}
+

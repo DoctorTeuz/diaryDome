@@ -1,0 +1,18 @@
+<div class="alert">
+    <div class="header">
+        <div class="icon">
+            <mat-icon class="KOIcon bigIcon" *ngIf="level == 'H'">report_problem</mat-icon>
+            <mat-icon class="WorkIcon bigIcon"  *ngIf="level == 'Q'">help</mat-icon>
+        </div>
+        <div class="title">
+            {{header}}
+        </div>
+    </div>
+    <div class="content">
+        {{message}}
+    </div>
+    <div class="buttonRow">
+        <button mat-button color="primary" (click)="close()">ANNULLA</button>
+        <button mat-raised-button color="primary" (click)="confirm()">CONFERMA</button>
+    </div>
+</div>

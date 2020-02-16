@@ -1,0 +1,49 @@
+.create-show-popup{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    .formatPicker{
+        width: 60%;
+    }
+    .showCreatePanel{
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        .imgDiv{
+            width: 45%;
+            .image{
+                width: 100%;
+            }
+        }
+        .formDiv{
+            display: flex;
+            flex-flow: row wrap;
+            .cell{
+                width: 33%;
+                height: 60px;
+                display: flex;
+                justify-content: center;
+            }
+            .checkBox{
+                display: flex;
+                justify-content: flex-start;
+                .mat-checkbox{
+                    margin-top: 12px;
+                    margin-left: 12px;  
+                }
+            }
+        }
+        
+    }
+    .buttonRow{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 20px;
+        button{
+            margin-left: 10px;
+        }
+    }
+}

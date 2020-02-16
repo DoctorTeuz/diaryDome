@@ -1,0 +1,23 @@
+<div class="diaryDome-menu piston" [ngClass]="{'openMenu': open}" *ngIf="GFService.actualMenu?.length > 0">
+    <div class="menuIconDiv piston" [ngClass]="{'bigIcon': open}" (click)="enlargeMenu()">
+        <mat-icon class="menuIcon">
+            menu
+        </mat-icon>
+    </div>
+    <ng-container *ngFor="let voice of GFService.actualMenu">
+        <div class="menuIconDiv piston" 
+        [ngClass]="{
+            'bigIcon': open, 
+            'inPage': voice.usePath?.replace('/', '') === GFService.actualPlace[1],
+            'secondLevel': voice.Livello == 2
+        }" 
+        *ngIf="voice.Livello == 1 || voice.Padre == secondLevel"
+            (click)="action(voice)">
+            <mat-icon class="menuIcon" >
+                {{voice.iconText}}
+            </mat-icon>
+            <div class='label piston' [ngClass]="{'hide': !open}">{{voice.label}}</div>
+        </div>
+    </ng-container>
+
+</div>

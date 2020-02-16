@@ -1,0 +1,23 @@
+@import '../../../assets/theme/variables';
+
+.diaryDome-top-bar{
+    width: 100%;
+    height: 40px;
+    background-color: $diaryDome_Primary;
+    color: $diaryDome_textColor;
+    display: flex;
+    flex-direction: row-reverse;
+    .menuIcon{
+        margin-right: 5px;
+        margin-top: 5px;
+        font-size: 28px;
+        height: 28px;
+        width: 28px;
+    }
+    .userName{
+        margin-top: 9px;
+        margin-right: 8px;
+        font-size: 15px;
+        cursor: pointer;
+    }
+}

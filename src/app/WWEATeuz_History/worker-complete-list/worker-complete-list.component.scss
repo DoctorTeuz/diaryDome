@@ -1,0 +1,41 @@
+.imageRow{
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    justify-content: center;
+    .brandIcon{
+        width: 150px;
+        cursor: pointer;
+    }
+    .usedImage{
+        display: none;
+    }
+}
+
+.headerImage{
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+    .headerImage{
+
+    }
+}
+
+.workerList{
+    display: flex;
+    flex-flow: row wrap;
+    width: 80%;
+    align-self: center;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 10px;
+    .workerImage{
+        width: 11%;
+        min-width: 100px;
+        border-radius: 20px;
+        margin: 5px;
+        cursor: pointer;
+    }
+}

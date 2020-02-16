@@ -1,0 +1,106 @@
+<div class="create-show-popup">
+    <div class="formatPicker" *ngIf="action =='create'">
+        <mat-form-field class="formBase">
+            <mat-select placeholder="Format di riferimento" class="formField" 
+            [(ngModel)]="pickedFormat" (ngModelChange)="changeFormat()">
+                <mat-option *ngFor="let format of activeFormats" [value]="format">
+                    {{format.Name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="showCreatePanel" *ngIf="pickedFormat">
+        <div class="imgDiv">
+            <img [src]="GFService.createPath(GFService.user.ID, 
+                        pickedFormat.Picture.split('.')[0], 
+                        pickedFormat.Picture.split('.')[1], 
+                        'Loghi')" 
+            class="image"
+            >
+        </div>
+        <div class="formDiv">
+            <div class="cell">
+                <mat-form-field class="formBase">
+                    <input matInput type="text" 
+                    placeholder="Nome Show" class="formField"
+                    [(ngModel)]="showLabel">
+                </mat-form-field>
+            </div>
+            <div class="cell">
+                <mat-form-field class="formBase">
+                    <input matInput type="text" 
+                    placeholder="Tipo di Evento" class="formField"
+                    [(ngModel)]="pickedFormat.EventType" [disabled]="true">
+                </mat-form-field>
+            </div>
+            <div class="cell">
+                <mat-form-field class="formBase">
+                    <input matInput type="text" 
+                    placeholder="Giorno di Programmazione" class="formField"
+                    [(ngModel)]="pickedFormat.DayWeek" [disabled]="true">
+                </mat-form-field>
+            </div>
+            <div class="cell">
+                <mat-form-field class="formBase">
+                    <input matInput type="text" 
+                    [placeholder]="dateType == 'TEW' ? 'Anno' : 'Data'" class="formField"
+                    [(ngModel)]="year">
+                    <mat-hint *ngIf="dateType != 'TEW'">Da inserire secondo la formattazione <b>dd/mm/yyyy</b></mat-hint>
+                </mat-form-field>
+            </div>
+            <div class="cell">
+                <mat-form-field class="formBase" *ngIf="dateType == 'TEW'">
+                    <input matInput type="text" 
+                    placeholder="Mese" class="formField"
+                    [(ngModel)]="month">
+                </mat-form-field>
+            </div>
+            <div class="cell">
+                <mat-form-field class="formBase" *ngIf="dateType == 'TEW'">
+                    <input matInput type="text" 
+                    placeholder="Settimana" class="formField"
+                    [(ngModel)]="week">
+                </mat-form-field>
+            </div>
+
+            <div class="cell">
+                <mat-form-field class="formBase">
+                    <input matInput type="text" 
+                    placeholder="Arena" class="formField"
+                    [(ngModel)]="arena">
+                </mat-form-field>
+            </div>
+            <div class="cell">
+                <mat-form-field class="formBase">
+                    <input matInput type="text" 
+                    placeholder="Città" class="formField"
+                    [(ngModel)]="city">
+                </mat-form-field>
+            </div>
+            <div class="cell">
+                <mat-form-field class="formBase">
+                    <input matInput type="number" 
+                    placeholder="Pubblico" class="formField"
+                    [(ngModel)]="attendance">
+                </mat-form-field>
+            </div>
+            <div class="cell">
+                <mat-form-field class="formBase">
+                    <input matInput type="number" 
+                    placeholder="Rating" class="formField"
+                    [(ngModel)]="rating">
+                </mat-form-field>
+            </div>
+
+            <div class="cell"></div>
+            <div class="cell checkBox">
+                <mat-checkbox [(ngModel)]="soldout">Sold Out</mat-checkbox>
+            </div>
+        </div>
+    </div>
+    <div class="buttonRow">
+        <button mat-button color="primary" (click)="close()">ANNULLA</button>
+        <button mat-raised-button color="primary" (click)="actionDispatcher()"
+        [disabled]="checkConfirm()">CONFERMA</button>
+    </div>
+</div>

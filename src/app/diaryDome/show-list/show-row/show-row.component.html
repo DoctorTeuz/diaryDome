@@ -1,0 +1,64 @@
+<div class="checkBlock">
+    <mat-icon class="icon OKIcon" *ngIf="showData.posted == '1'">done</mat-icon>
+    <mat-icon class="icon WorkIcon" *ngIf="showData.posted != '1'">work</mat-icon>
+</div>
+<div class="voteBlock">    
+    {{showData.voto}}
+</div>
+<div class="showLogo">
+    <img 
+    [src]="GFService.createPath(GFService.user.ID, 
+                                showData.imageUrl.split('.')[0], 
+                                showData.imageUrl.split('.')[1], 
+                                'Loghi')" 
+    class='image'>
+</div>
+<div class="dataBlock">
+    <div class="bold">
+        {{showData.showName}}
+    </div>
+    <div>
+        {{showData.eventType == 'PPV' ? 'Pay-Per-View' : showData.eventType}}
+    </div>
+    <div *ngIf="GFService.user.dateFormat == 'EWR'">
+        {{showData.year}}
+    </div>
+    <div *ngIf="GFService.user.dateFormat == 'TEW'" class="small">
+        {{showData.month}} {{showData.year}}
+    </div>
+    <div *ngIf="GFService.user.dateFormat == 'TEW'" class="small">
+        {{showData.dayWeek}}, {{showData.week}} Settimana
+    </div>
+</div>
+<div class="dataBlock audienceBlock">
+    <div class="bold">
+        {{showData.arena}}
+    </div>
+    <div>
+        {{showData.city}}
+    </div>
+    <div *ngIf="showData.pubblico">
+        {{showData.pubblico}} spettatori 
+        <span *ngIf="showData.soldOut == '1'">- 
+            <font class="bold" [color]="showData.baseColor">SOLD OUT</font></span>
+    </div>
+</div>
+<div class="iconBlock">
+    <mat-icon [matTooltip]="'Dettaglio ' + showData.showName" class="icon">search</mat-icon>
+    <mat-icon [matTooltip]="'Elimina ' + showData.showName" 
+    *ngIf="showData.posted != '1'" class="icon"
+    (click)="deleteShow(showData)">
+        delete</mat-icon>
+    <mat-icon [matTooltip]="'Modifica ' + showData.showName" *ngIf="showData.posted != '1'" class="icon"
+    (click)="editShow(showData)">
+        edit</mat-icon>
+    <mat-icon [matTooltip]="'Aggiungi segmento'" *ngIf="showData.posted != '1'" class="icon">
+        note_add</mat-icon>
+    <mat-icon [matTooltip]="'Pubblica ' + showData.showName" *ngIf="showData.posted != '1'" class="icon">
+        play_arrow</mat-icon>
+    <mat-icon [matTooltip]="'Codice'" *ngIf="showData.posted == '1'" class="icon">
+        code
+    </mat-icon>
+</div>
+
+

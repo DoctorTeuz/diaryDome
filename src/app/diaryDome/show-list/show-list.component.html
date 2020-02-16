@@ -1,0 +1,44 @@
+<div class="tableWrapper">
+    <div class="filterRow" *ngIf="viewShow">
+        <div class='showNameCell'>
+            <mat-form-field class="formBase">
+                <input matInput type="text" placeholder="Nome Show" class="formField"
+                [matAutocomplete]="showNameAutocomplete" [(ngModel)]="showNameFilter" (ngModelChange)="filterShow()">
+            </mat-form-field>
+            <mat-autocomplete #showNameAutocomplete="matAutocomplete">
+                <mat-option *ngFor="let option of distinctShow" [value]="option">{{option}}</mat-option>
+            </mat-autocomplete>
+        </div>
+        <div class='showTypeCell'>
+            <mat-form-field class="formBase">
+                <mat-select placeholder="Tipo Evento" class="formField" [(ngModel)]="showTypeFilter" (ngModelChange)="filterShow()">
+                    <mat-option></mat-option>
+                    <mat-option *ngFor="let st of showTypeFilterType" [value]="st">
+                        {{st}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="soldOutCell">
+            <mat-checkbox [(ngModel)]="showSoldOutFilter" (ngModelChange)="filterShow()">Sold Out</mat-checkbox>
+        </div>
+        <div class='paginationCell'>
+            <mat-form-field class="formBase">
+                <mat-select placeholder="N° Show" class="formField" [(ngModel)]="numShow" (ngModelChange)="filterShow()">
+                    <mat-option *ngFor="let pg of paginationType" [value]="pg">
+                        {{pg}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <diaryDome-show-row *ngFor="let show of viewShow" 
+        [showData]="show" (deleting)="deleteShow($event)"
+        (editing)="editShow($event)"></diaryDome-show-row>
+    <div class="firstShow bold" *ngIf="noShow">
+        Benvenuto nel Diary Dome, per creare il tuo primo show <span (click)="newShow()">clicca qui</span>
+    </div>
+</div>
+
+<button mat-fab class="floatingButton" *ngIf="viewShow" (click)="newShow()"><mat-icon 
+    class="floatingIcon mat-icon-reverse">add</mat-icon></button>
