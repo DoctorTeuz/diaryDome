@@ -44,7 +44,8 @@
     </div>
 </div>
 <div class="iconBlock">
-    <mat-icon [matTooltip]="'Dettaglio ' + showData.showName" class="icon">search</mat-icon>
+    <mat-icon [matTooltip]="'Dettaglio ' + showData.showName" class="icon"
+        (click)="goToDetail(showData)">search</mat-icon>
     <mat-icon [matTooltip]="'Elimina ' + showData.showName" 
     *ngIf="showData.posted != '1'" class="icon"
     (click)="deleteShow(showData)">

@@ -49,7 +49,15 @@ if($method != 'OPTIONS'){
 				$response = $th;
 			}
 			echo json_encode($response);
-			break;			
+			break;	
+		case 'getDetail':
+			try {
+				$response = getDetail();
+			} catch (Throwable $th) {
+				$response = $th;
+			}
+			echo json_encode($response);
+			break;				
 		default:
 			$response = new ResponseObject();
 			$response->status = 404;
@@ -57,9 +65,6 @@ if($method != 'OPTIONS'){
 			break;
 	}
 }
-
-
-
 
 
 function getShowList($id){
@@ -131,6 +136,33 @@ function deleteShow(){
 	}
 }
 
+function getDetail(){
+	$db=new Connection();
+	$db->connetti();
+	$response = new ResponseObject();
+
+	$postdata = file_get_contents("php://input");
+	$request = json_decode($postdata);
+	
+	$userId = $request->userId;
+	$showId = $request->showId;
+
+	$show = new Show($db);
+	$angles = $show->getShowDetail($userId, $showId);
+	if(count($angles) == 0){
+		$response->status = 200;
+		$response->body = "Nessun Angle Trovato";
+		return $response;
+	}
+	else{
+		$det = array_map('mapShowDetail', $db -> estraiArray($angles));
+		$body->showDetail = $det;
+		$response->body = $body;
+		$response->status = 200;
+		return $response;
+	}
+}
+
 function mapShows($show){
 	$showData->showName = $show['Label'];
 	$showData->posted = $show['Posted'];
@@ -191,6 +223,41 @@ function mapNewShow($request){
 	$showData->showId = $request->showId;
 	
 	return $showData;
+}
+
+function mapShowDetail($response){
+	$showDetail->segmentId = $response['segmentId'];
+	$showDetail->showId = $response['showId'];
+	$showDetail->orderAppear = $response['orderAppear'];
+	$showDetail->placement = $response['placement'];
+	$showDetail->title = $response['title'];
+	$showDetail->rating = $response['rating'];
+	$showDetail->segmentType = $response['segmentType'];
+	$showDetail->shownTitle = $response['shownTitle'];
+	$showDetail->content = $response['content'];
+	$showDetail->graphicColor = $response['graphicColor'];
+	$showDetail->workers = $response['workers'];
+	$showDetail->championship = $response['championship'];
+	$showDetail->champion = $response['champion'];
+	$showDetail->matchType = $response['matchType'];
+	$showDetail->matchScheme = $response['matchScheme'];
+	$showDetail->matchWorkers = $response['matchWorkers'];
+	$showDetail->matchWinner = $response['matchWinner'];
+	$showDetail->titleChange = $response['titleChange'];
+	$showDetail->showName = $response['showName'];
+	$showDetail->confirmed = $response['confirmed'];
+	$showDetail->formatId = $response['formatId'];
+	$showDetail->DayWeek = $response['DayWeek'];
+	$showDetail->Week = $response['Week'];
+	$showDetail->M = $response['M'];
+	$showDetail->Y = $response['Y'];
+	$showDetail->pubblico = $response['pubblico'];
+	$showDetail->arena = $response['arena'];
+	$showDetail->citta = $response['citta'];
+	$showDetail->soldOut = $response['soldOut'];
+	$showDetail->showRating = $response['showRating'];
+
+	return $showDetail;
 }
 
 ?>

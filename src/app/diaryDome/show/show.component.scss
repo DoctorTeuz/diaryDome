@@ -1,0 +1,57 @@
+@import '../../../assets/theme/variables';
+
+.show-wrapper{
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 10px;
+    .allWidth{
+        width: 100%;
+    }
+    .showAccordion{
+        width: 100%;
+        background-color: $diaryDome_backgroundComponent !important;
+        .matExpPanel{
+            width: 100%;
+            background-color: $diaryDome_backgroundComponent !important;
+            .header{
+                width: 100%;
+                color: $diaryDome_textColor !important;
+                justify-content: center;
+                mat-panel-title{
+                    width: 100%;
+                    color: $diaryDome_textColor !important;
+                    display: flex;
+                    flex-flow: row wrap;
+                    .placement{
+                        width: 30%;
+                    }
+                    .angleTitle{
+                        width: 50%;
+                        font-weight: 400;
+                    }
+                    .rating{
+                        width: 19%;
+                        text-align: right;
+                        padding-right: 10px;
+                    }
+                    .mat-expansion-indicator{
+                        color: $diaryDome_textColor !important;
+                    }
+                }
+                
+            }
+            .matExpDescr{
+                width: 100%;
+                flex-flow: row wrap;
+            }
+        }
+    }
+}
+
+.segmentContent{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    color: $diaryDome_textColor;
+}

@@ -50,6 +50,7 @@ import { ShowListComponent } from './diaryDome/show-list/show-list.component';
 import { ShowRowComponent } from './diaryDome/show-list/show-row/show-row.component';
 import { CreateShowPopupComponent } from './diaryDome/create-show-popup/create-show-popup.component';
 import { GenericAlertPopupComponent } from './shared/generic-alert-popup/generic-alert-popup.component';
+import { ShowComponent } from './diaryDome/show/show.component';
 
 const MatModules = [
   BrowserModule,
@@ -103,6 +104,7 @@ const MatModules = [
     ShowRowComponent,
     CreateShowPopupComponent,
     GenericAlertPopupComponent,
+    ShowComponent,
   ],
   imports: [
     AppRoutingModule,

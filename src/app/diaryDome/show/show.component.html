@@ -1,0 +1,31 @@
+<div class="show-wrapper">
+    <mat-form-field class="allWidth" *ngIf="showService.showDetail.length > 0 
+                                && showService.showDetail[0].confirmed == 1">
+        <textarea matInput [value]="completeShowCodeGenerator()"
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="10"
+            cdkAutosizeMaxRows="10"></textarea>
+    </mat-form-field>
+    <mat-accordion class="showAccordion">
+        <mat-expansion-panel class="matExpPanel" *ngFor="let segment of showService.showDetail">
+            <mat-expansion-panel-header class="header">
+                <mat-panel-title class="title">
+                    <div class="placement">
+                        {{segment.placement}} [{{angleTranslater[segment.segmentType]}}]
+                    </div>
+                    <div class="angleTitle">
+                        {{segment.title}}
+                    </div>
+                    <div class="rating">
+                        {{segment.rating}}
+                    </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-panel-description class="matExpDescr">
+                <div class="segmentContent" [innerHTML]="generateHTML(segment)">
+                </div>
+            </mat-panel-description>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

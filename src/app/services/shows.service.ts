@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment';
 export class ShowsService {
 
   showsPath = environment.apiPath + 'show.php';
+  showDetail;
+  usedFormat;
 
   constructor(
     public GFService: GeneralFunctionService,
@@ -36,5 +38,13 @@ export class ShowsService {
     }
     
     return this.http.post(this.showsPath + '/deleteShow', params)
+  }
+
+  getShowDetail(showId){
+    const params = {
+      userId: this.GFService.user.ID.toString(),
+      showId: showId.toString()
+    }
+    return this.http.post(this.showsPath + '/getDetail', params)
   }
 }
