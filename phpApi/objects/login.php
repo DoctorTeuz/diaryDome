@@ -31,11 +31,20 @@ class Login{
 					('$username','$codMD5','$dateType','standardUser');";
 		try{
 			$stmt = $this->conn->query($sql);
-			return true;
 		}
 		catch(Throwable $th){
 			return false;
 		}
+		try {
+			$last_id = mysql_insert_id();
+			mkdir(''.$last_id);
+			mkdir(''.$last_id.'/Loghi');
+			mkdir(''.$last_id.'/Belts');
+			return true;
+		} catch (\Throwable $th) {
+			return false;
+		}
+
 		
 	}
 
