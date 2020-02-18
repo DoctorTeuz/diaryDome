@@ -1,11 +1,13 @@
 <div class="show-wrapper">
-    <mat-form-field class="allWidth" *ngIf="showService.showDetail.length > 0 
-                                && showService.showDetail[0].confirmed == 1">
+    <mat-form-field class="allWidth" *ngIf="showService.show
+                                && showService.show.posted == 1">
         <textarea matInput [value]="completeShowCodeGenerator()"
             cdkTextareaAutosize
+            [placeholder]="'Codice per il forum'"
             #autosize="cdkTextareaAutosize"
             cdkAutosizeMinRows="10"
-            cdkAutosizeMaxRows="10"></textarea>
+            cdkAutosizeMaxRows="10"
+            ></textarea>
     </mat-form-field>
     <mat-accordion class="showAccordion">
         <mat-expansion-panel class="matExpPanel" *ngFor="let segment of showService.showDetail">
@@ -16,6 +18,9 @@
                     </div>
                     <div class="angleTitle">
                         {{segment.title}}
+                    </div>
+                    <div class="iconBlock">
+
                     </div>
                     <div class="rating">
                         {{segment.rating}}

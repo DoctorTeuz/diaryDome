@@ -62,3 +62,18 @@
     align-items: center;
     font-size: 18px;
 }
+
+.paginationRow{
+    display: flex;
+    width: 100%;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    .numberCell{
+        width: 9px;
+        height: 35px;
+        font-size: 20px;
+        margin-right: 5px;
+        cursor: pointer;
+    }
+}

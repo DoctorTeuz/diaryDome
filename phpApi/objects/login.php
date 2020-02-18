@@ -24,28 +24,38 @@ class Login{
 
 
 	function doRegister($username, $password, $dateType){
-		$codMD5=md5($password);
-		$sql = "INSERT INTO `WWETeuz_Users`
-					(`Username`, `Password`, `dateFormat`, `userType`) 
-				VALUES 
-					('$username','$codMD5','$dateType','standardUser');";
-		try{
-			$stmt = $this->conn->query($sql);
-		}
-		catch(Throwable $th){
-			return false;
-		}
-		try {
-			$last_id = mysql_insert_id();
-			mkdir(''.$last_id);
-			mkdir(''.$last_id.'/Loghi');
-			mkdir(''.$last_id.'/Belts');
-			return true;
-		} catch (\Throwable $th) {
-			return false;
-		}
 
-		
+		$codMD5=md5($password);
+		$chkSql = "SELECT * 
+				FROM WWETeuz_Users
+				WHERE
+					`Username` = '$username'";
+		$chk = $this->conn->query($chkSql);
+		if(mysql_num_rows($chk)==0){
+			$codMD5=md5($password);
+			$sql = "INSERT INTO `WWETeuz_Users`
+						(`Username`, `Password`, `dateFormat`, `userType`) 
+					VALUES 
+						('$username','$codMD5','$dateType','standardUser');";
+			try{
+				$stmt = $this->conn->query($sql);
+			}
+			catch(Throwable $th){
+				return false;
+			}
+			try {
+				$last_id = mysql_insert_id();
+				mkdir(''.$last_id);
+				mkdir(''.$last_id.'/Loghi');
+				mkdir(''.$last_id.'/Belts');
+				return true;
+			} catch (\Throwable $th) {
+				return false;
+			}
+		}
+		else{
+			return "Già censito";
+		}
 	}
 
 	

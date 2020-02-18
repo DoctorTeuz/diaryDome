@@ -85,14 +85,25 @@ function register(){
 
 	$logs = new Login($db);
 	$chk = $logs->doRegister($request->username, $request->password, $request->datetype);
-
-	$log = $db -> estraiArray($logs->tryLogin($request->username, $request->password));
-	$num = count($log);
-
-	$user = mapUser($log[0]);
-	$body->user = $user;
-	$response->body = $body;
-	$response->status = 200;
-	return $response;
+	if($chk == "Già censito"){
+		$response->status = 200;
+		$response->error = "Il nome utente è già censito.";
+		return $response;
+	}
+	else if(!$chk){
+		$response->status = 500;
+		$response->error = "Internal Server Error";
+		return $response;
+	}
+	else{
+		$log = $db -> estraiArray($logs->tryLogin($request->username, $request->password));
+		$num = count($log);
+	
+		$user = mapUser($log[0]);
+		$body->user = $user;
+		$response->body = $body;
+		$response->status = 200;
+		return $response;
+	}
 }
 ?>

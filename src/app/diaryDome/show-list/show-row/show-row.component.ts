@@ -37,6 +37,7 @@ export class ShowRowComponent implements OnInit {
     try {
       this.showService.getShowDetail(show.ID).subscribe(
         (res: any) => {
+          this.showService.show = show;
           this.showService.showDetail = res.body.showDetail;
           this.GFService.navigateTo('/show');
         }

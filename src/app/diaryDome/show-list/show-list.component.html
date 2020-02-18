@@ -32,6 +32,13 @@
             </mat-form-field>
         </div>
     </div>
+    <div class="paginationRow" *ngIf="viewShow">
+        <ng-container *ngFor="let page of pageTot(); let i = index" >
+            <button mat-raised-button color='accent' class='numberCell' (click)="goToPage(page)" *ngIf="checkPagination(page)">		
+                {{page}}
+            </button>
+        </ng-container>
+    </div>
     <diaryDome-show-row *ngFor="let show of viewShow" 
         [showData]="show" (deleting)="deleteShow($event)"
         (editing)="editShow($event)"></diaryDome-show-row>

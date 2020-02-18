@@ -162,6 +162,7 @@ class Show{
 						Workers AS workers,
 						MatchTitle AS championship,
 						StartingChamp AS champion,
+						ChampionsAdvantage AS championshipAdv,
 						MatchType AS matchType,
 						MatchScheme AS matchScheme,
 						MatchWorker AS matchWorkers,

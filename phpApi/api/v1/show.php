@@ -256,6 +256,7 @@ function mapShowDetail($response){
 	$showDetail->citta = $response['citta'];
 	$showDetail->soldOut = $response['soldOut'];
 	$showDetail->showRating = $response['showRating'];
+	$showDetail->championshipAdv = $response['championshipAdv'];
 
 	return $showDetail;
 }

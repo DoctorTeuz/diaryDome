@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 export class ShowsService {
 
   showsPath = environment.apiPath + 'show.php';
+  show;
   showDetail;
   usedFormat;
 

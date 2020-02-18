@@ -21,14 +21,12 @@ export class AngleGenerateService {
                   'border-top-color: ' + color + '; color: white; font-style: normal; text-align: justify; ' +
                   'padding: 9px;padding-bottom: 10px;">' +
                   segment.content  +'</div></div>';
-    console.log(finalString);
     return finalString;
   }
 
   angleStyle2(segment, format){
 
     let color = format.angleFirstBorderColor;
-   
     let finalString;
     finalString = '<div align="center" style="width: 100%"><div class="_top" style="font-size: 9px;' +
                   ' height: auto;text-align: left;border: 0px;background: none;color: white; ' +
@@ -40,86 +38,83 @@ export class AngleGenerateService {
                   segment.content + '</div></div>';
     return finalString;
   }
-}
 
-/**
- * 
-function angleStyle2($data, $val){
+  angleStyle3(segment, format){
+	let color = format.angleFirstBorderColor;
+	let finalString;
 
-	$color = mysql_result($data, $val, 'angleFirstBorderColor');
-	
-	$workers = mysql_result($data, $val, 'Workers');
+	finalString = 	'<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; text-align: left; ' +
+					'border: 0px;background: none;color: white; font-style: normal; text-align: justify;" align="left">' +
+					'<i>'+ segment.shownTitle +'</i></div><div class=" AngleSegmentBorderOne" align="center" ' +
+					 'style="border-width: 0px; border-style: solid; background: none;border-radius: 20px; border-width: 2px; ' +
+					 'border-color: ' + color + '; color: white; font-style: normal; text-align: justify; padding: 9px; ' +
+					 'padding-bottom: 10px;">'+
+					 segment.content + '</div></div>';
 
+	return finalString;
+  }
 
-	$str = '<div align="center"><div class="_top" style="font-size: 9px; height: auto;text-align: left;border: 0px;background: none;color: white; font-style: normal; text-align: justify; " align="left"><i>'.mysql_result($data, $val, 'Zona').'</i></div><div class=" AngleSegmentBorderOne" align="center" style="border-width: 0px; border-top-style: solid; background: none;border-radius: 20px; border-top-width: 2px; border-top-color: '.$color.'; color: white; font-style: normal; text-align: center; padding: 9px;padding-bottom: 10px;">'.mysql_result($data, $val, 'Content').'</div></div>';
+  angleStyle4(segment, format){
+	let color = format.angleFirstBorderColor;
+	let finalString;
 
-	return $str;
-}
+	finalString = 	'<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto;text-align: left; ' +
+					'border: 0px; background: none; color: white; font-style: normal; text-align: justify;" align="left">' +
+					'<i>'+ segment.shownTitle +'</i></div><div class=" AngleSegmentBorderOne" align="center" ' +
+					'style="border-width: 0px; border-style: solid; background: none;border-radius: 20px; border-width: 2px; ' + 
+					'border-color: ' + color +'; color: white; font-style: normal; text-align: center; padding: 9px; ' + 
+					'padding-bottom: 10px;">'+
+					segment.content + '</div></div>';
 
-function angleStyle3($data, $val){
+	return finalString;
+  }
 
-	$color = mysql_result($data, $val, 'angleFirstBorderColor');
-	
-	$workers = mysql_result($data, $val, 'Workers');
+  angleStyle5(segment, format){
+	let color = format.angleFirstBorderColor;
+	let finalString;
 
+	finalString = 	'<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto;text-align: left; border: 0px; ' +
+					'background: none; color: white; font-style: normal; text-align: justify; " align="left">' + 
+					'<i>'+ segment.shownTitle +'</i></div><div class=" AngleSegmentBorderOne" align="center" ' +
+					'style="border-width: 0px; border-style: solid; background: none; border-width: 2px; ' + 
+					'border-color: ' + color +'; color: white; font-style: normal; text-align: justify; padding: 9px; ' +
+					'padding-bottom: 10px;">'+
+					segment.content + '</div></div>';
 
-	$str = '<div align="center"><div class="_top" style="font-size: 9px; height: auto;text-align: left;border: 0px;background: none;color: white; font-style: normal; text-align: justify; " align="left"><i>'.mysql_result($data, $val, 'Zona').'</i></div><div class=" AngleSegmentBorderOne" align="center" style="border-width: 0px; border-style: solid; background: none;border-radius: 20px; border-width: 2px; border-color: '.$color.'; color: white; font-style: normal; text-align: justify; padding: 9px;padding-bottom: 10px;">'.mysql_result($data, $val, 'Content').'</div></div>';
+	return finalString;
+  }
 
-	return $str;
-}
+  angleStyle6(segment, format){
+	let color = format.angleFirstBorderColor;
+	let finalString;
 
-function angleStyle4($data, $val){
-
-	$color = mysql_result($data, $val, 'angleFirstBorderColor');
-	
-	$workers = mysql_result($data, $val, 'Workers');
-
-
-	$str = '<div align="center"><div class="_top" style="font-size: 9px; height: auto;text-align: left;border: 0px;background: none;color: white; font-style: normal; text-align: justify; " align="left"><i>'.mysql_result($data, $val, 'Zona').'</i></div><div class=" AngleSegmentBorderOne" align="center" style="border-width: 0px; border-style: solid; background: none;border-radius: 20px; border-width: 2px; border-color: '.$color.'; color: white; font-style: normal; text-align: center; padding: 9px;padding-bottom: 10px;">'.mysql_result($data, $val, 'Content').'</div></div>';
-
-	return $str;
-}
-
-function angleStyle5($data, $val){
-
-	$color = mysql_result($data, $val, 'angleFirstBorderColor');
-	
-	$workers = mysql_result($data, $val, 'Workers');
-
-
-	$str = '<div align="center"><div class="_top" style="font-size: 9px; height: auto;text-align: left;border: 0px;background: none;color: white; font-style: normal; text-align: justify; " align="left"><i>'.mysql_result($data, $val, 'Zona').'</i></div><div class=" AngleSegmentBorderOne" align="center" style="border-width: 0px; border-style: solid; background: none; border-width: 2px; border-color: '.$color.'; color: white; font-style: normal; text-align: justify; padding: 9px;padding-bottom: 10px;">'.mysql_result($data, $val, 'Content').'</div></div>';
-
-	return $str;
-}
-
-function angleStyle6($data, $val){
-
-	$color = mysql_result($data, $val, 'angleFirstBorderColor');
-	
-	$workers = mysql_result($data, $val, 'Workers');
-
-	$str = '<div align="center">';
-	if(mysql_result($data, $val, 'Zona') != NULL){
-		$str = $str.'<div class="_top" style="font-size: 9px; height: auto;text-align: left;border: 0px;background: none;color: white; font-style: normal; text-align: justify; " align="left"><i>'.mysql_result($data, $val, 'Zona').'</i></div>';
+	finalString = '<div align="center" style="width: 100%;">';
+	if(segment.shownTitle){
+		finalString = finalString + 
+					'<div class="_top" style="font-size: 9px; height: auto;text-align: left;border: 0px;background: none; ' +
+					'color: white; font-style: normal; text-align: justify; " align="left">' +
+					'<i>'+ segment.shownTitle +'</i></div>';
 	}
 
-	$str = $str.'<div class=" AngleSegmentBorderOne" align="center" style="border-width: 0px; border-style: solid; background: none; border-width: 2px; border-color: '.$color.'; color: white; font-style: normal; text-align: center; padding: 9px;padding-bottom: 10px;">'.mysql_result($data, $val, 'Content').'</div></div>';
+	finalString = finalString + '<div class=" AngleSegmentBorderOne" align="center" style="border-width: 0px; border-style: solid; ' +
+				'background: none; border-width: 2px; border-color: ' + color +'; color: white; font-style: normal; ' + 
+				'text-align: center; padding: 9px;padding-bottom: 10px;">'+
+				segment.content + '</div></div>';
 
-	return $str;
-}
+	return finalString;
+  }
 
-function angleStyle7($data, $val){
+  angleStyle7(segment, format){
+	/* let color = format.angleFirstBorderColor; */
+	let finalString;
 
-	$color = mysql_result($data, $val, 'angleFirstBorderColor');
-	
-	$workers = mysql_result($data, $val, 'Workers');
-
-	$str = "";
-	if(mysql_result($data, $val, 'Zona') != ""){
-		$str = $str."<u><b>".strtoupper(mysql_result($data, $val, 'Zona'))."</b></u>: ";
+	finalString = '';
+	if(segment.shownTitle){
+		finalString = finalString + "<u><b><span class='maiuscolo'>"+ segment.shownTitle +"</span></b></u>: ";
 	}
-	$str = $str.mysql_result($data, $val, 'Content');
 
-	return $str;
+	finalString = finalString + segment.content;
+
+	return finalString;
+  }
 }
- */

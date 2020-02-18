@@ -22,8 +22,9 @@ export class ShowListComponent implements OnInit {
   showSoldOutFilter;
   showTypeFilterType = [
     'House Show', 'Live Event', 'PPV', 'Television'
-  ]
-
+  ];
+  actualPage = 1;
+  numPage;
   paginationType = [
     5, 10, 25, 50, 100
   ]
@@ -75,6 +76,7 @@ export class ShowListComponent implements OnInit {
     this.viewShow = filteredShow.filter((i, index) => (!(index < this.numShow * this.pagination) && index < (this.numShow * (this.pagination+1)))).map((i) => {
           return i;
      });
+     this.numPage = Math.ceil(filteredShow.length/this.numShow);
      
   }
 
@@ -138,5 +140,40 @@ export class ShowListComponent implements OnInit {
         }
       }
     );
+  }
+
+  pageTot(){
+    let numPages = this.numPage;
+    let pages = [];
+    for (let index = 0; index < numPages; index++) {
+      pages.push(index+1);
+    }
+    return pages;
+  }
+
+  points = false;
+  checkPagination(page){
+    let numPages = this.numPage;
+    if((page < 2 && this.actualPage > 2) 
+      || (page < 4 && this.actualPage < 4) 
+      || numPages < 6 
+      || page == this.actualPage
+      || (page > (this.actualPage - 2) && page < (this.actualPage + 2)) || page >  numPages - 3){
+        this.points = false;
+        return true;
+    }
+    else if(!this.points){
+        this.points = true;
+        return true;
+    }
+    else{
+      return false;
+    }
+  }
+
+  goToPage(page){
+    this.actualPage = page;
+    this.pagination = page - 1;
+    this.filterShow();
   }
 }
