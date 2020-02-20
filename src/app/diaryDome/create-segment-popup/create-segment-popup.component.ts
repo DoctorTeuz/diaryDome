@@ -17,20 +17,24 @@ export class CreateSegmentPopupComponent implements OnInit {
   show;
 
   segmentTypeList = [
-    {label: 'Angle', value: 'Angle'},
-    {label: 'Match', value: 'Match'},
-    {label: 'SpecialMatch', value: 'Special Match'},
-    {label: 'ShortMatch', value: 'Recap Breve di un incontro'},
-    {label: 'Info', value: 'Infografica'},
-    {label: 'Hype', value: 'Infografica promozionale'},
-    {label: 'Plain', value: 'Senza Grafica'},
+    {value: 'Angle', label: 'Angle'},
+    {value: 'Match', label: 'Match'},
+    {value: 'SpecialMatch', label: 'Special Match'},
+    {value: 'ShortMatch', label: 'Recap Breve di un incontro'},
+    {value: 'Info', label: 'Infografica'},
+    {value: 'Hype', label: 'Infografica promozionale'},
+    {value: 'Plain', label: 'Senza Grafica'},
   ];
 
   placementList = [
-    {label: 'PreShow', value: 'Pre-Show o Kickoff'},
-    {label: 'Show', value: 'Show'},
-    {label: 'PostShow', value: 'Post Show o Dark Show'},
+    {value: 'PreShow', label: 'Pre-Show o Kickoff'},
+    {value: 'Show', label: 'Show'},
+    {value: 'PostShow', label: 'Post Show o Dark Show'},
   ];
+
+  hintImages = "Il contenuto di questo box serve per <b>generare</b> la sezione delle immagini. Ogni lottatore dovrà essere identificato con il nome dell'immagine che lo rappresenta." + 
+                "<br>Da dividere con la virgole" + 
+                "Ove necessario indicare il tag di VS è necessario scrivere <b><font color=red>VVSS</font></b> come se fosse un Worker.";
 
   constructor(
     public GFService: GeneralFunctionService,
@@ -38,9 +42,9 @@ export class CreateSegmentPopupComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any, 
     public showService: ShowsService,
     ) {
-      if(this.GFService.user.ID === 1){
-        this.segmentTypeList.push({label: 'MMCAngle', value: 'Mixed Match Challenge - Angle'});
-        this.segmentTypeList.push({label: 'MMCMatch', value: 'Mixed Match Challenge - Match'});
+      if(this.GFService.user.ID == 1){
+        this.segmentTypeList.push({value: 'MMCAngle', label: 'Mixed Match Challenge - Angle'});
+        this.segmentTypeList.push({value: 'MMCMatch', label: 'Mixed Match Challenge - Match'});
       }
 
       this.action = data.action;

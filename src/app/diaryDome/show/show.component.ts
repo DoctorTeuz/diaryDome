@@ -214,7 +214,7 @@ export class ShowComponent implements OnInit, OnDestroy {
       show: this.showService.show
     };
     this.dialog.open(CreateSegmentPopupComponent, {
-      width: '800px',
+      width: '1200px',
       data: config
     })
     

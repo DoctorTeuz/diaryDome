@@ -3,18 +3,34 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-    .headerDiv{
-        width: 45%;
+    overflow-y: auto;
+    .headerWrapper{
+        width: 100%;
         display: flex;
-        flex-flow: column;
-        .image{
-            width: 100%;
+        flex-flow: row;
+        .headerDiv{
+            width: 45%;
+            display: flex;
+            flex-flow: column;
+            .image{
+                width: max-content;
+            }
+            .text{
+                width: 100%;
+                text-align: center;
+                font-size: 18px;
+                font-weight: bold;
+            }
         }
-        .text{
-            width: 100%;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
+        .firstFormDiv{
+            width: 55%;
+            display: flex;
+            flex-flow: column;
+            .cell{
+                height: 60px;
+                display: flex;
+                justify-content: flex-start;
+            }
         }
     }
 
@@ -25,7 +41,20 @@
         .cell{
             height: 60px;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
+            
+        }
+        .CBcontainer{
+            display: flex;
+            flex-flow: column;
+            .checkBox{
+                display: flex;
+                justify-content: flex-start;
+                .mat-checkbox{
+                    margin-top: 12px;
+                    margin-left: 12px;  
+                }
+            }
         }
         .checkBox{
             display: flex;
@@ -36,4 +65,9 @@
             }
         }
     }
+}
+
+.workerSearchIcon{
+    margin-top: 18px;
+    margin-left: 7px;
 }
