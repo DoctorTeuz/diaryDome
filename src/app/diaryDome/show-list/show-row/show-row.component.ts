@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GeneralFunctionService } from 'src/app/services/general-function.service';
 import { ShowsService } from 'src/app/services/shows.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'diaryDome-show-row',
@@ -34,15 +35,38 @@ export class ShowRowComponent implements OnInit {
   }
 
   goToDetail(show){
+    this.GFService.countThread(true);
     try {
       this.showService.getShowDetail(show.ID).subscribe(
         (res: any) => {
+          this.GFService.countThread(false);
           this.showService.show = show;
           this.showService.showDetail = res.body.showDetail;
           this.GFService.navigateTo('/show');
         }
       )
     } catch (error) {
+      this.GFService.countThread(false);
+      console.log(error)
+    }
+  }
+
+  
+  publishShow(show){
+    this.GFService.countThread(true);
+    try {
+      this.showService.publishShow(show.ID).pipe(
+        switchMap(res => this.showService.getShowDetail(show.ID))
+        ).subscribe(
+          (res: any) => {
+            this.GFService.countThread(false);
+            this.showService.show = show;
+            this.showService.showDetail = res.body.showDetail;
+            this.GFService.navigateTo('/show');
+          }
+        )
+    } catch (error) {
+      this.GFService.countThread(false);
       console.log(error)
     }
   }

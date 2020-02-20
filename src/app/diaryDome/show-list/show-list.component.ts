@@ -77,6 +77,7 @@ export class ShowListComponent implements OnInit {
           return i;
      });
      this.numPage = Math.ceil(filteredShow.length/this.numShow);
+     this.createPagination();
      
   }
 
@@ -151,29 +152,36 @@ export class ShowListComponent implements OnInit {
     return pages;
   }
 
-  points = false;
-  checkPagination(page){
+  pagesToShow = [];
+  createPagination(){
+    this.pagesToShow = [];
+    let points;
     let numPages = this.numPage;
-    if((page < 2 && this.actualPage > 2) 
-      || (page < 4 && this.actualPage < 4) 
-      || numPages < 6 
-      || page == this.actualPage
-      || (page > (this.actualPage - 2) && page < (this.actualPage + 2)) || page >  numPages - 3){
-        this.points = false;
-        return true;
-    }
-    else if(!this.points){
-        this.points = true;
-        return true;
-    }
-    else{
-      return false;
+    for(let page = 1; page < numPages; page++){
+      if((page < 2 && this.actualPage > 2) 
+        || (page < 4 && this.actualPage < 4) 
+        || numPages < 6 
+        || page == this.actualPage
+        || (page > (this.actualPage - 2) 
+          && page < (this.actualPage + 2)) 
+        || page >  numPages - 2
+        || (this.actualPage == (numPages-1) && page > numPages - 4)){
+          points = false;
+          this.pagesToShow.push(page);
+      }
+      else if(!points){
+          points = true;
+          this.pagesToShow.push('...');
+      }
     }
   }
+  
 
   goToPage(page){
-    this.actualPage = page;
-    this.pagination = page - 1;
-    this.filterShow();
+    if(page != '...'){
+      this.actualPage = page;
+      this.pagination = page - 1;
+      this.filterShow();
+    }
   }
 }

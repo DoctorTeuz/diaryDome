@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { GeneralFunctionService } from './general-function.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { ContestGenerateService } from './htmlGenerateService/contest-generate.service';
+import { AngleGenerateService } from './htmlGenerateService/angle-generate.service';
+import { InfoGenerateService } from './htmlGenerateService/info-generate.service';
+import { MatchGenerateService } from './htmlGenerateService/match-generate.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +16,15 @@ export class ShowsService {
   show;
   showDetail;
   usedFormat;
+  completeShowString = [];
 
   constructor(
     public GFService: GeneralFunctionService,
-    private http : HttpClient
+    private http : HttpClient,
+    public contestGenerator: ContestGenerateService,
+    public angleGenerator: AngleGenerateService,
+    public infoGenerator: InfoGenerateService,
+    public matchGenerator: MatchGenerateService,
   ) {
    }
 
@@ -48,4 +57,14 @@ export class ShowsService {
     }
     return this.http.post(this.showsPath + '/getDetail', params)
   }
+
+  publishShow(showId){
+    const params = {
+      userId: this.GFService.user.ID.toString(),
+      showId: showId.toString()
+    }
+    return this.http.post(this.showsPath + '/publish', params)
+    
+  }
+
 }

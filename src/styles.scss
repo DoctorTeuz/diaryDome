@@ -11,21 +11,7 @@
 // Be sure that you only ever include this mixin once!
 @include mat-core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$view-primary: mat-palette($mat-indigo);
-$view-accent: mat-palette($mat-pink, A200, A100, A400);
 
-// The warn palette is optional (defaults to red).
-$view-warn: mat-palette($mat-red);
-
-// Create the theme object (a Sass map containing all of the palettes).
-$view-theme: mat-light-theme($view-primary, $view-accent, $view-warn);
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 @include angular-material-theme($my-theme);
 
 /* You can add global styles to this file, and also import other style files */
@@ -92,6 +78,19 @@ mat-dialog-container{
     color: $diaryDome_labelTextColor !important;
 }
 
+.mat-option{
+    background-color: $diaryDome_backgroundContentComponent !important;
+    color: $diaryDome_labelTextColor !important;
+}
+
+.mat-option:hover{
+    background-color: $diaryDome_darkBlue !important;
+}
+
+.mat-raised-button:disabled{
+    color: $diaryDome_Disabled !important;
+}
+
 .bold{
     font-weight: bold;
 }
@@ -124,4 +123,40 @@ mat-dialog-container{
 
 .maiuscolo{
     text-transform: uppercase;
+}
+
+.rowTop{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.floatingButton{
+    position: fixed !important;
+    top: 50px;
+    right: 25px;
+    
+}
+
+
+.floatingIcon{
+    margin-top: -4px;
+    height: 33px !important;
+    width: 33px !important;
+    font-size: 33px;
+}
+
+.floatingButton.second{
+    top: 110px;
+}
+
+.floatingButton.third{
+    top: 170px;
+}
+
+.backIcon, .touchable {
+    cursor: pointer;
+}
+
+.mat-dialog-container{
+    padding: 16px !important;
 }

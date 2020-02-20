@@ -10,7 +10,7 @@ export class AngleGenerateService {
   angleStyle1(segment, format){
 
     let color = format.angleFirstBorderColor;
-    let finalString;
+    let finalString = "";
     finalString = '<div align="center" style="width: 100%;">' +
                   '<div class="_top" style="font-size: 9px; height: auto;text-align: left;' +
                   'border: 0px;background: none;color: white; font-style: normal; text-align: justify;"' +
@@ -27,7 +27,7 @@ export class AngleGenerateService {
   angleStyle2(segment, format){
 
     let color = format.angleFirstBorderColor;
-    let finalString;
+    let finalString = "";
     finalString = '<div align="center" style="width: 100%"><div class="_top" style="font-size: 9px;' +
                   ' height: auto;text-align: left;border: 0px;background: none;color: white; ' +
                   'font-style: normal; text-align: justify; " align="left"><i>' + segment.shownTitle + 
@@ -41,7 +41,7 @@ export class AngleGenerateService {
 
   angleStyle3(segment, format){
 	let color = format.angleFirstBorderColor;
-	let finalString;
+	let finalString = "";
 
 	finalString = 	'<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; text-align: left; ' +
 					'border: 0px;background: none;color: white; font-style: normal; text-align: justify;" align="left">' +
@@ -56,7 +56,7 @@ export class AngleGenerateService {
 
   angleStyle4(segment, format){
 	let color = format.angleFirstBorderColor;
-	let finalString;
+	let finalString = "";
 
 	finalString = 	'<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto;text-align: left; ' +
 					'border: 0px; background: none; color: white; font-style: normal; text-align: justify;" align="left">' +
@@ -71,7 +71,7 @@ export class AngleGenerateService {
 
   angleStyle5(segment, format){
 	let color = format.angleFirstBorderColor;
-	let finalString;
+	let finalString = "";
 
 	finalString = 	'<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto;text-align: left; border: 0px; ' +
 					'background: none; color: white; font-style: normal; text-align: justify; " align="left">' + 
@@ -86,7 +86,7 @@ export class AngleGenerateService {
 
   angleStyle6(segment, format){
 	let color = format.angleFirstBorderColor;
-	let finalString;
+	let finalString = "";
 
 	finalString = '<div align="center" style="width: 100%;">';
 	if(segment.shownTitle){
@@ -106,7 +106,7 @@ export class AngleGenerateService {
 
   angleStyle7(segment, format){
 	/* let color = format.angleFirstBorderColor; */
-	let finalString;
+	let finalString = "";
 
 	finalString = '';
 	if(segment.shownTitle){

@@ -1,7 +1,14 @@
 <div class="show-wrapper">
+    <div class="rowTop">
+        <div style="width: 50%">
+            <mat-icon class="bigIcon backIcon" [matTooltip]="'Indietro'" (click)="goBack()">keyboard_arrow_left</mat-icon>
+        </div>
+        <div class="iconTopRow">
+        </div>
+    </div>
     <mat-form-field class="allWidth" *ngIf="showService.show
                                 && showService.show.posted == 1">
-        <textarea matInput [value]="completeShowCodeGenerator()"
+        <textarea matInput [value]="completeShowCodeGenerate"
             cdkTextareaAutosize
             [placeholder]="'Codice per il forum'"
             #autosize="cdkTextareaAutosize"
@@ -10,7 +17,27 @@
             ></textarea>
     </mat-form-field>
     <mat-accordion class="showAccordion">
-        <mat-expansion-panel class="matExpPanel" *ngFor="let segment of showService.showDetail">
+        <mat-expansion-panel class="matExpPanel">
+            <mat-expansion-panel-header class="header">
+                <div class="placement">
+                    {{showService?.showDetail?.showName}}
+                </div>
+                <div class="angleTitle">
+                    Header
+                </div>
+                <div class="iconBlock">
+
+                </div>
+                <div class="rating">
+                    {{showService.showDetail.voto}}
+                </div>
+            </mat-expansion-panel-header>
+            <mat-panel-description class="matExpDescr">
+                <div class="segmentContent" [innerHTML]="sanitizer.bypassSecurityTrustHtml(contestGenerator['showStyleHeader' + format.headerFormat](showService.show, format))">
+                </div>
+            </mat-panel-description>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="matExpPanel" *ngFor="let segment of showService.showDetail; let i = index">
             <mat-expansion-panel-header class="header">
                 <mat-panel-title class="title">
                     <div class="placement">
@@ -19,18 +46,30 @@
                     <div class="angleTitle">
                         {{segment.title}}
                     </div>
-                    <div class="iconBlock">
-
-                    </div>
                     <div class="rating">
                         {{segment.rating}}
+                    </div>
+                    <div class="iconBlock">
+                        <mat-icon class="" [matTooltip]="'Modifica Segmento'" (click)="segmentEdit(segment)">edit</mat-icon>
+                        <mat-icon class="" [matTooltip]="'Cancella Segmento'">delete</mat-icon>
                     </div>
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <mat-panel-description class="matExpDescr">
-                <div class="segmentContent" [innerHTML]="generateHTML(segment)">
+                <div class="segmentContent" [innerHTML]="sanitizer.bypassSecurityTrustHtml(completeShowString[i].code)">
                 </div>
             </mat-panel-description>
         </mat-expansion-panel>
     </mat-accordion>
 </div>
+
+
+
+<button mat-fab class="floatingButton" *ngIf="showService.show  && showService.show.posted != 1" (click)="newSegment()"><mat-icon 
+    class="floatingIcon mat-icon-reverse" [matTooltip]="'Aggiungi Segmento'">note_add</mat-icon></button>
+<button mat-fab class="floatingButton second" *ngIf="showService.show  && showService.show.posted != 1" (click)="deleteShow()"><mat-icon 
+    class="floatingIcon mat-icon-reverse"  [matTooltip]="'Elimina Show'">delete</mat-icon></button>
+<button mat-fab class="floatingButton third" *ngIf="showService.show  && showService.show.posted != 1" (click)="publishShow()"><mat-icon 
+    class="floatingIcon mat-icon-reverse"  [matTooltip]="'Pubblica Show'">play_arrow</mat-icon></button>
+<button mat-fab class="floatingButton" *ngIf="showService.show  && showService.show.posted == 1" (click)="depublishShow()"><mat-icon 
+    class="floatingIcon mat-icon-reverse"  [matTooltip]="'Annulla la pubblicazione dello show'">pause</mat-icon></button>

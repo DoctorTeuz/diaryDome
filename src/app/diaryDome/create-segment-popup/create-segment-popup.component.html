@@ -1,0 +1,69 @@
+<diaryDome-popup-top-bar [title]="action =='create' ? 'Crea Nuovo Segmento' : 'Modifica Segmento'" [dialogRef]="dialogRef"></diaryDome-popup-top-bar>
+<div class="createSegmentWrapper">
+    <div class="headerDiv">
+        <img [src]="GFService.createPath(GFService.user.ID, 
+                    format.Picture.split('.')[0], 
+                    format.Picture.split('.')[1], 
+                    'Loghi')" 
+        class="image"
+        >
+        <div class="text">
+            {{show.showName}}
+        </div>
+    </div>
+
+    <div class="formDiv">
+        <div style="width: 65%" class="cell">
+            <mat-form-field class="formBase">
+                <mat-select placeholder="Tipo di Segmento" class="formField" 
+                [(ngModel)]="segment['segmentType']">
+                    <mat-option></mat-option>
+                    <mat-option *ngFor="let item of segmentTypeList" [value]="item.value">
+                        {{item.label}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field> 
+        </div>
+        <div style="width: 35%" class="cell">
+            <mat-form-field class="formBase">
+                <input matInput type="text" 
+                    placeholder="Titolo in Evidenza" class="formField"
+                    [(ngModel)]="segment['shownTitle']">
+            </mat-form-field> 
+        </div>
+        <div style="width: 30%" class="cell">
+            <mat-form-field class="formBase">
+                <mat-select placeholder="Posizionamento nello show" class="formField" 
+                [(ngModel)]="segment['placement']">
+                    <mat-option></mat-option>
+                    <mat-option *ngFor="let item of placementList" [value]="item.value">
+                        {{item.label}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field> 
+        </div>
+        <div style="width: 70%" class="cell">
+            <mat-form-field class="formBase">
+                <input matInput type="text" 
+                    placeholder="Nome del Segmento" class="formField"
+                    [(ngModel)]="segment['title']">
+            </mat-form-field> 
+        </div>
+        <div style="width: 30%" class="cell">
+            <mat-form-field class="formBase">
+                <input matInput type="text" 
+                    placeholder="Colore da applicare" class="formField"
+                    [(ngModel)]="segment['graphicColor']">
+                    <mat-hint>I colori possono essere o il nome in Inglese del colore (es: red, orange, grey) oppure il codice esadecimale che lo contraddistingue.</mat-hint>
+            </mat-form-field> 
+        </div>
+        <div style="width: 30%" class="cell">
+            <mat-form-field class="formBase">
+                <input matInput type="text" 
+                    placeholder="Rating del segmento" class="formField"
+                    [(ngModel)]="segment['rating']">
+            </mat-form-field> 
+        </div>
+
+    </div>
+</div>

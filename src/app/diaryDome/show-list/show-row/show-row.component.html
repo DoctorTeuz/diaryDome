@@ -53,13 +53,13 @@
     <mat-icon [matTooltip]="'Modifica ' + showData.showName" *ngIf="showData.posted != '1'" class="icon"
     (click)="editShow(showData)">
         edit</mat-icon>
-    <mat-icon [matTooltip]="'Aggiungi segmento'" *ngIf="showData.posted != '1'" class="icon">
-        note_add</mat-icon>
-    <mat-icon [matTooltip]="'Pubblica ' + showData.showName" *ngIf="showData.posted != '1'" class="icon">
+<!--     <mat-icon [matTooltip]="'Aggiungi segmento'" *ngIf="showData.posted != '1'" class="icon" (click)="newSegment(showData)">
+        note_add</mat-icon> -->
+    <mat-icon [matTooltip]="'Pubblica ' + showData.showName" *ngIf="showData.posted != '1'" class="icon" (click)="publishShow(showData)">
         play_arrow</mat-icon>
-    <mat-icon [matTooltip]="'Codice'" *ngIf="showData.posted == '1'" class="icon">
+<!--     <mat-icon [matTooltip]="'Codice'" *ngIf="showData.posted == '1'" class="icon">
         code
-    </mat-icon>
+    </mat-icon> -->
 </div>
 
 

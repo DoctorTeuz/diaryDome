@@ -33,8 +33,8 @@
         </div>
     </div>
     <div class="paginationRow" *ngIf="viewShow">
-        <ng-container *ngFor="let page of pageTot(); let i = index" >
-            <button mat-raised-button color='accent' class='numberCell' (click)="goToPage(page)" *ngIf="checkPagination(page)">		
+        <ng-container *ngFor="let page of pagesToShow; let i = index" >
+            <button mat-raised-button [color]='page == actualPage ? "warn" : "primary"' class='numberCell' (click)="goToPage(page)">		
                 {{page}}
             </button>
         </ng-container>

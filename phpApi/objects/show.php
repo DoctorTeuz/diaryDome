@@ -103,6 +103,32 @@ class Show{
 		}
 	}
 
+	function publishShow($userId, $id){
+		$showQuery = "SELECT * 
+						FROM 
+							WWETeuz_BridgeUserShow 
+						WHERE 
+							userId = '$userId' AND 
+							showId = '$id';";
+		$shows = $this->conn->query($showQuery);
+		if(mysql_num_rows($shows)>0){
+			try {
+				$sql ="UPDATE `WWETeuz_Show` 
+						SET 
+							`Posted`=1 
+						WHERE 
+							ID = '$sh->showId'";
+				$stmt = $this->conn->query($query);
+				return true;
+			} catch (\Throwable $th) {
+				return false;
+			}
+		}
+		else{
+			return false;
+		}
+	}
+
 	function update($sh){
 		$showQuery = "SELECT * 
 		FROM 
@@ -179,13 +205,16 @@ class Show{
 						Arena AS arena,
 						City AS citta,
 						SoldOut AS soldOut,
-						Graduation AS showRating
+						Graduation AS showRating,
+						WWETeuz_BridgeUserShow.userId AS userId
 					FROM 
 						WWETeuz_ShowAngles 
 						JOIN WWETeuz_Show 
 							ON (WWETeuz_ShowAngles.ID_Show = WWETeuz_Show.ID) 
 						JOIN WWETeuz_Format 
 							ON (WWETeuz_Show.formatId = WWETeuz_Format.ID) 
+						JOIN WWETeuz_BridgeUserShow 
+							ON (WWETeuz_BridgeUserShow.showId = WWETeuz_Show.ID)
 						WHERE 
 							ID_Show = $showId 
 						ORDER BY 

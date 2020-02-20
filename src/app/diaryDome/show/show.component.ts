@@ -7,6 +7,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { InfoGenerateService } from 'src/app/services/htmlGenerateService/info-generate.service';
 import { MatchGenerateService } from 'src/app/services/htmlGenerateService/match-generate.service';
 import { ContestGenerateService } from 'src/app/services/htmlGenerateService/contest-generate.service';
+import { GenericAlertPopupComponent } from 'src/app/shared/generic-alert-popup/generic-alert-popup.component';
+import { MatDialog } from '@angular/material';
+import { switchMap } from 'rxjs/operators';
+import { CreateSegmentPopupComponent } from '../create-segment-popup/create-segment-popup.component';
 
 @Component({
   selector: 'diaryDome-show',
@@ -19,6 +23,7 @@ export class ShowComponent implements OnInit, OnDestroy {
   angleTranslater = AngleTranslater;
   format;
   completeShowString = [];
+  completeShowCodeGenerate;
   
   constructor(
     public showService: ShowsService,
@@ -27,7 +32,8 @@ export class ShowComponent implements OnInit, OnDestroy {
     public infoGenerator: InfoGenerateService,
     public matchGenerator: MatchGenerateService,
     public contestGenerator: ContestGenerateService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit() {
@@ -35,10 +41,15 @@ export class ShowComponent implements OnInit, OnDestroy {
       console.log(this.showService.showDetail);
       this.format = this.GFService.user.formats.filter(form => form.formatId == this.showService.show.formatId)[0];
       console.log(this.format);
+      this.showService.showDetail.map(seg => this.generateHTML(seg))
+      if(this.showService.show.posted == 1){
+        this.completeShowCodeGenerate =  this.completeShowCodeGenerator()
+      }
     }
     else{
       this.GFService.navigateTo('/showList')
     }
+
   }
 
   ngOnDestroy(){
@@ -73,29 +84,32 @@ export class ShowComponent implements OnInit, OnDestroy {
             type = 'match';
             format = 'Short';
             service = 'matchGenerator'
+          case 'Plain':
+            type = 'plain';
+            break;
       default:
         break;
     }
-    if(typeof this[service][type + 'Style' + format] === "function"){
+    if(type != 'plain' && typeof this[service][type + 'Style' + format] === "function"){
       code = this[service][type + 'Style' + format](segment, this.format);
       let obj = {
         code: code,
         place: segment.placement,
         order: segment.orderAppear,
-        splrText: segment.title + " (" + segment.rating + ")<br>"
+        splrText: segment.rating ? segment.title + " (" + segment.rating + ")<br>" : null,
       }
       this.completeShowString.push(obj);
-      return this.sanitizer.bypassSecurityTrustHtml(code);
+      /* return this.sanitizer.bypassSecurityTrustHtml(code); */
     }
     else{
       let obj = {
-        code: segment.content,
+        code: '<div style="width: 100%;">'+segment.content+'</div>',
         place: segment.placement,
         order: segment.orderAppear,
         splrText: segment.rating ? segment.title + " (" + segment.rating + ")<br>" : null,
       }
       this.completeShowString.push(obj);
-      return this.sanitizer.bypassSecurityTrustHtml(segment.content);
+      /* return this.sanitizer.bypassSecurityTrustHtml(obj.code); */
     }
   }
 
@@ -123,12 +137,12 @@ export class ShowComponent implements OnInit, OnDestroy {
 		}
     preshow.map(segment => {
       completeShow = completeShow + segment.code;
-      spoilerText = spoilerText + segment.splrText;
+      spoilerText = segment.splrText ? spoilerText + segment.splrText : spoilerText;
     })
       completeShow = completeShow + this.contestGenerator['showStyleHeader' + this.format.headerFormat](this.showService.show, this.format);
     show.map(segment => {
       completeShow = completeShow + segment.code;
-      spoilerText = spoilerText + segment.splrText;
+      spoilerText = segment.splrText ? spoilerText + segment.splrText : spoilerText;
     })
 
     if(postShow.length>0){
@@ -138,12 +152,71 @@ export class ShowComponent implements OnInit, OnDestroy {
     
     postShow.map(segment => {
       completeShow = completeShow + segment.code;
-      spoilerText = spoilerText + segment.splrText;
+      spoilerText = segment.splrText ? spoilerText + segment.splrText : spoilerText;
     })
     completeShow = completeShow + this.contestGenerator.showStyleEnding();
     if(!isAnteprima && spoilerText){
       completeShow = completeShow + '[SPOILER]' + spoilerText + '[/SPOILER]';
     }
     return completeShow;
+  }
+
+  segmentEdit(segment){
+
+  }
+
+  goBack(){
+    this.GFService.navigateTo('/showList');
+  }
+
+  deleteShow(){
+    let message = 'Sei sicuro di voler cancellare ' + this.showService.show.showName + '?';
+    let title = 'Attenzione';
+    const config = {
+      component: this,
+      function: 'deleteAction',
+      message: message,
+      header: title,
+      level: 'H',
+      callbackParams: {
+        id: this.showService.show.ID,
+      }
+    };
+    this.dialog.open(GenericAlertPopupComponent, {
+      width: '400px',
+      data: config
+    })
+  }
+
+  publishShow(){
+    const show = this.showService.show;
+    this.GFService.countThread(true);
+    try {
+      this.showService.publishShow(show.ID).subscribe(
+          (res: any) => {
+            if(res){
+              this.completeShowCodeGenerate =  this.completeShowCodeGenerator();
+              this.showService.show.posted = 1;
+            }
+          }
+        )
+    } catch (error) {
+      this.GFService.countThread(false);
+      console.log(error)
+    }
+  
+  }
+
+  newSegment(){
+    let config = {
+      action: 'create',
+      format: this.format,
+      show: this.showService.show
+    };
+    this.dialog.open(CreateSegmentPopupComponent, {
+      width: '800px',
+      data: config
+    })
+    
   }
 }

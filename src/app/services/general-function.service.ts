@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment'
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from '../objects/user';
+import { Titles } from '../enums/titles.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -239,4 +240,109 @@ export class GeneralFunctionService {
           });
         console.log(this.actualMenu)
     }
+
+    findTitle(titleName, showId){
+        let titleCode = "";
+        let userId = this.user.ID;
+        if(showId == 0 || userId == 1){
+          titleCode = Titles[titleName];
+          return "<img src='" +  this.createPath(1, titleCode, 'jpg', 'Belts') + "'  width='180px' style='border-radius: 10px;'><br>";
+        }
+        else{
+            let titleCode = titleName.replace(" ", "_");
+            let titleUrl = this.user.titleList.filter(tit => tit.indexOf(titleCode) > -1).sort((a, b) => {
+                if(a < b){
+                    return 1;
+                }
+                if (b < a){
+                    return -1
+                }
+            })[0];
+            return "<img src='" +  this.createPath(this.user.ID, titleUrl.split('.')[0], titleUrl.split('.')[1], 'Belts') + "'  width='180px' style='border-radius: 10px;'><br>";
+        }
+      
+    }
+
+    createWorkerImageStyle(worker, style, show, showColor){
+        let userId = this.user.ID;
+        let shape = "";
+        let width = "";
+        let border = "";
+        let widthVVSS = "";
+        let styleFinal = "";
+        if(style.indexOf('Round') > -1){
+            shape = 'border-radius: 50px;';
+        }
+        if(style.indexOf('Little') > -1){
+            width = 'width:75px;';
+            widthVVSS = 'style= "height: 70px;"';
+        }
+        if(style.indexOf('Border') > -1){
+            border = 'border-color: ' + showColor + '; border-width: 1px;';
+        }
+        if(style.indexOf('Blunt') > -1){
+            shape = 'border-radius: 20px;';
+        }
+    
+        if(shape != "" || width != "" || border != ""){
+            styleFinal = 'style="' + shape + width + border + '"';
+        }
+        let targetDir = "";
+        if(worker == "VVSS"){
+            if(show == 0){
+                return '<img src="' + this.createPath(1, 'VS', 'jpg', 'Loghi') + '" ' + widthVVSS + '>';
+            }
+            else{
+                if(this.user.VSurl){
+                    return '<img src="' + this.createPath(this.user.ID, this.user.VSurl.split('.')[0], this.user.VSurl.split('.')[1], 'Loghi') + '" ' + widthVVSS + '>';
+                }
+                else{
+                    return "VS"
+                }
+            }
+        }
+        let workerData = worker.split('#');
+        let workerName = workerData[0].split(" ").join("_");
+        workerName = workerName.split("'").join("");
+        workerName = workerName.split(".").join("");
+    
+        if(show == 0){
+            return '<img src="' + this.createPath(1, workerName, 'jpg') + '" ' + styleFinal + '>';
+        }
+        else{
+            const workerFinalName = this.user.workerImageList.filter(wrk => wrk.split('.')[0] === workerName)[0];
+            return '<img src="' + this.createPath(this.user.ID, workerFinalName.split('.')[0], workerFinalName.split('.')[1]) + '" ' + styleFinal + '>';
+        }        
+    }
+
+    analyzeBGColor(color){
+        if(color.startsWith('#')){
+          let finalColor = color.replace('#', '');
+          let r;
+          let g;
+          let b;
+          if (finalColor.length === 2) {
+            r = parseInt(finalColor[0].toString() + finalColor[1].toString(), 16);
+            g = r;
+            b = r;
+          } else if (finalColor.length === 3) {
+              r = parseInt(finalColor[0].toString() + finalColor[0].toString(), 16);
+              g = parseInt(finalColor[1].toString() + finalColor[1].toString(), 16);
+              b = parseInt(finalColor[2].toString() + finalColor[2].toString(), 16);
+          } else if (finalColor.length === 6) {
+              r = parseInt(finalColor[0].toString() + finalColor[1].toString(), 16);
+              g = parseInt(finalColor[2].toString() + finalColor[3].toString(), 16);
+              b = parseInt(finalColor[4].toString() + finalColor[5].toString(), 16);
+          } else {
+              return '#FFFFFF';
+          }
+          if((((r * 0.299) + (g * 0.587) + (b * 0.114))) > 186){
+            return '#000000';
+          }
+          else{
+            return '#FFFFFF';
+          }
+        }
+      }
+
 }

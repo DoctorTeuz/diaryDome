@@ -1,0 +1,39 @@
+.createSegmentWrapper{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    .headerDiv{
+        width: 45%;
+        display: flex;
+        flex-flow: column;
+        .image{
+            width: 100%;
+        }
+        .text{
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    }
+
+    .formDiv{
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        .cell{
+            height: 60px;
+            display: flex;
+            justify-content: center;
+        }
+        .checkBox{
+            display: flex;
+            justify-content: flex-start;
+            .mat-checkbox{
+                margin-top: 12px;
+                margin-left: 12px;  
+            }
+        }
+    }
+}

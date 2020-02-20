@@ -195,7 +195,8 @@ function grabImage($targetDir, $workerImg, $holdTitle){
 	if($holdTitle){
 		$holdTitle = str_replace(" ", "", $holdTitle);
 		$holdTitle = "_".$holdTitle.'Champ';
-	}
+    }
+    $targetDir = '../../../../DiaryDome/'.$targetDir;
 	$files = glob($targetDir.$workerImg."*".$holdTitle.".*");
 	if(count($files)==0){
 		$files = glob($targetDir.$workerImg.".*");
@@ -203,7 +204,6 @@ function grabImage($targetDir, $workerImg, $holdTitle){
 	$img = $workerImg."_2";
 	$max = 100;
 	for($k = 1; $k<$max; $k++){
-		
 		$checkText = $targetDir.$workerImg."_".$k.$holdTitle.".";
 		if($k == 1){
 			$checkText = $targetDir.$workerImg.$holdTitle.".";
@@ -223,7 +223,52 @@ function grabImage($targetDir, $workerImg, $holdTitle){
 			$max = $max + 3;
 		}
 	}
+	return str_replace($targetDir, "",$img);
+}
 
-	return $img;
+function getVSUrl($userId){
+    $targetDir = '../../../../DiaryDome/'.$userId."/Loghi/";
+    //echo $targetDir;
+    $image = "";
+    $files = glob($targetDir."VS.*");
+    $image = $files[0];
+    for($k = 2; $k<100; $k++){
+        $files = glob($targetDir."VS_".$k.".*");
+        if(count($files)>0){
+            $image = $files[0];
+        }
+        else{
+            break;
+        }
+    }
+    return str_replace($targetDir   , "",$image);
+}
+
+function getTitleList($userId){
+    $targetDir = '../../../../DiaryDome/'.$userId."/Belts/";
+    
+    $image = "";
+    $files = glob($targetDir."*");
+    $images = $files;
+    $imageRes = mapImageList($images, $targetDir);
+    return $imageRes;
+}
+
+function mapImageList($img, $dir){
+    $finalImage = [];
+    for ($i=0; $i < count($img); $i++) { 
+        array_push($finalImage, str_replace($dir   , "",$img[$i]));
+    }
+   return $finalImage;
+}
+
+function getUserWorkerList($userId){
+    $targetDir = '../../../../DiaryDome/'.$userId."/";
+    
+    $image = "";
+    $files = glob($targetDir."*");
+    $images = $files;
+    $imageRes = mapImageList($images, $targetDir);
+    return $imageRes;
 }
 ?>

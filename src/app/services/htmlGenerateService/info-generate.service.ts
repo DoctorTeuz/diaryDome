@@ -14,7 +14,7 @@ export class InfoGenerateService {
       color = segment.graphicColor;
     }
   
-    let finalString;
+    let finalString = "";
     finalString = '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; text-align: left; ' + 
                   'border: 0px;background: none; color: white; font-style: normal; text-align: justify;" align="left">' +
                   '<i>' + segment.shownTitle + '</i></div><div class=" InfoSegmentBorderOne" align="center" ' + 
@@ -32,7 +32,7 @@ export class InfoGenerateService {
       color = segment.graphicColor;
     }
   
-    let finalString;
+    let finalString = "";
   
     finalString = '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; text-align: left; ' +
                   'border: 0px; background: none; color: white; font-style: normal; text-align: justify; " align="left">' + 
@@ -51,7 +51,7 @@ export class InfoGenerateService {
       color = segment.graphicColor;
     }
   
-    let finalString;
+    let finalString = "";
   
     finalString = '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto;text-align: left;border: 0px; ' +
                   'background: none; color: white; font-style: normal; text-align: justify; " align="left">' + 
@@ -70,7 +70,7 @@ export class InfoGenerateService {
       color = segment.graphicColor;
     }
   
-    let finalString;
+    let finalString = "";
     
     finalString = '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; ' + 
                   'text-align: left; border: 0px; background: none;color: white; font-style: normal; text-align: justify;" ' +
@@ -87,7 +87,7 @@ export class InfoGenerateService {
     if(segment.segmentType == 'Hype'){
       color = segment.graphicColor;
     }  
-    let finalString;
+    let finalString = "";
   
     finalString = '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; ' + 
                   'text-align: left; border: 0px; background: none;color: white; font-style: normal; text-align: justify;" ' + 
@@ -105,7 +105,7 @@ export class InfoGenerateService {
     if(segment.segmentType == 'Hype'){
       color = segment.graphicColor;
     }  
-    let finalString;
+    let finalString = "";
   
     finalString = '<div align="center" style="width: 100%;">';
     if(segment.shownTitle){
@@ -127,7 +127,7 @@ export class InfoGenerateService {
     if(segment.segmentType == 'Hype'){
       color = segment.graphicColor;
     }  
-    let finalString;
+    let finalString = "";
   
     finalString = "";
     if(segment.shownTitle){

@@ -5,5 +5,5 @@ export enum AngleTranslater {
     "SpecialMatch" = "Match Speciale",
     "Hype" = "Infografica promozionale",
     "ShortMatch" = "Match in Breve",
-    
+    "Plain" = "Senza Stile",
 }

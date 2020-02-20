@@ -1,9 +1,8 @@
 @import '../../../assets/theme/variables';
 
 .show-wrapper{
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
+    width: 80%;
+    margin: auto;
     margin-top: 10px;
     .allWidth{
         width: 100%;
@@ -32,11 +31,12 @@
                     }
                     .iconBlock{
                         width: 10%;
+                        display: flex;
+                        justify-content: flex-end;
                     }
                     .rating{
                         width: 9%;
                         text-align: right;
-                        padding-right: 10px;
                     }
                     .mat-expansion-indicator{
                         color: $diaryDome_textColor !important;
@@ -57,4 +57,10 @@
     display: flex;
     flex-flow: row wrap;
     color: $diaryDome_textColor;
+}
+
+.iconTopRow{
+    display: flex;
+    align-items: flex-end;
+    width: 50%;
 }

@@ -57,6 +57,14 @@ if($method != 'OPTIONS'){
 				$response = $th;
 			}
 			echo json_encode($response);
+			break;	
+		case 'publish':
+			try {
+				$response = publish();
+			} catch (Throwable $th) {
+				$response = $th;
+			}
+			echo json_encode($response);
 			break;				
 		default:
 			$response = new ResponseObject();
@@ -127,6 +135,30 @@ function deleteShow(){
 	$show = new Show($db);
 	if($show->delete($userId, $id)){
 		$response = getShowList($userId);
+		return $response;
+	}else{
+		$response = new ResponseObject();
+		$response->status = 500;
+		$response->body = 'Internal Server Error';
+		return $response;
+	}
+}
+
+function publish(){
+	$db=new Connection();
+	$db->connetti();
+	$response = new ResponseObject();
+
+	$postdata = file_get_contents("php://input");
+	$request = json_decode($postdata);
+	
+	$userId = $request->userId;
+	$id = $request->showId;
+
+	$show = new Show($db);
+	if($show->publishShow($userId, $id)){
+		$response->status = 200;
+		$response->body = 'Pubblicato';
 		return $response;
 	}else{
 		$response = new ResponseObject();
@@ -257,8 +289,43 @@ function mapShowDetail($response){
 	$showDetail->soldOut = $response['soldOut'];
 	$showDetail->showRating = $response['showRating'];
 	$showDetail->championshipAdv = $response['championshipAdv'];
+	$showDetail->userId = $response['userId'];
+	$showDetail->championshipUlr = findChampionship($showDetail->championship, $response['userId']);	
 
 	return $showDetail;
+}
+
+function findChampionship($titleName, $userId){
+	$targetDir = $userId."/Belts/";
+	$titleCode = str_replace("'", "", $titleName);
+	$titleCode = str_replace(".", "", $titleCode);
+	$titleCode = str_replace(" ", "_", $titleCode);
+
+	$files = glob($targetDir.$titleCode."*.*");
+	if(count($files)==0){
+	  return "noImage";
+	}
+	else{
+	  $max = 100;
+	  for($k = 1; $k<$max; $k++){
+		$checkText = $targetDir.$titleCode."_".$k.".";
+		if($k == 1){
+		  $checkText = $targetDir.$titleCode.".";
+		}
+		$found = false;
+		for($p = 0; $p < count($files); $p++){
+		  if(strpos($files[$p], $checkText) === 0){
+			$img = $files[$p];
+			$found = true;
+		  }
+		}
+
+		if(!$found && $max == 100){
+		  $max = $k + 2;
+		}
+	  }
+	  return $img;
+	}
 }
 
 ?>

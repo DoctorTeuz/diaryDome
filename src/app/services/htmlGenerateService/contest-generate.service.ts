@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { GeneralFunctionService } from '../general-function.service';
-import { isNumber } from 'util';
+import { Titles } from 'src/app/enums/titles.enum';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +13,15 @@ export class ContestGenerateService {
   ) { }
 
   showStyleOpening1(){
-    let finalString;
+    let finalString = "";
     finalString = '<div style="width:700px; text-style: normal; margin: auto;">';
     return finalString;
   }
 
   showStyleHeader1(show, format){
-    let finalString;
+    let finalString = "";
 
-    finalString = '<p align="center">';
+    finalString = '<div style="width: 100%"><p align="center">';
 	if(show.imageUrl){
     const url = this.GFService.createPath(this.GFService.user.ID, show.imageUrl.split('.')[0], show.imageUrl.split('.')[1], 'Loghi')
 		finalString = finalString + '<img src="' + url + '"><br>';
@@ -48,7 +49,7 @@ export class ContestGenerateService {
     finalString = finalString + '<br>';
   }
 
-	if(isNumber(show.pubblico)){
+	if(!isNaN(show.pubblico)){
 		finalString = finalString + '<b>' + show.pubblico + ' Spettatori';
 		if(show.soldOut == 1){
 			finalString = finalString + ' - <span style="color: ' + show.baseColor + '" class="soldOutColorValue">SOLD OUT</span>';
@@ -56,7 +57,7 @@ export class ContestGenerateService {
 		finalString = finalString + '</b>';
 	}
 
-    finalString = finalString + '</p>';
+    finalString = finalString + '</p></div>';
     return finalString;
   }
 
@@ -72,7 +73,7 @@ export class ContestGenerateService {
   }
 
   showStyleHeader2(show, format){
-    let finalString = '<p align="center">';
+    let finalString = '<div style="width: 100%"><p align="center">';
     if(show.imageUrl){
       const url = this.GFService.createPath(this.GFService.user.ID, show.imageUrl.split('.')[0], show.imageUrl.split('.')[1], 'Loghi')
       finalString = finalString + '<img src="' + url + '"><br>';
@@ -100,7 +101,7 @@ export class ContestGenerateService {
       finalString = finalString + '<br>';
     }
   
-    if(isNumber(show.pubblico)){
+    if(!isNaN(show.pubblico)){
       finalString = finalString + '<b>' + show.pubblico + ' Spettatori';
       if(show.soldOut == 1){
         finalString = finalString + ' - <span style="color: ' + show.baseColor + '" class="soldOutColorValue">SOLD OUT</span>';
@@ -108,7 +109,7 @@ export class ContestGenerateService {
       finalString = finalString + '</b>';
     }
   
-    finalString = finalString + '</p>';
+    finalString = finalString + '</p></div>';
     return finalString;
   }
 
@@ -120,7 +121,7 @@ export class ContestGenerateService {
   }
 
   showStyleHeader3(show, format){
-    let finalString = '<p align="center">';
+    let finalString = '<div style="width: 100%"><p align="center">';
     if(show.imageUrl){
       const url = this.GFService.createPath(this.GFService.user.ID, show.imageUrl.split('.')[0], show.imageUrl.split('.')[1], 'Loghi')
       finalString = finalString + '<img src="' + url + '"><br>';
@@ -148,7 +149,7 @@ export class ContestGenerateService {
       finalString = finalString + '<br>';
     }
   
-    if(isNumber(show.pubblico)){
+    if(!isNaN(show.pubblico)){
       finalString = finalString + '<b>' + show.pubblico + ' Spettatori';
       if(show.soldOut == 1){
         finalString = finalString + ' - <span style="color: ' + show.baseColor + '" class="soldOutColorValue">SOLD OUT</span>';
@@ -156,7 +157,7 @@ export class ContestGenerateService {
       finalString = finalString + '</b>';
     }
   
-    finalString = finalString + '</p>';
+    finalString = finalString + '</p></div>';
     return finalString;
   }
 
@@ -168,7 +169,7 @@ export class ContestGenerateService {
   }
 
   showStyleHeader4(show, format){
-    let finalString = '<p align="center">';
+    let finalString = '<div style="width: 100%"><p align="center">';
     if(show.imageUrl){
       const url = this.GFService.createPath(this.GFService.user.ID, show.imageUrl.split('.')[0], show.imageUrl.split('.')[1], 'Loghi')
       finalString = finalString + '<img src="' + url + '"><br>';
@@ -196,7 +197,7 @@ export class ContestGenerateService {
       finalString = finalString + '<br>';
     }
   
-    if(isNumber(show.pubblico)){
+    if(!isNaN(show.pubblico)){
       finalString = finalString + '<b>' + show.pubblico + ' Spettatori';
       if(show.soldOut == 1){
         finalString = finalString + ' - <span style="color: ' + show.baseColor + '" class="soldOutColorValue">SOLD OUT</span>';
@@ -204,37 +205,9 @@ export class ContestGenerateService {
       finalString = finalString + '</b>';
     }
   
-    finalString = finalString + '</p>';
+    finalString = finalString + '</p></div>';
     return finalString;
   }
 
-  analyzeBGColor(color){
-    if(color.startsWith('#')){
-      let finalColor = color.replace('#', '');
-      let r;
-      let g;
-      let b;
-      if (finalColor.length === 2) {
-        r = parseInt(finalColor[0].toString() + finalColor[1].toString(), 16);
-        g = r;
-        b = r;
-      } else if (finalColor.length === 3) {
-          r = parseInt(finalColor[0].toString() + finalColor[0].toString(), 16);
-          g = parseInt(finalColor[1].toString() + finalColor[1].toString(), 16);
-          b = parseInt(finalColor[2].toString() + finalColor[2].toString(), 16);
-      } else if (finalColor.length === 6) {
-          r = parseInt(finalColor[0].toString() + finalColor[1].toString(), 16);
-          g = parseInt(finalColor[2].toString() + finalColor[3].toString(), 16);
-          b = parseInt(finalColor[4].toString() + finalColor[5].toString(), 16);
-      } else {
-          return '#FFFFFF';
-      }
-      if((((r * 0.299) + (g * 0.587) + (b * 0.114))) > 186){
-        return '#000000';
-      }
-      else{
-        return '#FFFFFF';
-      }
-    }
-  }
+
 }

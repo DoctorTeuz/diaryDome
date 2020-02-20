@@ -1,5 +1,5 @@
 <div class="diaryDome-menu piston" [ngClass]="{'openMenu': open}" *ngIf="GFService.actualMenu?.length > 0">
-    <div class="menuIconDiv piston" [ngClass]="{'bigIcon': open}" (click)="enlargeMenu()">
+    <div class="menuIconDiv piston" [ngClass]="{'openIcon': open}" (click)="enlargeMenu()">
         <mat-icon class="menuIcon">
             menu
         </mat-icon>
@@ -7,7 +7,7 @@
     <ng-container *ngFor="let voice of GFService.actualMenu">
         <div class="menuIconDiv piston" 
         [ngClass]="{
-            'bigIcon': open, 
+            'openIcon': open, 
             'inPage': voice.usePath?.replace('/', '') === GFService.actualPlace[1],
             'secondLevel': voice.Livello == 2
         }" 

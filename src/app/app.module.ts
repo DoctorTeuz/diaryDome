@@ -51,6 +51,8 @@ import { ShowRowComponent } from './diaryDome/show-list/show-row/show-row.compon
 import { CreateShowPopupComponent } from './diaryDome/create-show-popup/create-show-popup.component';
 import { GenericAlertPopupComponent } from './shared/generic-alert-popup/generic-alert-popup.component';
 import { ShowComponent } from './diaryDome/show/show.component';
+import { PopupTopBarComponent } from './shared/popup-top-bar/popup-top-bar.component';
+import { CreateSegmentPopupComponent } from './diaryDome/create-segment-popup/create-segment-popup.component';
 
 const MatModules = [
   BrowserModule,
@@ -105,6 +107,8 @@ const MatModules = [
     CreateShowPopupComponent,
     GenericAlertPopupComponent,
     ShowComponent,
+    PopupTopBarComponent,
+    CreateSegmentPopupComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -115,6 +119,7 @@ const MatModules = [
     WorkerInformationComponent,
     CreateShowPopupComponent,
     GenericAlertPopupComponent,
+    CreateSegmentPopupComponent,
   ],
   providers: [
     { 

@@ -36,6 +36,7 @@ export class CreateShowPopupComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any, 
     public showService: ShowsService,
   ) {
+    dialogRef.disableClose = true;
     this.component = data.component;
     this.redirect = data.redirect;
     if(data.action){
