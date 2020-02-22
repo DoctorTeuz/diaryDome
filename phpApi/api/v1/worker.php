@@ -42,6 +42,14 @@ if($method != 'OPTIONS'){
 			}
 			echo json_encode($response);
 			break;
+		case 'getAlumni':
+			try {
+				$response = getAlumni();
+			} catch (Throwable $th) {
+				$response = $th;
+			}
+			echo json_encode($response);
+			break;
 		default:
 			$response = new ResponseObject();
 			$response->status = 404;
@@ -223,6 +231,39 @@ function filtraPerWorkerName($array, $workerName){
 		}
 	}
 	return $finalRow;
+}
+
+function getAlumni(){
+	$db=new Connection();
+	$db->connetti();
+	$response = new ResponseObject();
+	
+	$worker = new Worker($db);
+
+	$postdata = file_get_contents("php://input");
+	$request = json_decode($postdata);
+	
+	$userId = $request->userId;
+	$workers = $db -> estraiArray($worker->getAlumniByUser($userId));
+	
+	$num = /* mysql_num_rows($workers) */ count($workers);
+	if($num == 0){
+		$response->status = 200;
+		$response->error = "Nessun Worker Trovato";
+		return $response;
+	}
+	else{
+		$workerArr = array();
+		$workerArr = array_map('mapAlumni', $workers);
+		$body->archivedImages = $workerArr;
+		$response->body = $body;
+		$response->status = 200;
+		return $response;
+	}
+}	
+
+function mapAlumni($a){
+	return utf8_encode($a['Image']);
 }
 
 

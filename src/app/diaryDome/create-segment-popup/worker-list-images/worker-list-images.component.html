@@ -1,0 +1,24 @@
+<diaryDome-popup-top-bar [title]="'Lista Worker'" [dialogRef]="dialogRef2"></diaryDome-popup-top-bar>
+<div style="width: 100%" >
+    <mat-form-field class="formBase">
+        <input matInput type="text" 
+            placeholder="Lista immagini" class="formField"
+            [(ngModel)]="parent.segment['matchWorkers']">
+    </mat-form-field> 
+</div>
+
+<div class="VSBlock">
+    <button class="VSBlock" mat-raised-button color="primary" (click)="assignWorker('VVSS');">VS Tag</button>
+</div>
+<div class="workerContainer">
+    <ng-container *ngFor="let worker of GFService.user.workerImageList">
+        <div class="workerBlock" *ngIf="!isArchived(worker)">
+            <img class="workerImage"
+            [src]="GFService.createPath(GFService.user.ID, worker.split('.')[0], worker.split('.')[1], null)"
+            (click)="assignWorker(worker);">
+        </div>
+    </ng-container>
+</div>
+<div class="buttonRow">
+    <button mat-raised-button color="primary" (click)="close()">CONFERMA</button>
+</div>

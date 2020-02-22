@@ -1,0 +1,36 @@
+export class Segment {
+
+    segmentId;
+    showId;
+    orderAppear;
+    placement;
+    title;
+    rating;
+    segmentType;
+    shownTitle;
+    content;
+    graphicColor;
+    workers;
+    championship;
+    champion;
+    matchType;
+    matchScheme;
+    matchWorkers;
+    matchWinner;
+    titleChange;
+    showName;
+    confirmed;
+    formatId;
+    DayWeek;
+    Week;
+    M;
+    Y;
+    pubblico;
+    arena;
+    citta;
+    soldOut;
+    showRating;
+    championshipAdv;
+    userId;
+    championshipUlr;
+}

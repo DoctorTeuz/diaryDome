@@ -30,6 +30,7 @@ body {
 mat-dialog-container{
     background-color: $diaryDome_backgroundComponent !important;
     color: $diaryDome_textColor !important;
+    overflow-x: hidden !important;
 }
 
 .mat-drawer-container{
@@ -89,6 +90,10 @@ mat-dialog-container{
 
 .mat-raised-button:disabled{
     color: $diaryDome_Disabled !important;
+}
+
+textarea.mat-input-element{
+    background-color: $diaryDome_backgroundContentComponent !important;
 }
 
 .bold{
@@ -160,3 +165,29 @@ mat-dialog-container{
 .mat-dialog-container{
     padding: 16px !important;
 }
+
+
+//SCROLLBAR
+
+/* width */
+::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 50px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: $diaryDome_backgroundComponent;
+    border-radius: 50px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $diaryDome_darkBlue;
+    border-radius: 50px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $diaryDome_lightBlue;
+  }

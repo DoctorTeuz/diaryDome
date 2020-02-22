@@ -41,6 +41,25 @@ export class ShowComponent implements OnInit, OnDestroy {
       console.log(this.showService.showDetail);
       this.format = this.GFService.user.formats.filter(form => form.formatId == this.showService.show.formatId)[0];
       console.log(this.format);
+      this.showService.showDetail = this.showService.showDetail.sort((a, b) => {
+        if(a.placement == 'PreShow' && b.placement != 'Preshow'){
+          return -1;
+        }
+        if(a.placement == 'PostShow' && b.placement != 'PostShow'){
+          return 1;
+        }
+        if(a.placement == 'Show' && b.placement == 'PostShow'){
+          return -1;
+        }
+        if(a.placement == 'Show' && b.placement == 'PreShow'){
+          return 1;
+        }
+        if(a.placement == b.placement ){
+          return a.orderAppear < b.orderAppear ? -1 : 1
+        }
+      })
+
+
       this.showService.showDetail.map(seg => this.generateHTML(seg))
       if(this.showService.show.posted == 1){
         this.completeShowCodeGenerate =  this.completeShowCodeGenerator()
@@ -57,7 +76,7 @@ export class ShowComponent implements OnInit, OnDestroy {
     this.showService.show = null;
   }
 
-  generateHTML(segment){
+  generateHTML(segment, edit?){
     let type;
     let format;
     let service;
@@ -90,27 +109,36 @@ export class ShowComponent implements OnInit, OnDestroy {
       default:
         break;
     }
+    let obj
     if(type != 'plain' && typeof this[service][type + 'Style' + format] === "function"){
       code = this[service][type + 'Style' + format](segment, this.format);
-      let obj = {
+      obj = {
+        id: segment.segmentId,
         code: code,
         place: segment.placement,
         order: segment.orderAppear,
         splrText: segment.rating ? segment.title + " (" + segment.rating + ")<br>" : null,
       }
-      this.completeShowString.push(obj);
       /* return this.sanitizer.bypassSecurityTrustHtml(code); */
     }
     else{
-      let obj = {
+      obj = {
+        id: segment.segmentId,
         code: '<div style="width: 100%;">'+segment.content+'</div>',
         place: segment.placement,
         order: segment.orderAppear,
         splrText: segment.rating ? segment.title + " (" + segment.rating + ")<br>" : null,
       }
-      this.completeShowString.push(obj);
-      /* return this.sanitizer.bypassSecurityTrustHtml(obj.code); */
     }
+    if(edit){
+      this.completeShowString = this.completeShowString.map(seg => {
+          if(seg.id != obj.id){
+            return seg;
+          }
+      });
+    }
+    this.completeShowString.push(obj);
+    
   }
 
   completeShowCodeGenerator(isAnteprima?){
@@ -162,7 +190,16 @@ export class ShowComponent implements OnInit, OnDestroy {
   }
 
   segmentEdit(segment){
-
+    let config = {
+      action: 'edit',
+      format: this.format,
+      show: this.showService.show,
+      segment: segment,
+    };
+    this.dialog.open(CreateSegmentPopupComponent, {
+      width: '1200px',
+      data: config
+    })
   }
 
   goBack(){
@@ -195,8 +232,29 @@ export class ShowComponent implements OnInit, OnDestroy {
       this.showService.publishShow(show.ID).subscribe(
           (res: any) => {
             if(res){
+              this.GFService.countThread(false);
               this.completeShowCodeGenerate =  this.completeShowCodeGenerator();
-              this.showService.show.posted = 1;
+              this.showService.show.posted = '1';
+            }
+          }
+        )
+    } catch (error) {
+      this.GFService.countThread(false);
+      console.log(error)
+    }
+  
+  }
+
+  depublishShow(){
+    const show = this.showService.show;
+    this.GFService.countThread(true);
+    try {
+      this.showService.depublishShow(show.ID).subscribe(
+          (res: any) => {
+            if(res){
+              this.GFService.countThread(false);
+              this.completeShowCodeGenerate =  this.completeShowCodeGenerator();
+              this.showService.show.posted = '0';
             }
           }
         )

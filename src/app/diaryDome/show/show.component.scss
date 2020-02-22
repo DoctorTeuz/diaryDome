@@ -24,10 +24,16 @@
                     flex-flow: row wrap;
                     .placement{
                         width: 30%;
+                        text-overflow: ellipsis;
+                        overflow-x: hidden;
+                        white-space: nowrap;
                     }
                     .angleTitle{
                         width: 50%;
                         font-weight: 400;
+                        text-overflow: ellipsis;
+                        overflow-x: hidden;
+                        white-space: nowrap;
                     }
                     .iconBlock{
                         width: 10%;
@@ -36,7 +42,9 @@
                     }
                     .rating{
                         width: 9%;
-                        text-align: right;
+                        text-align: right;text-overflow: ellipsis;
+                        overflow-x: hidden;
+                        white-space: nowrap;
                     }
                     .mat-expansion-indicator{
                         color: $diaryDome_textColor !important;

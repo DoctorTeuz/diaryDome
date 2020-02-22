@@ -145,6 +145,16 @@ class Worker{
 		$stmt = $this->conn->query($sql);
 		return $stmt;
 	}
+
+	function getAlumniByUser($userId){
+		$sql = "SELECT *
+				FROM 
+					DiaryDome_Alumni 
+				WHERE 
+					userId = $userId;";
+		$stmt = $this->conn->query($sql);
+		return $stmt;
+	}
 }
 
 ?>

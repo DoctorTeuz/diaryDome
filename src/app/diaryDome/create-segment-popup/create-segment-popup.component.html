@@ -44,14 +44,7 @@
 
     <div class="formDiv">
 
-        <div style="width: 30%" class="cell">
-            <mat-form-field class="formBase">
-                <input matInput type="text" 
-                    placeholder="Colore da applicare" class="formField"
-                    [(ngModel)]="segment['graphicColor']">
-                    <mat-hint>Nome in Inglese del colore oppure codice esadecimale.</mat-hint>
-            </mat-form-field> 
-        </div>
+        
         <div style="width: 50%" class="cell">
             <mat-form-field class="formBase">
                 <input matInput type="text" 
@@ -66,29 +59,37 @@
                     [(ngModel)]="segment['rating']">
             </mat-form-field> 
         </div>
+        <div style="width: 30%" class="cell">
+            <mat-form-field class="formBase" *ngIf="isColorChange()">
+                <input matInput type="text" 
+                    placeholder="Colore da applicare" class="formField"
+                    [(ngModel)]="segment['graphicColor']">
+                    <mat-hint>Nome in Inglese del colore oppure codice esadecimale.</mat-hint>
+            </mat-form-field> 
+        </div>
 
-        <div style="width: 50%" class="cell">
+        <div style="width: 50%" class="cell" *ngIf="isMatch()">
             <mat-form-field class="formBase">
                 <input matInput type="text" 
                     placeholder="Titolo messo in palio" class="formField"
                     [(ngModel)]="segment['championship']">
             </mat-form-field> 
         </div>
-        <div style="width: 50%" class="cell">
+        <div style="width: 50%" class="cell" *ngIf="isMatch()">
             <mat-form-field class="formBase">
                 <input matInput type="text" 
                     placeholder="Campione Entrante" class="formField"
                     [(ngModel)]="segment['champion']">
             </mat-form-field> 
         </div>
-        <div style="width: 50%" class="cell">
+        <div style="width: 50%" class="cell" *ngIf="isMatch()">
             <mat-form-field class="formBase">
                 <input matInput type="text" 
                     placeholder="Stipulazione dell'incontro" class="formField"
                     [(ngModel)]="segment['matchType']">
             </mat-form-field> 
         </div>
-        <div style="width: 50%" class="cell">
+        <div style="width: 50%" class="cell" *ngIf="isMatch()">
             <mat-form-field class="formBase">
                 <input matInput type="text" 
                     placeholder="Composizione dell'incontro" class="formField"
@@ -97,10 +98,10 @@
             </mat-form-field> 
         </div>
 
-        <div style="width: 5%" class="cell">
-            <mat-icon class="bigIcon workerSearchIcon" [matTooltip]="'Scegli worker'">search</mat-icon>
+        <div style="width: 5%" class="cell workerCell" *ngIf="isMatch() && isLong()">
+            <mat-icon class="bigIcon workerSearchIcon" [matTooltip]="'Scegli worker'" (click)="openWorkerSelection()">search</mat-icon>
          </div>
-        <div style="width: 60%" class="cell">
+        <div style="width: 60%" class="cell workerCell" *ngIf="isMatch() && isLong()">
             <mat-form-field class="formBase">
                 <input matInput type="text" 
                     placeholder="Lista immagini" class="formField"
@@ -108,7 +109,7 @@
                     <mat-hint [innerHTML]="hintImages"></mat-hint>
             </mat-form-field> 
         </div>
-        <div style="width: 35%" class="cell">
+        <div style="width: 35%" class="cell" *ngIf="isMatch()">
             <mat-form-field class="formBase">
                 <input matInput type="text" 
                     placeholder="Vincitore" class="formField"
@@ -116,16 +117,32 @@
             </mat-form-field> 
         </div>
         
-        <div class="cell" style="width: 65%"></div>
-        <div class="cell CBcontainer" style="width: 35%">
-            <div class="cell checkBox">
+        <div class="cell" style="width: 65%" *ngIf="isChampionship()"></div>
+        <div class="cell CBcontainer" style="width: 35%" *ngIf="isChampionship()">
+            <div class="checkBox">
                 <mat-checkbox [(ngModel)]="segment['titleChange']">È cambiato il titolo?</mat-checkbox>
             </div>
             
-            <div class="cell checkBox">
+            <div class="checkBox">
                 <mat-checkbox [(ngModel)]="segment['championshipAdv']">È stato sfruttato il Champions Advantage?</mat-checkbox>
             </div>
         </div>
-       
+        <div class="cell" style="width: 100%">
+            <mat-form-field class="allWidth">
+                <textarea matInput [(ngModel)]="segment['content']"
+                    cdkTextareaAutosize
+                    [placeholder]="'Contenuto del segmento'"
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="10"
+                    cdkAutosizeMaxRows="20"
+                ></textarea>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="buttonRow">
+        <button mat-button color="primary" (click)="close()">ANNULLA</button>
+        <button mat-raised-button color="primary" (click)="actionDispatcher()"
+        [disabled]="checkConfirm()">CONFERMA</button>
     </div>
 </div>

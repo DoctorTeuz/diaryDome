@@ -103,6 +103,9 @@ function register(){
 		$num = count($log);
 	
 		$user = mapUser($log[0]);
+		$user->VSurl = getVSUrl($user->ID);
+		$user->titleList = getTitleList($user->ID);
+		$user->workerImageList = getUserWorkerList($user->ID);
 		$body->user = $user;
 		$response->body = $body;
 		$response->status = 200;

@@ -60,9 +60,25 @@ export class ShowRowComponent implements OnInit {
         ).subscribe(
           (res: any) => {
             this.GFService.countThread(false);
+            show.posted = '1';
             this.showService.show = show;
             this.showService.showDetail = res.body.showDetail;
             this.GFService.navigateTo('/show');
+          }
+        )
+    } catch (error) {
+      this.GFService.countThread(false);
+      console.log(error)
+    }
+  }
+
+  depublishShow(show){
+    this.GFService.countThread(true);
+    try {
+      this.showService.depublishShow(show.ID).subscribe(
+          (res: any) => {
+            this.GFService.countThread(false);
+            show.posted = '0';
           }
         )
     } catch (error) {

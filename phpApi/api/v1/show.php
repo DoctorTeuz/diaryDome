@@ -65,7 +65,15 @@ if($method != 'OPTIONS'){
 				$response = $th;
 			}
 			echo json_encode($response);
-			break;				
+			break;		
+		case 'depublish':
+			try {
+				$response = depublish();
+			} catch (Throwable $th) {
+				$response = $th;
+			}
+			echo json_encode($response);
+			break;			
 		default:
 			$response = new ResponseObject();
 			$response->status = 404;
@@ -156,9 +164,33 @@ function publish(){
 	$id = $request->showId;
 
 	$show = new Show($db);
-	if($show->publishShow($userId, $id)){
+	if($show->publishShow($userId, $id, 1)){
 		$response->status = 200;
 		$response->body = 'Pubblicato';
+		return $response;
+	}else{
+		$response = new ResponseObject();
+		$response->status = 500;
+		$response->body = 'Internal Server Error';
+		return $response;
+	}
+}
+
+function depublish(){
+	$db=new Connection();
+	$db->connetti();
+	$response = new ResponseObject();
+
+	$postdata = file_get_contents("php://input");
+	$request = json_decode($postdata);
+	
+	$userId = $request->userId;
+	$id = $request->showId;
+
+	$show = new Show($db);
+	if($show->publishShow($userId, $id, 0)){
+		$response->status = 200;
+		$response->body = 'Rimossa la pubblicazione';
 		return $response;
 	}else{
 		$response = new ResponseObject();

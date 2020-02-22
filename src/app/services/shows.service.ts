@@ -67,4 +67,13 @@ export class ShowsService {
     
   }
 
+  depublishShow(showId){
+    const params = {
+      userId: this.GFService.user.ID.toString(),
+      showId: showId.toString()
+    }
+    return this.http.post(this.showsPath + '/depublish', params)
+    
+  }
+
 }

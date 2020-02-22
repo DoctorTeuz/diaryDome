@@ -103,7 +103,7 @@ class Show{
 		}
 	}
 
-	function publishShow($userId, $id){
+	function publishShow($userId, $id, $posted){
 		$showQuery = "SELECT * 
 						FROM 
 							WWETeuz_BridgeUserShow 
@@ -115,10 +115,10 @@ class Show{
 			try {
 				$sql ="UPDATE `WWETeuz_Show` 
 						SET 
-							`Posted`=1 
+							`Posted`=$posted 
 						WHERE 
-							ID = '$sh->showId'";
-				$stmt = $this->conn->query($query);
+							ID = $id";
+				$stmt = $this->conn->query($sql);
 				return true;
 			} catch (\Throwable $th) {
 				return false;
