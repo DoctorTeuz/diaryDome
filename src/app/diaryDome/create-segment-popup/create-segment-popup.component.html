@@ -105,7 +105,7 @@
             <mat-form-field class="formBase">
                 <input matInput type="text" 
                     placeholder="Lista immagini" class="formField"
-                    [(ngModel)]="segment['matchWorkers']">
+                    [(ngModel)]="segment['matchWorkersView']">
                     <mat-hint [innerHTML]="hintImages"></mat-hint>
             </mat-form-field> 
         </div>
@@ -129,7 +129,7 @@
         </div>
         <div class="cell" style="width: 100%">
             <mat-form-field class="allWidth">
-                <textarea matInput [(ngModel)]="segment['content']"
+                <textarea matInput [(ngModel)]="segment['contentArea']"
                     cdkTextareaAutosize
                     [placeholder]="'Contenuto del segmento'"
                     #autosize="cdkTextareaAutosize"

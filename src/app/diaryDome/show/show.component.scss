@@ -4,6 +4,7 @@
     width: 80%;
     margin: auto;
     margin-top: 10px;
+    margin-bottom: 20px;
     .allWidth{
         width: 100%;
     }
@@ -11,8 +12,7 @@
         width: 100%;
         background-color: $diaryDome_backgroundComponent !important;
         .matExpPanel{
-            width: 100%;
-            background-color: $diaryDome_backgroundComponent !important;
+            
             .header{
                 width: 100%;
                 color: $diaryDome_textColor !important;

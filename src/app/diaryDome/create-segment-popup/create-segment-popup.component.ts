@@ -52,6 +52,8 @@ export class CreateSegmentPopupComponent implements OnInit {
     public workerService: WorkerService,
     public dialog: MatDialog,
     ) {
+      
+      dialogRef.disableClose = true;
       if(this.GFService.user.ID == 1){
         this.segmentTypeList.push({value: 'MMCAngle', label: 'Mixed Match Challenge - Angle'});
         this.segmentTypeList.push({value: 'MMCMatch', label: 'Mixed Match Challenge - Match'});
@@ -60,6 +62,9 @@ export class CreateSegmentPopupComponent implements OnInit {
       this.action = data.action;
       if(data.action == 'edit'){
         this.segment = data.segment;
+      }
+      else{
+        this.segment.showId = this.showService.show.ID;
       }
       this.format = data.format;
       this.show = data.show;
@@ -137,27 +142,78 @@ export class CreateSegmentPopupComponent implements OnInit {
 
   actionDispatcher(){
     if(this.action == 'create'){
-      this.GFService.countThread(true);
-      try {
-        this.showService.createSegment(this.segment).pipe(
-          switchMap((res:any) => {
-            return this.showService.getShowDetail(this.showService.show.ID)
-          })
-        ).subscribe(
-          (res: any) => {
-            this.GFService.countThread(false);
-            this.showService.showDetail = res.body.showDetail;
-            this.parent.ngOnInit();
-          }
-        )
-      } catch (error) {
-        this.GFService.countThread(false);
-        console.log(error)
-      }
+      this.createSegment();
       
     }
     else{
-      this.parent.generateHTML(this.segment, true)
+      this.editSegment();
     }
+  }
+
+  createSegment(){
+    let segment = this.createReq();
+    this.GFService.countThread(true);
+    try {
+      this.showService.createSegment(segment).pipe(
+        switchMap((res:any) => {
+          return this.showService.getShowDetail(this.showService.show.ID)
+        })
+      ).subscribe(
+        (res: any) => {
+          this.GFService.countThread(false);
+          let detail = this.showService.mapSegment(res.body.showDetail);         
+          this.showService.showDetail = detail;
+          this.parent.ngOnInit();
+          this.close();
+        }
+      )
+    } catch (error) {
+      this.GFService.countThread(false);
+      console.log(error)
+    }
+  }
+
+  editSegment(){
+    let segment = this.createReq();
+    this.GFService.countThread(true);
+    try {
+      this.showService.editSegment(segment).pipe(
+        switchMap((res:any) => {
+          return this.showService.getShowDetail(this.showService.show.ID)
+        })
+      ).subscribe(
+        (res: any) => {
+          this.GFService.countThread(false);
+          let detail = this.showService.mapSegment(res.body.showDetail);         
+          this.showService.showDetail = detail;
+          this.parent.ngOnInit();
+          this.close();
+        }
+      )
+    } catch (error) {
+      this.GFService.countThread(false);
+      console.log(error)
+    }
+  }
+
+  createReq(){
+    let seg = this.segment;
+    seg['content'] = seg['contentArea'] ? this.GFService.richText(seg['contentArea']) : seg['contentArea'];
+    seg['matchWorkers'] = seg['matchWorkers'] ? this.GFService.richText(seg['matchWorkers']) : seg['matchWorkers'];
+    seg['matchWorkersView'] = seg['matchWorkers'] ? seg['matchWorkers'].split(', ').join('|') : seg['matchWorkers'];
+    seg['matchWorkersView'] = seg['matchWorkersView'] ? seg['matchWorkersView'].split(',').join('|') : seg['matchWorkersView'];
+    seg['champion'] = seg['champion'] ? this.GFService.richText(seg['champion']) : seg['champion'];
+    seg['matchScheme'] = seg['matchScheme'] ? this.GFService.richText(seg['matchScheme']) : seg['matchScheme'];
+    seg['matchWinner'] = seg['matchWinner'] ? this.GFService.richText(seg['matchWinner']) : seg['matchWinner'];
+    seg['userId'] = this.GFService.user.ID;
+    seg['championshipAdv'] = seg['championshipAdv'] ? 1 : 0;
+    seg['titleChange'] = seg['titleChange'] ? 1 : 0;
+    seg['orderAppear'] = seg['orderAppear'] ? seg['orderAppear'] : this.showService.showDetail.length + 1;
+    
+    return seg;
+  }
+
+  close(){
+    this.dialogRef.close();
   }
 }

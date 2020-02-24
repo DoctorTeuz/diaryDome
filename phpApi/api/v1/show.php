@@ -74,6 +74,30 @@ if($method != 'OPTIONS'){
 			}
 			echo json_encode($response);
 			break;			
+		case 'createNewSegment':
+			try {
+				$response = createNewSegment();
+			} catch (Throwable $th) {
+				$response = $th;
+			}
+			echo json_encode($response);
+			break;
+		case 'updateSegment':
+			try {
+				$response = updateSegment();
+			} catch (Throwable $th) {
+				$response = $th;
+			}
+			echo json_encode($response);
+			break;
+		case 'deleteSegment':
+			try {
+				$response = deleteSegment();
+			} catch (Throwable $th) {
+				$response = $th;
+			}
+			echo json_encode($response);
+			break;		
 		default:
 			$response = new ResponseObject();
 			$response->status = 404;
@@ -322,7 +346,6 @@ function mapShowDetail($response){
 	$showDetail->showRating = $response['showRating'];
 	$showDetail->championshipAdv = $response['championshipAdv'];
 	$showDetail->userId = $response['userId'];
-	$showDetail->championshipUlr = findChampionship($showDetail->championship, $response['userId']);	
 
 	return $showDetail;
 }
@@ -360,4 +383,97 @@ function findChampionship($titleName, $userId){
 	}
 }
 
+function createNewSegment(){
+	$db=new Connection();
+	$db->connetti();
+	$response = new ResponseObject();
+
+	$postdata = file_get_contents("php://input");
+	$request = json_decode($postdata);
+
+	$segment = $request->segment;
+	$userId = $segment->userId;
+	$showId = $segment->showId;
+
+	$show = new Show($db);
+	if($show->createSegment($segment)){
+		$angles = $show->getShowDetail($userId, $showId);
+		if(count($angles) == 0){
+			$response->status = 200;
+			$response->body = "Nessun Angle Trovato";	
+			return $response;
+		}
+		else{
+			$det = array_map('mapShowDetail', $db -> estraiArray($angles));
+			$body->showDetail = $det;
+			$response->body = $body;
+			$response->status = 200;
+			return $response;
+		}
+	}else{
+		$response = new ResponseObject();
+		$response->status = 500;
+		$response->body = 'Internal Server Error';
+		return $response;
+	}
+}
+
+function updateSegment(){
+	$db=new Connection();
+	$db->connetti();
+	$response = new ResponseObject();
+
+	$postdata = file_get_contents("php://input");
+	$request = json_decode($postdata);
+
+	$segment = $request->segment;
+	$userId = $segment->userId;
+	$showId = $segment->showId;
+
+	$show = new Show($db);
+	if($show->editSegment($segment)){
+		$angles = $show->getShowDetail($userId, $showId);
+		if(count($angles) == 0){
+			$response->status = 200;
+			$response->body = "Nessun Angle Trovato";	
+			return $response;
+		}
+		else{
+			$det = array_map('mapShowDetail', $db -> estraiArray($angles));
+			$body->showDetail = $det;
+			$response->body = $body;
+			$response->status = 200;
+			return $response;
+		}
+	}else{
+		$response = new ResponseObject();
+		$response->status = 500;
+		$response->body = 'Internal Server Error';
+		return $response;
+	}
+}
+
+function deleteSegment(){
+	$db=new Connection();
+	$db->connetti();
+	$response = new ResponseObject();
+
+	$postdata = file_get_contents("php://input");
+	$request = json_decode($postdata);
+	
+	$userId = $request->userId;
+	$segmentId = $request->segmentId;
+
+	$show = new Show($db);
+	if($show->deleteSeg($userId, $segmentId)){
+		$response->status = 200;
+		$response->body = 'OK';
+		return $response;
+	}else{
+		$response = new ResponseObject();
+		$response->status = 500;
+		$response->body = 'Internal Server Error';
+		return $response;
+	}
+}
 ?>

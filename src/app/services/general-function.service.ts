@@ -343,6 +343,52 @@ export class GeneralFunctionService {
             return '#FFFFFF';
           }
         }
-      }
+    }
 
+    clearText(text){        
+        let dataParsed = text;
+        dataParsed = dataParsed.split("\r\n").join('');
+        dataParsed = dataParsed.split("&egrave;").join('è');
+        dataParsed = dataParsed.split("&agrave;").join('à');
+        dataParsed = dataParsed.split("&igrave;").join('ì');
+        dataParsed = dataParsed.split("&ugrave;").join('ù');
+        dataParsed = dataParsed.split("&ograve;").join('ò');
+        dataParsed = dataParsed.split("&eacute;").join('é');
+        dataParsed = dataParsed.split("&#176;").join('°');
+        dataParsed = dataParsed.split("&copy;").join('©');
+        dataParsed = dataParsed.split("&Agrave;").join('À');
+        dataParsed = dataParsed.split("&Egrave;").join('È');
+        dataParsed = dataParsed.split("&Eacute;").join('É');
+        dataParsed = dataParsed.split("&Igrave;").join('Ì');
+        dataParsed = dataParsed.split("&Ograve;").join('Ò');
+        dataParsed = dataParsed.split("&Ugrave;").join('Ù');
+        dataParsed = dataParsed.split("''").join("'");
+        dataParsed = dataParsed.split("<br>").join("\n");
+        dataParsed = dataParsed.split("<br/>").join("\n");
+        dataParsed = dataParsed.split("<br />").join("\n");
+
+        return dataParsed;
+    }
+
+    richText(text){
+        let dataParsed = text;
+        dataParsed = dataParsed.split('è').join("&egrave;");
+        dataParsed = dataParsed.split('à').join("&agrave;");
+        dataParsed = dataParsed.split('ì').join("&igrave;");
+        dataParsed = dataParsed.split('ù').join("&ugrave;");
+        dataParsed = dataParsed.split('ò').join("&ograve;");
+        dataParsed = dataParsed.split('é').join("&eacute;");
+        dataParsed = dataParsed.split('°').join("&#176;");
+        dataParsed = dataParsed.split('©').join("&copy;");
+        dataParsed = dataParsed.split('À').join("&Agrave;");
+        dataParsed = dataParsed.split('È').join("&Egrave;");
+        dataParsed = dataParsed.split('É').join("&Eacute;");
+        dataParsed = dataParsed.split('Ì').join("&Igrave;");
+        dataParsed = dataParsed.split('Ò').join("&Ograve;");
+        dataParsed = dataParsed.split('Ù').join("&Ugrave;");
+        dataParsed = dataParsed.split("'").join("''");
+        dataParsed = dataParsed.split("\n").join("<br>");
+
+        return dataParsed;
+    }
 }

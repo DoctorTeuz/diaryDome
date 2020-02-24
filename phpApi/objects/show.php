@@ -227,7 +227,110 @@ class Show{
 			return "NO DATA";
 		}
 	}
+
+	function createSegment($segment){
+		$rating = $segment->rating ? "'".$segment->rating."'" : "NULL";
+		$graphicColor = $segment->graphicColor ? "'".$segment->graphicColor."'" : "NULL";
+		$matchTitle = $segment->championship ? "'".$segment->championship."'" : "NULL";
+		$StartingChamp = $segment->champion ? "'".$segment->champion."'" : "NULL";
+		$MatchType = $segment->matchType ? "'".$segment->matchType."'" : "NULL";
+		$MatchScheme = $segment->matchScheme ? "'".$segment->matchScheme."'" : "NULL";
+		$MatchWorker = $segment->matchWorkers ? "'".$segment->matchWorkers."'" : "NULL";
+		$MatchWinner = $segment->matchWinner ? "'".$segment->matchWinner."'" : "NULL";
+		$showId = $segment->showId;
+		$orderAppear = $segment->orderAppear;
+		$placement = $segment->placement ? "'".$segment->placement."'" : "NULL";
+		$title = $segment->title ? "'".$segment->title."'" : "NULL";
+		$segmentType = $segment->segmentType ? "'".$segment->segmentType."'" : "NULL";
+		$shownTitle = $segment->shownTitle ? "'".$segment->shownTitle."'" : "''";
+		$content = $segment->content ? "'".$segment->content."'" : "''";
+		$titleChange = $segment->titleChange;
+		$championshipAdv = $segment->championshipAdv;
+
+		$sql = "INSERT INTO 
+						`WWETeuz_ShowAngles` 
+						(`ID_Show`, `Number`, `Placement`, `SegmentTitle`, `SegmentRating`, `Type`, 
+						`Zona`, `Content`, `GraphicColor`, `Workers`, `MatchTitle`, `StartingChamp`, 
+						`MatchType`, `MatchScheme`, `MatchWorker`, `MatchWinner`, `TitleChange`, 
+						`ChampionsAdvantage`) 
+					VALUES (
+						$showId,
+						$orderAppear,
+						$placement,
+						$title,
+						$rating,
+						$segmentType,
+						$shownTitle,
+						$content,
+						$graphicColor,
+						'NULL',
+						$matchTitle,
+						$StartingChamp,
+						$MatchType,
+						$MatchScheme,
+						$MatchWorker,
+						$MatchWinner,
+						$titleChange,
+						$championshipAdv
+						)
+						";
+		try {
+			$stmt = $this->conn->query($sql);
+			return true;
+		} catch (\Throwable $th) {
+			return false;
+		}
+
+	}
 	
+	function editSegment($segment){
+		
+		$rating = $segment->rating ? "'".$segment->rating."'" : "NULL";
+		$graphicColor = $segment->graphicColor ? "'".$segment->graphicColor."'" : "NULL";
+		$matchTitle = $segment->championship ? "'".$segment->championship."'" : "NULL";
+		$StartingChamp = $segment->champion ? "'".$segment->champion."'" : "NULL";
+		$MatchType = $segment->matchType ? "'".$segment->matchType."'" : "NULL";
+		$MatchScheme = $segment->matchScheme ? "'".$segment->matchScheme."'" : "NULL";
+		$MatchWorker = $segment->matchWorkers ? "'".$segment->matchWorkers."'" : "NULL";
+		$MatchWinner = $segment->matchWinner ? "'".$segment->matchWinner."'" : "NULL";
+
+		$sql = "UPDATE 
+					`WWETeuz_ShowAngles` 
+				SET 
+					`Placement` = '$segment->placement',
+					`SegmentTitle` = '$segment->title',
+					`SegmentRating` = $rating,
+					`Type` = '$segment->segmentType',
+					`Zona` = '$segment->shownTitle',
+					`Content` = '$segment->content',
+					`GraphicColor` = $graphicColor,
+					`MatchTitle` = $matchTitle,
+					`StartingChamp` = $StartingChamp,
+					`MatchType` = $MatchType,
+					`MatchScheme` = $MatchScheme,
+					`MatchWorker` = $MatchWorker,
+					`MatchWinner` = $MatchWinner,
+					`TitleChange` = $segment->titleChange,
+					`ChampionsAdvantage` = $segment->championshipAdv
+				WHERE
+					`SegmentID` = $segment->segmentId;";
+		try {	
+			$stmt = $this->conn->query($sql);
+			return true;
+		} catch (\Throwable $th) {
+			return false;
+		}
+	}
+
+	function deleteSeg($userId, $segmentId){
+		try {
+			$query = "DELETE FROM `WWETeuz_ShowAngles` WHERE `SegmentID` = '$segmentId'";
+			$delete = $this->conn->query($query);
+			return true;
+		} catch (\Throwable $th) {
+			return false;
+		}
+	}
 }
 
 ?>

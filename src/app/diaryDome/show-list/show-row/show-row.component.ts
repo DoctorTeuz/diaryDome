@@ -41,7 +41,8 @@ export class ShowRowComponent implements OnInit {
         (res: any) => {
           this.GFService.countThread(false);
           this.showService.show = show;
-          this.showService.showDetail = res.body.showDetail;
+          let detail = this.showService.mapSegment(res.body.showDetail);         
+          this.showService.showDetail = detail;
           this.GFService.navigateTo('/show');
         }
       )

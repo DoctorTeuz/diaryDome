@@ -166,6 +166,14 @@ textarea.mat-input-element{
     padding: 16px !important;
 }
 
+.mat-expansion-panel, .mat-expansion-panel .header{
+    width: 100%;
+    background-color: $diaryDome_backgroundComponent !important;
+}
+
+.mat-expansion-panel .header:hover{
+    background-color: $diaryDome_darkBlue !important;
+}
 
 //SCROLLBAR
 

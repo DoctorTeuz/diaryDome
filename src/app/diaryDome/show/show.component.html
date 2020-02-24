@@ -17,7 +17,7 @@
             ></textarea>
     </mat-form-field>
     <mat-accordion class="showAccordion">
-        <mat-expansion-panel class="matExpPanel">
+        <mat-expansion-panel class="matExpPanel" *ngIf="format">
             <mat-expansion-panel-header class="header">
                 <div class="placement">
                     {{showService?.showDetail?.showName}}
@@ -29,7 +29,7 @@
 
                 </div>
                 <div class="rating">
-                    {{showService.showDetail.voto}}
+                    {{showService?.showDetail?.voto}}
                 </div>
             </mat-expansion-panel-header>
             <mat-panel-description class="matExpDescr">
@@ -38,8 +38,7 @@
             </mat-panel-description>
         </mat-expansion-panel>
         <mat-expansion-panel class="matExpPanel" *ngFor="let segment of showService.showDetail; let i = index">
-            <mat-expansion-panel-header class="header" 
-            [collapsedHeight]="'50px'" [expandedHeight]="'50px'">
+            <mat-expansion-panel-header class="header">
                 <mat-panel-title class="title">
                     <div class="placement">
                         {{segment.placement}} [{{angleTranslater[segment.segmentType]}}]
@@ -51,12 +50,12 @@
                         {{segment.rating}}
                     </div>
                     <div class="iconBlock">
-                        <mat-icon class="" [matTooltip]="'Modifica Segmento'" (click)="segmentEdit(segment)">edit</mat-icon>
-                        <mat-icon class="" [matTooltip]="'Cancella Segmento'">delete</mat-icon>
+                        <mat-icon *ngIf="showService.show  && showService.show.posted != 1" class="" [matTooltip]="'Modifica Segmento'" (click)="segmentEdit(segment, $event)">edit</mat-icon>
+                        <mat-icon *ngIf="showService.show  && showService.show.posted != 1" class="" [matTooltip]="'Cancella Segmento'" (click)="deleteSegment(segment, $event)">delete</mat-icon>
                     </div>
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <mat-panel-description class="matExpDescr">
+            <mat-panel-description class="matExpDescr" *ngIf="completeShowString[i]">
                 <div class="segmentContent" [innerHTML]="sanitizer.bypassSecurityTrustHtml(completeShowString[i].code)">
                 </div>
             </mat-panel-description>
@@ -66,11 +65,15 @@
 
 
 
-<button mat-fab class="floatingButton" *ngIf="showService.show  && showService.show.posted != 1" (click)="newSegment()"><mat-icon 
-    class="floatingIcon mat-icon-reverse" [matTooltip]="'Aggiungi Segmento'">note_add</mat-icon></button>
-<button mat-fab class="floatingButton second" *ngIf="showService.show  && showService.show.posted != 1" (click)="deleteShow()"><mat-icon 
-    class="floatingIcon mat-icon-reverse"  [matTooltip]="'Elimina Show'">delete</mat-icon></button>
-<button mat-fab class="floatingButton third" *ngIf="showService.show  && showService.show.posted != 1" (click)="publishShow()"><mat-icon 
-    class="floatingIcon mat-icon-reverse"  [matTooltip]="'Pubblica Show'">play_arrow</mat-icon></button>
-<button mat-fab class="floatingButton" *ngIf="showService.show  && showService.show.posted == 1" (click)="depublishShow()"><mat-icon 
-    class="floatingIcon mat-icon-reverse"  [matTooltip]="'Annulla la pubblicazione dello show'">pause</mat-icon></button>
+<button mat-fab class="floatingButton" [style.background]="format.soldOutColor" *ngIf="showService.show  && showService.show.posted != 1" (click)="newSegment()"><mat-icon 
+    class="floatingIcon mat-icon-reverse" [matTooltip]="'Aggiungi Segmento'"
+    [style.color]="GFService.analyzeBGColor(format.soldOutColor)">note_add</mat-icon></button>
+<button mat-fab class="floatingButton second" [style.background]="format.soldOutColor" *ngIf="showService.show  && showService.show.posted != 1" (click)="deleteShow()"><mat-icon 
+    class="floatingIcon mat-icon-reverse"  [matTooltip]="'Elimina Show'"
+    [style.color]="GFService.analyzeBGColor(format.soldOutColor)">delete</mat-icon></button>
+<button mat-fab class="floatingButton third" [style.background]="format.soldOutColor" *ngIf="showService.show  && showService.show.posted != 1" (click)="publishShow()"><mat-icon 
+    class="floatingIcon mat-icon-reverse"  [matTooltip]="'Pubblica Show'"
+    [style.color]="GFService.analyzeBGColor(format.soldOutColor)">play_arrow</mat-icon></button>
+<button mat-fab class="floatingButton" [style.background]="format.soldOutColor" *ngIf="showService.show  && showService.show.posted == 1" (click)="depublishShow()"><mat-icon 
+    class="floatingIcon mat-icon-reverse"  [matTooltip]="'Annulla la pubblicazione dello show'"
+    [style.color]="GFService.analyzeBGColor(format.soldOutColor)">pause</mat-icon></button>

@@ -37,6 +37,7 @@ export class ShowComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.completeShowString = [];
     if(this.showService.showDetail){
       console.log(this.showService.showDetail);
       this.format = this.GFService.user.formats.filter(form => form.formatId == this.showService.show.formatId)[0];
@@ -55,7 +56,7 @@ export class ShowComponent implements OnInit, OnDestroy {
           return 1;
         }
         if(a.placement == b.placement ){
-          return a.orderAppear < b.orderAppear ? -1 : 1
+          return parseInt(a.orderAppear) < parseInt(b.orderAppear) ? -1 : 1
         }
       })
 
@@ -189,18 +190,42 @@ export class ShowComponent implements OnInit, OnDestroy {
     return completeShow;
   }
 
-  segmentEdit(segment){
+  segmentEdit(segment, Event){
+    Event.preventDefault();
     let config = {
       action: 'edit',
       format: this.format,
       show: this.showService.show,
       segment: segment,
+      component: this
     };
     this.dialog.open(CreateSegmentPopupComponent, {
       width: '1200px',
       data: config
     })
   }
+
+  deleteSegment(segment, Event){
+    Event.preventDefault();
+    let message = 'Sei sicuro di voler cancellare il segmento "' + segment.title + '"?';
+    let title = 'Attenzione';
+    const config = {
+      component: this,
+      function: 'deleteSegmentAction',
+      message: message,
+      header: title,
+      level: 'H',
+      callbackParams: {
+        id: segment.segmentId
+      }
+    };
+    this.dialog.open(GenericAlertPopupComponent, {
+      width: '400px',
+      data: config
+    })
+  }
+
+
 
   goBack(){
     this.GFService.navigateTo('/showList');
@@ -223,6 +248,47 @@ export class ShowComponent implements OnInit, OnDestroy {
       width: '400px',
       data: config
     })
+  }
+
+  deleteSegmentAction(params){
+    const id = params.id; 
+    this.GFService.countThread(true);
+    this.showService.deleteSegment(id).pipe(
+      switchMap(res => this.showService.getShowDetail(this.showService.show.ID))
+    ).subscribe(
+      (res: any) => {
+        if(res.body.showDetail){
+          this.GFService.countThread(false);
+          let detail = this.showService.mapSegment(res.body.showDetail);         
+          this.showService.showDetail = detail;
+          this.ngOnInit();
+        }
+        else{
+          if(res.body == 'Nessuno Show Trovato'){
+            
+          }
+        }
+      }
+    );
+  }
+
+  deleteAction(params){
+    const id = params.id; 
+    this.GFService.countThread(true);
+    this.showService.deleteShow(id).subscribe(
+      (res: any) => {
+        if(res.body.showList){
+          
+          this.GFService.countThread(false);
+          this.GFService.navigateTo('/showList');
+        }
+        else{
+          if(res.body == 'Nessuno Show Trovato'){
+            
+          }
+        }
+      }
+    );
   }
 
   publishShow(){
@@ -269,7 +335,8 @@ export class ShowComponent implements OnInit, OnDestroy {
     let config = {
       action: 'create',
       format: this.format,
-      show: this.showService.show
+      show: this.showService.show,
+      component: this
     };
     this.dialog.open(CreateSegmentPopupComponent, {
       width: '1200px',

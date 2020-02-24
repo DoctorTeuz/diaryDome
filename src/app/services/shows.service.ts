@@ -6,6 +6,7 @@ import { ContestGenerateService } from './htmlGenerateService/contest-generate.s
 import { AngleGenerateService } from './htmlGenerateService/angle-generate.service';
 import { InfoGenerateService } from './htmlGenerateService/info-generate.service';
 import { MatchGenerateService } from './htmlGenerateService/match-generate.service';
+import { Segment } from '../objects/segment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class ShowsService {
 
   showsPath = environment.apiPath + 'show.php';
   show;
-  showDetail;
+  showDetail: Array<Segment>;
   usedFormat;
   completeShowString = [];
 
@@ -76,4 +77,39 @@ export class ShowsService {
     
   }
 
+  deleteSegment(segmentId){
+    const params = {
+      userId: this.GFService.user.ID.toString(),
+      segmentId: segmentId.toString()
+    }
+    return this.http.post(this.showsPath + '/deleteSegment', params)
+  }
+
+  createSegment(segment){
+    let config = {
+      segment: segment,
+    }
+    return this.http.post(this.showsPath + '/createNewSegment', config)
+  }
+
+  editSegment(segment){
+    let config = {
+      segment: segment,
+    }
+    return this.http.post(this.showsPath + '/updateSegment', config)
+  }
+
+  mapSegment(segment){
+    return segment.map(seg => {
+      seg['contentArea'] = this.GFService.clearText(seg['content']);
+      seg['matchWorkers'] = seg['matchWorkers'] ? this.GFService.clearText(seg['matchWorkers']) : seg['matchWorkers'];
+      seg['matchWorkersView'] = seg['matchWorkers'] ? seg['matchWorkers'].split('|').join(', ') : seg['matchWorkers'];
+      seg['champion'] = seg['champion'] ? this.GFService.clearText(seg['champion']) : seg['champion'];
+      seg['matchScheme'] = seg['matchScheme'] ? this.GFService.clearText(seg['matchScheme']) : seg['matchScheme'];
+      seg['matchWinner'] = seg['matchWinner'] ? this.GFService.clearText(seg['matchWinner']) : seg['matchWinner'];
+      seg['championshipAdv'] = seg['championshipAdv'] == 1 || seg['championshipAdv'] == '1';
+      seg['titleChange'] = seg['titleChange'] == 1 || seg['titleChange'] == '1';
+      return seg;
+    });
+  }
 }
