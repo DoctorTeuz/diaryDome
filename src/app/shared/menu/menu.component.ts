@@ -36,7 +36,7 @@ export class MenuComponent implements OnInit {
   
   ngOnInit() {
     this.GFService.countThread(true);
-    this.GFService.actualPlace = window.location.pathname.split('/');
+    this.GFService.actualPlace = window.location.pathname.replace('/DiaryDome', "").replace('/DiaryDome2', "").split('/');
     this.GFService.getMenu().subscribe(
       (res: any) => {
         this.GFService.countThread(false);
@@ -72,7 +72,7 @@ export class MenuComponent implements OnInit {
   }
 
   updateActualPath(newPath){
-    this.GFService.actualPlace = newPath.split('/');
+    this.GFService.actualPlace = newPath.replace('/DiaryDome', "").replace('/DiaryDome2', "").split('/');
   }
 
   checkInPage(voice){

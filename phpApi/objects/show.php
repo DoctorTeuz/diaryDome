@@ -331,6 +331,30 @@ class Show{
 			return false;
 		}
 	}
+
+	function moveSeg($segmentA, $segmentB, $segAnewPos, $segBnewPos){
+		$sql = "UPDATE 
+					`WWETeuz_ShowAngles` 
+				SET 
+					`Number` = '$segAnewPos'
+					
+				WHERE
+					`SegmentID` = $segmentA;";
+		$sql1 = "UPDATE 
+					`WWETeuz_ShowAngles` 
+				SET 
+					`Number` = '$segBnewPos'
+					
+				WHERE
+					`SegmentID` = $segmentB;";
+		try {	
+			$stmt = $this->conn->query($sql);
+			$stmt = $this->conn->query($sql1);
+			return true;
+		} catch (\Throwable $th) {
+			return false;
+		}
+	}
 }
 
 ?>

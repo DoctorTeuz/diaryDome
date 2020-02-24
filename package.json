@@ -9,8 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "testProdBuild": "ng build --prod --base-href /diaryDome2/",
-    "ProdBuild": "ng build --prod --base-href /diaryDome/"
+    "testProdBuild": "ng build --prod --base-href /DiaryDome2/",
+    "ProdBuild": "ng build --prod --base-href /DiaryDome/"
   },
   "private": true,
   "dependencies": {

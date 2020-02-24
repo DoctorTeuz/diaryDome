@@ -97,7 +97,16 @@ if($method != 'OPTIONS'){
 				$response = $th;
 			}
 			echo json_encode($response);
-			break;		
+			break;	
+			
+		case 'moveSegment':
+			try {
+				$response = moveSegment();
+			} catch (Throwable $th) {
+				$response = $th;
+			}
+			echo json_encode($response);
+			break;
 		default:
 			$response = new ResponseObject();
 			$response->status = 404;
@@ -469,6 +478,43 @@ function deleteSegment(){
 		$response->status = 200;
 		$response->body = 'OK';
 		return $response;
+	}else{
+		$response = new ResponseObject();
+		$response->status = 500;
+		$response->body = 'Internal Server Error';
+		return $response;
+	}
+}
+
+function moveSegment(){
+	$db=new Connection();
+	$db->connetti();
+	$response = new ResponseObject();
+
+	$postdata = file_get_contents("php://input");
+	$request = json_decode($postdata);
+	
+	$segmentA = $request->segmentA;
+	$segmentB = $request->segmentB;
+	$segAnewPos = $request->segAnewPos;
+	$segBnewPos = $request->segBnewPos;
+	$userId = $request->userId;
+	$showId = $request->showId;
+	$show = new Show($db);
+	if($show->moveSeg($segmentA, $segmentB, $segAnewPos, $segBnewPos)){
+		$angles = $show->getShowDetail($userId, $showId);
+		if(count($angles) == 0){
+			$response->status = 200;
+			$response->body = "Nessun Angle Trovato";	
+			return $response;
+		}
+		else{
+			$det = array_map('mapShowDetail', $db -> estraiArray($angles));
+			$body->showDetail = $det;
+			$response->body = $body;
+			$response->status = 200;
+			return $response;
+		}
 	}else{
 		$response = new ResponseObject();
 		$response->status = 500;

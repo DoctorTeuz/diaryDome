@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'diaryDome-loading-wheel',
@@ -11,5 +12,11 @@ export class LoadingWheelComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  loadingWheel(){
+    return environment.loadingWheel
+  }
+
+  
 
 }

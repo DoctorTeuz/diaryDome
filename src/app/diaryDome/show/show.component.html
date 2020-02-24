@@ -1,3 +1,5 @@
+
+
 <div class="show-wrapper">
     <div class="rowTop">
         <div style="width: 50%">
@@ -17,46 +19,98 @@
             ></textarea>
     </mat-form-field>
     <mat-accordion class="showAccordion">
-        <mat-expansion-panel class="matExpPanel" *ngIf="format">
-            <mat-expansion-panel-header class="header">
-                <div class="placement">
-                    {{showService?.showDetail?.showName}}
-                </div>
-                <div class="angleTitle">
-                    Header
-                </div>
-                <div class="iconBlock">
-
-                </div>
-                <div class="rating">
-                    {{showService?.showDetail?.voto}}
-                </div>
-            </mat-expansion-panel-header>
-            <mat-panel-description class="matExpDescr">
-                <div class="segmentContent" [innerHTML]="sanitizer.bypassSecurityTrustHtml(contestGenerator['showStyleHeader' + format.headerFormat](showService.show, format))">
-                </div>
-            </mat-panel-description>
-        </mat-expansion-panel>
-        <mat-expansion-panel class="matExpPanel" *ngFor="let segment of showService.showDetail; let i = index">
+        <mat-expansion-panel class="matExpPanel" *ngFor="let segment of preShow; let first = first; let last = last">
             <mat-expansion-panel-header class="header">
                 <mat-panel-title class="title">
                     <div class="placement">
                         {{segment.placement}} [{{angleTranslater[segment.segmentType]}}]
                     </div>
-                    <div class="angleTitle">
+                    <div class="angleTitle" [ngClass]="{'noIconBlock': showService.show  && showService.show.posted == 1}">
                         {{segment.title}}
                     </div>
                     <div class="rating">
                         {{segment.rating}}
                     </div>
                     <div class="iconBlock">
+                        <mat-icon *ngIf="showService.show  && showService.show.posted != 1 && !first" class="" [matTooltip]="'Anticipa Segmento'" (click)="moveSegment(segment, 'before', $event)">keyboard_arrow_up</mat-icon>
+                        <mat-icon *ngIf="showService.show  && showService.show.posted != 1 && !last" class="" [matTooltip]="'Ritarda Segmento'" (click)="moveSegment(segment, 'after', $event)">keyboard_arrow_down</mat-icon>
                         <mat-icon *ngIf="showService.show  && showService.show.posted != 1" class="" [matTooltip]="'Modifica Segmento'" (click)="segmentEdit(segment, $event)">edit</mat-icon>
                         <mat-icon *ngIf="showService.show  && showService.show.posted != 1" class="" [matTooltip]="'Cancella Segmento'" (click)="deleteSegment(segment, $event)">delete</mat-icon>
                     </div>
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <mat-panel-description class="matExpDescr" *ngIf="completeShowString[i]">
-                <div class="segmentContent" [innerHTML]="sanitizer.bypassSecurityTrustHtml(completeShowString[i].code)">
+            <mat-panel-description class="matExpDescr" *ngIf="getCode(segment)">
+                <div class="segmentContent" [innerHTML]="sanitizer.bypassSecurityTrustHtml(getCode(segment))">
+                </div>
+            </mat-panel-description>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="matExpPanel" *ngIf="format">
+            <mat-expansion-panel-header class="header">
+                
+                <mat-panel-title class="title">
+                    <div class="placement">
+                        {{showService?.show?.showName}}
+                    </div>
+                    <div class="angleTitle noIconBlock" [ngClass]="{'noIconBlock': showService.show  && showService.show.posted == 1}">
+                        Header
+                    </div>
+                    <div class="rating">
+                        {{showService?.show?.voto}}
+                    </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-panel-description class="matExpDescr">
+                <div class="segmentContent" [innerHTML]="sanitizer.bypassSecurityTrustHtml(contestGenerator['showStyleHeader' + format.headerFormat](showService.show, format))">
+                </div>
+            </mat-panel-description>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="matExpPanel" *ngFor="let segment of mainShow; let first = first; let last = last">
+            <mat-expansion-panel-header class="header">
+                <mat-panel-title class="title">
+                    <div class="placement">
+                        {{segment.placement}} [{{angleTranslater[segment.segmentType]}}]
+                    </div>
+                    <div class="angleTitle" [ngClass]="{'noIconBlock': showService.show  && showService.show.posted == 1}">
+                        {{segment.title}}
+                    </div>
+                    <div class="rating">
+                        {{segment.rating}}
+                    </div>
+                    <div class="iconBlock">
+                        <mat-icon *ngIf="showService.show  && showService.show.posted != 1 && !first" class="" [matTooltip]="'Anticipa Segmento'" (click)="moveSegment(segment, 'before', $event)">keyboard_arrow_up</mat-icon>
+                        <mat-icon *ngIf="showService.show  && showService.show.posted != 1 && !last" class="" [matTooltip]="'Ritarda Segmento'" (click)="moveSegment(segment, 'after', $event)">keyboard_arrow_down</mat-icon>
+                        <mat-icon *ngIf="showService.show  && showService.show.posted != 1" class="" [matTooltip]="'Modifica Segmento'" (click)="segmentEdit(segment, $event)">edit</mat-icon>
+                        <mat-icon *ngIf="showService.show  && showService.show.posted != 1" class="" [matTooltip]="'Cancella Segmento'" (click)="deleteSegment(segment, $event)">delete</mat-icon>
+                    </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-panel-description class="matExpDescr" *ngIf="getCode(segment)">
+                <div class="segmentContent" [innerHTML]="sanitizer.bypassSecurityTrustHtml(getCode(segment))">
+                </div>
+            </mat-panel-description>
+        </mat-expansion-panel>
+        <mat-expansion-panel class="matExpPanel" *ngFor="let segment of postShow; let first = first; let last = last">
+            <mat-expansion-panel-header class="header">
+                <mat-panel-title class="title">
+                    <div class="placement">
+                        {{segment.placement}} [{{angleTranslater[segment.segmentType]}}]
+                    </div>
+                    <div class="angleTitle" [ngClass]="{'noIconBlock': showService.show  && showService.show.posted == 1}">
+                        {{segment.title}}
+                    </div>
+                    <div class="rating">
+                        {{segment.rating}}
+                    </div>
+                    <div class="iconBlock">
+                        <mat-icon *ngIf="showService.show  && showService.show.posted != 1 && !first" class="" [matTooltip]="'Anticipa Segmento'" (click)="moveSegment(segment, 'before', $event)">keyboard_arrow_up</mat-icon>
+                        <mat-icon *ngIf="showService.show  && showService.show.posted != 1 && !last" class="" [matTooltip]="'Ritarda Segmento'" (click)="moveSegment(segment, 'after', $event)">keyboard_arrow_down</mat-icon>
+                        <mat-icon *ngIf="showService.show  && showService.show.posted != 1" class="" [matTooltip]="'Modifica Segmento'" (click)="segmentEdit(segment, $event)">edit</mat-icon>
+                        <mat-icon *ngIf="showService.show  && showService.show.posted != 1" class="" [matTooltip]="'Cancella Segmento'" (click)="deleteSegment(segment, $event)">delete</mat-icon>
+                    </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-panel-description class="matExpDescr" *ngIf="getCode(segment)">
+                <div class="segmentContent" [innerHTML]="sanitizer.bypassSecurityTrustHtml(getCode(segment))">
                 </div>
             </mat-panel-description>
         </mat-expansion-panel>

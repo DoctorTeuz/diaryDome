@@ -33,6 +33,38 @@ mat-dialog-container{
     overflow-x: hidden !important;
 }
 
+.e-richtexteditor .e-rte-content,
+.e-richtexteditor .e-source-content {
+    background-color: $diaryDome_backgroundContentComponent !important;
+    color: $diaryDome_textColor !important;
+}
+
+/* To change font color for toolbar icon */
+.e-richtexteditor .e-rte-toolbar .e-toolbar-item .e-icons,
+.e-richtexteditor .e-rte-toolbar .e-toolbar-item .e-icons:active {
+    color: $diaryDome_icon !important;
+}
+
+/* To change font color for toolbar button */
+.e-toolbar .e-tbar-btn,
+.e-toolbar .e-tbar-btn:active,
+.e-toolbar .e-tbar-btn:hover {
+    color: $diaryDome_backgroundContentComponent !important;
+}
+
+/* To change font color for toolbar button in active state*/
+.e-richtexteditor .e-rte-toolbar .e-toolbar-item .e-dropdown-btn.e-active .e-icons, .e-richtexteditor .e-rte-toolbar .e-toolbar-item .e-dropdown-btn.e-active .e-rte-dropdown-btn-text {
+    color: $diaryDome_Primary !important;
+}
+
+/* To change font color for expanded toolbar items */
+.e-richtexteditor .e-rte-toolbar .e-toolbar-extended .e-toolbar-item .e-tbar-btn .e-icons,
+.e-toolbar.e-extended-toolbar .e-toolbar-extended .e-toolbar-item .e-tbar-btn {
+    color: $diaryDome_backgroundContentComponent !important;
+}
+
+
+
 .mat-drawer-container{
     background-color: $diaryDome_backgroundComponent !important;
     color: $diaryDome_textColor !important;

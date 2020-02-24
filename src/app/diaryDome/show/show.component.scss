@@ -29,14 +29,17 @@
                         white-space: nowrap;
                     }
                     .angleTitle{
-                        width: 50%;
+                        width: 45%;
                         font-weight: 400;
                         text-overflow: ellipsis;
                         overflow-x: hidden;
                         white-space: nowrap;
                     }
+                    .noIconBlock{
+                        width: 60%;                        
+                    }
                     .iconBlock{
-                        width: 10%;
+                        width: 15%;
                         display: flex;
                         justify-content: flex-end;
                     }

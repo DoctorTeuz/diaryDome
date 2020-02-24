@@ -24,14 +24,14 @@ export class GeneralFunctionService {
     private http : HttpClient,
     public router: Router,
       ) { 
-        this.actualPlace = window.location.pathname.split('/');
+        this.actualPlace = window.location.pathname.replace('/DiaryDome', "").replace('/DiaryDome2', "").split('/');
         if(!this.user.ID){
             if(localStorage.getItem('user')){
               this.setUser(JSON.parse(localStorage.getItem('user')));
             }
             else{
-                if(this.actualPlace[1] != 'workerCompleteList' && 
-                this.actualPlace[1] != 'albo'){
+                if(this.actualPlace[this.actualPlace.length - 1] != 'workerCompleteList' && 
+                this.actualPlace[this.actualPlace.length - 1] != 'albo'){
                     this.router.navigateByUrl('/login');
                 }
             }
@@ -222,12 +222,17 @@ export class GeneralFunctionService {
     }
 
     filterMenu(from?){
+        console.log(this.actualPlace[this.actualPlace.length - 1]);
+        if(this.actualPlace[this.actualPlace.length - 1] == 'login' && from != 'login'){
+            this.actualMenu = [];
+            return;
+        }
         this.controlKey = [];
-        if(this.actualPlace[1] == 'workerCompleteList' || 
-            this.actualPlace[1] == 'albo'){
+        if(this.actualPlace[this.actualPlace.length - 1] == 'workerCompleteList' || 
+            this.actualPlace[this.actualPlace.length - 1] == 'albo'){
               this.controlKey.push('WWETeuz');
         }
-        else if(this.actualPlace[1] != 'login' || from == 'login'){
+        else if(this.actualPlace[this.actualPlace.length - 1] != 'login' || from == 'login'){
           this.controlKey.push('notWWETeuz');
           this.controlKey.push('diaryDome');
           if(this.user.userType == 'admin'
@@ -366,6 +371,14 @@ export class GeneralFunctionService {
         dataParsed = dataParsed.split("<br>").join("\n");
         dataParsed = dataParsed.split("<br/>").join("\n");
         dataParsed = dataParsed.split("<br />").join("\n");
+/*         dataParsed = dataParsed.split("<b>").join("<strong>");
+        dataParsed = dataParsed.split("</b>").join("</strong>");
+        dataParsed = dataParsed.split("<i>").join("<em>");
+        dataParsed = dataParsed.split("</i>").join("</em>");
+        dataParsed = dataParsed.split("<u>").join("<span style='text-decoration: underline;'>");
+        dataParsed = dataParsed.split("</u>").join("</span>"); */
+
+        
 
         return dataParsed;
     }

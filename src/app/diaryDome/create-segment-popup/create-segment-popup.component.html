@@ -61,7 +61,7 @@
         </div>
         <div style="width: 30%" class="cell">
             <mat-form-field class="formBase" *ngIf="isColorChange()">
-                <input matInput type="text" 
+                <input matInput type="color" 
                     placeholder="Colore da applicare" class="formField"
                     [(ngModel)]="segment['graphicColor']">
                     <mat-hint>Nome in Inglese del colore oppure codice esadecimale.</mat-hint>
@@ -128,9 +128,13 @@
             </div>
         </div>
         <div class="cell" style="width: 100%">
+<!--             <ejs-richtexteditor id='iframeRTE' [toolbarSettings]='tools' 
+            [iframeSettings]='iframe' [height]='height' [(ngModel)]="segment['contentArea']"
+            [placeholder]="'Contenuto del segmento'">
+            </ejs-richtexteditor> -->
             <mat-form-field class="allWidth">
-                <textarea matInput [(ngModel)]="segment['contentArea']"
-                    cdkTextareaAutosize
+                <textarea matInput 
+                    cdkTextareaAutosize [(ngModel)]="segment['contentArea']"
                     [placeholder]="'Contenuto del segmento'"
                     #autosize="cdkTextareaAutosize"
                     cdkAutosizeMinRows="10"

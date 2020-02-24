@@ -7,11 +7,13 @@ import { Segment } from 'src/app/objects/segment';
 import { WorkerService } from 'src/app/services/worker.service';
 import { WorkerListImagesComponent } from './worker-list-images/worker-list-images.component';
 import { switchMap } from 'rxjs/operators';
+import { ToolbarService, LinkService, ImageService, HtmlEditorService, MarkdownEditorService } from '@syncfusion/ej2-angular-richtexteditor';
 
 @Component({
   selector: 'true-create-segment-popup',
   templateUrl: './create-segment-popup.component.html',
-  styleUrls: ['./create-segment-popup.component.scss']
+  styleUrls: ['./create-segment-popup.component.scss'],
+  providers: [ToolbarService, LinkService, ImageService, HtmlEditorService, MarkdownEditorService]
 })
 export class CreateSegmentPopupComponent implements OnInit {
   
@@ -42,6 +44,14 @@ export class CreateSegmentPopupComponent implements OnInit {
 
   parent;
 
+  //TEXTAREA DATA
+  public tools: object = {
+    items: ['Undo', 'Redo', '|',
+        'Bold', 'Italic', 'Underline', 'StrikeThrough', '|',
+         'FontColor', 'Image', '|', 'SourceCode', '|', 'Alignments', '|', 'OrderedList', 'UnorderedList']
+};
+public iframe: object = { enable: false };
+public height: number = 300;
 
 
   constructor(
@@ -65,6 +75,7 @@ export class CreateSegmentPopupComponent implements OnInit {
       }
       else{
         this.segment.showId = this.showService.show.ID;
+        this.segment.contentArea = "";
       }
       this.format = data.format;
       this.show = data.show;

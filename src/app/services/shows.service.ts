@@ -99,9 +99,15 @@ export class ShowsService {
     return this.http.post(this.showsPath + '/updateSegment', config)
   }
 
+  moveSegment(request){
+    return this.http.post(this.showsPath + '/moveSegment', request)
+  }
+
+  
+
   mapSegment(segment){
     return segment.map(seg => {
-      seg['contentArea'] = this.GFService.clearText(seg['content']);
+      seg['contentArea'] = this.GFService.clearText(seg['content']) ? this.GFService.clearText(seg['content']) : "";
       seg['matchWorkers'] = seg['matchWorkers'] ? this.GFService.clearText(seg['matchWorkers']) : seg['matchWorkers'];
       seg['matchWorkersView'] = seg['matchWorkers'] ? seg['matchWorkers'].split('|').join(', ') : seg['matchWorkers'];
       seg['champion'] = seg['champion'] ? this.GFService.clearText(seg['champion']) : seg['champion'];
