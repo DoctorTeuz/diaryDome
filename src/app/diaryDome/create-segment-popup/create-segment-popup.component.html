@@ -33,7 +33,7 @@
                 </mat-form-field> 
             </div>            
             <div class="cell">
-                <mat-form-field class="formBase">
+                <mat-form-field class="formBase" *ngIf="!isMatch()">
                     <input matInput type="text" 
                         placeholder="Titolo in Evidenza" class="formField"
                         [(ngModel)]="segment['shownTitle']">
@@ -47,7 +47,7 @@
         
         <div style="width: 50%" class="cell">
             <mat-form-field class="formBase">
-                <input matInput type="text" 
+                <input matInput type="text" [disabled]="isMatch()"
                     placeholder="Nome del Segmento" class="formField"
                     [(ngModel)]="segment['title']">
             </mat-form-field> 
@@ -71,6 +71,22 @@
         <div style="width: 50%" class="cell" *ngIf="isMatch()">
             <mat-form-field class="formBase">
                 <input matInput type="text" 
+                    placeholder="Stipulazione dell'incontro" class="formField"
+                    [(ngModel)]="segment['matchType']">
+            </mat-form-field> 
+        </div>
+        <div style="width: 50%" class="cell" *ngIf="isMatch()">
+            <mat-form-field class="formBase">
+                <input matInput type="text" 
+                    placeholder="Composizione dell'incontro" class="formField"
+                    (focusout)="setTitle()"
+                    [(ngModel)]="segment['matchScheme']">
+                    <mat-hint>Es: AJ Styles vs Ricochet</mat-hint>
+            </mat-form-field> 
+        </div>
+        <div style="width: 50%" class="cell" *ngIf="isMatch()">
+            <mat-form-field class="formBase">
+                <input matInput type="text" 
                     placeholder="Titolo messo in palio" class="formField"
                     [(ngModel)]="segment['championship']">
             </mat-form-field> 
@@ -82,22 +98,7 @@
                     [(ngModel)]="segment['champion']">
             </mat-form-field> 
         </div>
-        <div style="width: 50%" class="cell" *ngIf="isMatch()">
-            <mat-form-field class="formBase">
-                <input matInput type="text" 
-                    placeholder="Stipulazione dell'incontro" class="formField"
-                    [(ngModel)]="segment['matchType']">
-            </mat-form-field> 
-        </div>
-        <div style="width: 50%" class="cell" *ngIf="isMatch()">
-            <mat-form-field class="formBase">
-                <input matInput type="text" 
-                    placeholder="Composizione dell'incontro" class="formField"
-                    [(ngModel)]="segment['matchScheme']">
-                    <mat-hint>Es: AJ Styles vs Ricochet</mat-hint>
-            </mat-form-field> 
-        </div>
-
+        
         <div style="width: 5%" class="cell workerCell" *ngIf="isMatch() && isLong()">
             <mat-icon class="bigIcon workerSearchIcon" [matTooltip]="'Scegli worker'" (click)="openWorkerSelection()">search</mat-icon>
          </div>

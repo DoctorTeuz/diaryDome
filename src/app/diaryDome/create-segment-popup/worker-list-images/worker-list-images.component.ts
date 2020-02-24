@@ -30,8 +30,8 @@ export class WorkerListImagesComponent implements OnInit {
   assignWorker(img){
     let worker = img.split('.')[0];
     worker = worker.split("_").join(" ");
-    this.parent.segment.matchWorkers = this.parent.segment.matchWorkers ? 
-                                          this.parent.segment.matchWorkers + ", " + worker : worker;
+    this.parent.segment.matchWorkersView = this.parent.segment.matchWorkersView ? 
+                                          this.parent.segment.matchWorkersView + ", " + worker : worker;
   }
 
   close(){

@@ -254,7 +254,7 @@ export class GeneralFunctionService {
           return "<img src='" +  this.createPath(1, titleCode, 'jpg', 'Belts') + "'  width='180px' style='border-radius: 10px;'><br>";
         }
         else{
-            let titleCode = titleName.replace(" ", "_");
+            let titleCode = titleName.split(" ").join("_");
             let titleUrl = this.user.titleList.filter(tit => tit.indexOf(titleCode) > -1).sort((a, b) => {
                 if(a < b){
                     return 1;

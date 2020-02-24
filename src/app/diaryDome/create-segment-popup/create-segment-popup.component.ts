@@ -210,9 +210,9 @@ public height: number = 300;
   createReq(){
     let seg = this.segment;
     seg['content'] = seg['contentArea'] ? this.GFService.richText(seg['contentArea']) : seg['contentArea'];
-    seg['matchWorkers'] = seg['matchWorkers'] ? this.GFService.richText(seg['matchWorkers']) : seg['matchWorkers'];
-    seg['matchWorkersView'] = seg['matchWorkers'] ? seg['matchWorkers'].split(', ').join('|') : seg['matchWorkers'];
-    seg['matchWorkersView'] = seg['matchWorkersView'] ? seg['matchWorkersView'].split(',').join('|') : seg['matchWorkersView'];
+    seg['matchWorkers'] = seg['matchWorkersView'] ? this.GFService.richText(seg['matchWorkersView']) : seg['matchWorkersView'];
+    seg['matchWorkers'] = seg['matchWorkers'] ? seg['matchWorkers'].split(', ').join('|') : seg['matchWorkers'];
+    seg['matchWorkers'] = seg['matchWorkers'] ? seg['matchWorkers'].split(',').join('|') : seg['matchWorkers'];
     seg['champion'] = seg['champion'] ? this.GFService.richText(seg['champion']) : seg['champion'];
     seg['matchScheme'] = seg['matchScheme'] ? this.GFService.richText(seg['matchScheme']) : seg['matchScheme'];
     seg['matchWinner'] = seg['matchWinner'] ? this.GFService.richText(seg['matchWinner']) : seg['matchWinner'];
@@ -222,6 +222,12 @@ public height: number = 300;
     seg['orderAppear'] = seg['orderAppear'] ? seg['orderAppear'] : this.showService.showDetail.length + 1;
     
     return seg;
+  }
+
+  setTitle(){
+    if(!this.segment['title']){
+      this.segment['title'] = this.segment.matchScheme;
+    }
   }
 
   close(){
