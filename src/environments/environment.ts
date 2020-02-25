@@ -7,7 +7,8 @@ export const environment = {
   apiPath: "http://wrestlingdiaries.altervista.org/DiaryDome2/phpApi/api/v1/",
   path: "http://wrestlingdiaries.altervista.org/DiaryDome/",
   basePath: "",
-  loadingWheel: "../assets/images/loadingWheel.gif"
+  loadingWheel: "../assets/images/loadingWheel.gif",
+  showImagePath: "https://wrestlingdiaries.altervista.org/DiaryDome/"
 };
 
 /*

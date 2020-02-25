@@ -88,7 +88,7 @@ export class MatchGenerateService {
 			finalString = finalString + this.GFService.findTitle(segment.championship, segment.showId);
 		}
 		if(segment.matchWorkers){
-			let matchWorker =  segment.matchWorkers.split("|");
+			let matchWorker =  !segment.matchWorkers ? [] : segment.matchWorkers.split("|");
 			for(let j=0; j<matchWorker.length; j++){
 				finalString = finalString + 
 							this.GFService.createWorkerImageStyle(matchWorker[j], format.workerImageShape, segment.showId, soldOutColor);
@@ -157,7 +157,7 @@ export class MatchGenerateService {
 			finalString = finalString + this.GFService.findTitle(segment.championship, segment.showId);
 		}
 		if(segment.matchWorkers){
-			let matchWorker = segment.matchWorkers.split("|");
+			let matchWorker = !segment.matchWorkers ? [] : segment.matchWorkers.split("|");
 			for(let j=0; j<matchWorker.length; j++){
 				finalString = finalString + 
 								this.GFService.createWorkerImageStyle(matchWorker[j], format.workerImageShape, segment.showId, soldOutColor);
@@ -339,7 +339,7 @@ matchStyle5(segment, format){
 			finalString = finalString + this.GFService.findTitle(segment.championship, segment.showId);
 		}
 		if(segment.matchWorkers){
-			let matchWorker = segment.matchWorkers.split("|");
+			let matchWorker = !segment.matchWorkers ? [] : segment.matchWorkers.split("|");
 			for(let j=0; j<matchWorker.length; j++){
 				finalString = finalString + 
 							this.GFService.createWorkerImageStyle(matchWorker[j], format.workerImageShape, segment.showId, soldOutColor);
@@ -409,9 +409,9 @@ matchStyle6(segment, format){
 		if(segment.championship){
 			finalString = finalString + this.GFService.findTitle(segment.championship, segment.showId);
 		}
-		let matchWorker = segment.matchWorkers.split("|");
+		let matchWorker = !segment.matchWorkers ? [] : segment.matchWorkers.split("|");
 		if(segment.matchWorkers){
-			let matchWorker = segment.matchWorkers.split("|");
+			let matchWorker = !segment.matchWorkers ? [] : segment.matchWorkers.split("|");
 			for(let j=0; j<matchWorker.length; j++){
 				finalString = finalString + 
 						this.GFService.createWorkerImageStyle(matchWorker[j], format.workerImageShape, segment.showId, soldOutColor);
@@ -598,7 +598,7 @@ matchStyle6(segment, format){
 			finalString = finalString + this.GFService.findTitle(segment.championship, segment.showId);
 		}
 		if(segment.matchWorkers){
-			let matchWorker = segment.matchWorkers.split("|");
+			let matchWorker = !segment.matchWorkers ? [] : segment.matchWorkers.split("|");
 			for(let j=0; j<matchWorker.length; j++){
 				finalString = finalString + this.GFService.createWorkerImageStyle(matchWorker[j], format.workerImageShape, segment.showId, soldOutColor);
 			}
@@ -671,7 +671,7 @@ matchStyle6(segment, format){
 			finalString = finalString + this.GFService.findTitle(segment.championship, segment.showId);
 		}
 		if(segment.matchWorkers){
-			let matchWorker = segment.matchWorkers.split("|");
+			let matchWorker = !segment.matchWorkers ? [] : segment.matchWorkers.split("|");
 			for(let j=0; j<matchWorker.length; j++){
 				finalString = finalString + this.GFService.createWorkerImageStyle(matchWorker[j], format.workerImageShape, segment.showId, soldOutColor);
 			}
@@ -743,7 +743,7 @@ matchStyle11(segment, format){
 			finalString = finalString + this.GFService.findTitle(segment.championship, segment.showId);
 		}
 		if(segment.matchWorkers){
-			let matchWorker = segment.matchWorkers.split("|");
+			let matchWorker = !segment.matchWorkers ? [] : segment.matchWorkers.split("|");
 			for(let j=0; j<matchWorker.length; j++){
 				finalString = finalString + this.GFService.createWorkerImageStyle(matchWorker[j], format.workerImageShape, segment.showId, soldOutColor);
 			}
@@ -815,7 +815,7 @@ matchStyle12(segment, format){
 			finalString = finalString + this.GFService.findTitle(segment.championship, segment.showId);
 		}
 		if(segment.matchWorkers){
-			let matchWorker = segment.matchWorkers.split("|");
+			let matchWorker = !segment.matchWorkers ? [] : segment.matchWorkers.split("|");
 			for(let j=0; j<matchWorker.length; j++){
 				finalString = finalString + this.GFService.createWorkerImageStyle(matchWorker[j], format.workerImageShape, segment.showId, soldOutColor);
 			}
@@ -869,7 +869,7 @@ matchStyle13(segment, format){
 		finalString = finalString + '<center>';
 
 		if(segment.matchWorkers){
-			let matchWorker = segment.matchWorkers.split("|");
+			let matchWorker = !segment.matchWorkers ? [] : segment.matchWorkers.split("|");
 			for(let j=0; j<matchWorker.length; j++){
 				finalString = finalString + this.GFService.createWorkerImageStyle(matchWorker[j], format.workerImageShape, segment.showId, soldOutColor);
 			}
@@ -1036,7 +1036,7 @@ matchStyle14(segment, format){
 			finalString = finalString + this.GFService.findTitle(segment.championship, segment.showId);
 		}
 		if(segment.matchWorkers){
-			let matchWorker = segment.matchWorkers.split("|");
+			let matchWorker = !segment.matchWorkers ? [] : segment.matchWorkers.split("|");
 			for(let j=0; j<matchWorker.length; j++){
 				finalString = finalString + this.GFService.createWorkerImageStyle(matchWorker[j], format.workerImageShape, segment.showId, soldOutColor);
 			}

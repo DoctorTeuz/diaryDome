@@ -11,6 +11,7 @@ import { Titles } from '../enums/titles.enum';
 export class GeneralFunctionService {
 
   imagePath = environment.path;
+  imageShowPath = environment.showImagePath;
   lastShowDate;
   completeMenu: Array<any> = [];
   controlKey = [];
@@ -48,6 +49,13 @@ export class GeneralFunctionService {
         const typePath = type ? type + '/' : "";
         const formatPath = '.' + format
         return this.imagePath + userPath + typePath + img + formatPath;
+    }
+
+    createShowImagePath(userId, img, format, type?){
+        const userPath = userId + '/';
+        const typePath = type ? type + '/' : "";
+        const formatPath = '.' + format
+        return this.imageShowPath + userPath + typePath + img + formatPath;
     }
 
     getTeuzLastShowDate(){
@@ -251,7 +259,7 @@ export class GeneralFunctionService {
         let userId = this.user.ID;
         if(showId == 0 || userId == 1){
           titleCode = Titles[titleName];
-          return "<img src='" +  this.createPath(1, titleCode, 'jpg', 'Belts') + "'  width='180px' style='border-radius: 10px;'><br>";
+          return "<img src='" +  this.createShowImagePath(1, titleCode, 'jpg', 'Belts') + "'  width='180px' style='border-radius: 10px;'><br>";
         }
         else{
             let titleCode = titleName.split(" ").join("_");
@@ -263,7 +271,7 @@ export class GeneralFunctionService {
                     return -1
                 }
             })[0];
-            return "<img src='" +  this.createPath(this.user.ID, titleUrl.split('.')[0], titleUrl.split('.')[1], 'Belts') + "'  width='180px' style='border-radius: 10px;'><br>";
+            return "<img src='" +  this.createShowImagePath(this.user.ID, titleUrl.split('.')[0], titleUrl.split('.')[1], 'Belts') + "'  width='180px' style='border-radius: 10px;'><br>";
         }
       
     }
@@ -295,11 +303,11 @@ export class GeneralFunctionService {
         let targetDir = "";
         if(worker == "VVSS"){
             if(show == 0){
-                return '<img src="' + this.createPath(1, 'VS', 'jpg', 'Loghi') + '" ' + widthVVSS + '>';
+                return '<img src="' + this.createShowImagePath(1, 'VS', 'jpg', 'Loghi') + '" ' + widthVVSS + '>';
             }
             else{
                 if(this.user.VSurl){
-                    return '<img src="' + this.createPath(this.user.ID, this.user.VSurl.split('.')[0], this.user.VSurl.split('.')[1], 'Loghi') + '" ' + widthVVSS + '>';
+                    return '<img src="' + this.createShowImagePath(this.user.ID, this.user.VSurl.split('.')[0], this.user.VSurl.split('.')[1], 'Loghi') + '" ' + widthVVSS + '>';
                 }
                 else{
                     return "VS"
@@ -312,11 +320,11 @@ export class GeneralFunctionService {
         workerName = workerName.split(".").join("");
     
         if(show == 0){
-            return '<img src="' + this.createPath(1, workerName, 'jpg') + '" ' + styleFinal + '>';
+            return '<img src="' + this.createShowImagePath(1, workerName, 'jpg') + '" ' + styleFinal + '>';
         }
         else{
             const workerFinalName = this.user.workerImageList.filter(wrk => wrk.split('.')[0] === workerName)[0];
-            return '<img src="' + this.createPath(this.user.ID, workerFinalName.split('.')[0], workerFinalName.split('.')[1]) + '" ' + styleFinal + '>';
+            return '<img src="' + this.createShowImagePath(this.user.ID, workerFinalName.split('.')[0], workerFinalName.split('.')[1]) + '" ' + styleFinal + '>';
         }        
     }
 

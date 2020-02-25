@@ -179,12 +179,12 @@ export class ShowComponent implements OnInit, OnDestroy {
 			}
 		}
     preshow.map(segment => {
-      completeShow = completeShow + segment.code;
+      completeShow = completeShow + segment.code + "<br><br>";
       spoilerText = segment.splrText ? spoilerText + segment.splrText : spoilerText;
     })
       completeShow = completeShow + this.contestGenerator['showStyleHeader' + this.format.headerFormat](this.showService.show, this.format);
     show.map(segment => {
-      completeShow = completeShow + segment.code;
+      completeShow = completeShow + segment.code + "<br><br>";
       spoilerText = segment.splrText ? spoilerText + segment.splrText : spoilerText;
     })
 
@@ -194,7 +194,7 @@ export class ShowComponent implements OnInit, OnDestroy {
     }
     
     postShow.map(segment => {
-      completeShow = completeShow + segment.code;
+      completeShow = completeShow + segment.code + "<br><br>";
       spoilerText = segment.splrText ? spoilerText + segment.splrText : spoilerText;
     })
     completeShow = completeShow + this.contestGenerator.showStyleEnding();

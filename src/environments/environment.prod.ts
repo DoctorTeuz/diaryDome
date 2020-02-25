@@ -4,5 +4,6 @@ export const environment = {
   path: "../DiaryDome/", //durante i test
   /* path: "", */ //produzione finale
   basePath: "diaryDome2",
-  loadingWheel: "assets/images/loadingWheel.gif"
+  loadingWheel: "assets/images/loadingWheel.gif",
+  showImagePath: "https://wrestlingdiaries.altervista.org/DiaryDome/"
 };
