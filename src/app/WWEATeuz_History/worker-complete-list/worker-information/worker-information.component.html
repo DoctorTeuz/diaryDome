@@ -1,6 +1,6 @@
 <div class='workerContainer'>
     <div class="headerRow">
-        <img class="headImage" [src]="GFService.createPath(1, worker.ImageLink, 'jpg', null)">
+        <img class="headImage" [src]="GFService.createPath(1, worker.ImageLink.split('.')[0],  worker.ImageLink.split('.')[1], null)">
         <div class="nameRow">
             {{worker.Ringname}}
         </div>
