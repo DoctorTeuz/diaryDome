@@ -92,10 +92,10 @@ class Worker{
 	function getAlbo($ringName, $aliases){
 		$aliasSql = "";
 		for($i=0; $i<count($aliases); $i++){
-			$aliasSql .= "OR Champion = '$aliases[0]' OR
-			TagPartner1 = '$aliases[0]' OR
-			TagPartner2 = '$aliases[0]' OR
-			TagPartner3 = '$aliases[0]'";
+			$aliasSql .= "OR Champion = '$aliases[$i]' OR
+			TagPartner1 = '$aliases[$i]' OR
+			TagPartner2 = '$aliases[$i]' OR
+			TagPartner3 = '$aliases[$i]'";
 		}
 		$sql = "SELECT *, COUNT(*) as Reign, SUM(Duration) AS Tot
 		FROM (SELECT * FROM WWETeuz_Albo 

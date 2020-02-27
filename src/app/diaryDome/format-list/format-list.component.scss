@@ -1,0 +1,70 @@
+@import '../../../assets/theme/variables';
+
+.tableWrapper{
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-flow: column;
+    diaryDome-format-row{
+        width: 100%;
+        margin-top: 10px; 
+        height: 90px;
+        display: flex;
+        flex-flow: row;
+        background-color: $diaryDome_backgroundComponent;
+        border-radius: 20px;
+        font-size: 12px;
+    }
+}
+
+
+
+
+
+.filterRow{
+    padding-top: 20px;
+    margin-left: 20px;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    height: 75px;
+    .paginationCell{
+        width: 10%;
+    }
+    .formatNameCell{
+        width: 30%;
+    }
+    .formatTypeCell{
+        width: 20%;
+    }
+    .soldOutCell{
+        width: 34%;
+        padding-top: 27px;
+    }
+}
+
+.formField{
+    margin: 5px;
+}
+
+.firstFormat{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+
+.paginationRow{
+    display: flex;
+    width: 100%;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    .numberCell{
+        width: 9px;
+        height: 35px;
+        font-size: 20px;
+        margin-right: 5px;
+        cursor: pointer;
+    }
+}

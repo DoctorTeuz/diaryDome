@@ -27,6 +27,22 @@ if($method != 'OPTIONS'){
 			}
 			echo json_encode($response);
 			break;
+		case 'active':
+				try {
+					$response = active('1');
+				} catch (Throwable $th) {
+					$response = $th;
+				}
+				echo json_encode($response);
+				break;		
+		case 'deactive':
+				try {
+					$response = active('0');
+				} catch (Throwable $th) {
+					$response = $th;
+				}
+				echo json_encode($response);
+				break;		
 		default:
 			$response = new ResponseObject();
 			$response->status = 404;
@@ -35,9 +51,6 @@ if($method != 'OPTIONS'){
 			break;
 	}
 }
-
-
-
 
 
 function getFormats($id){
@@ -85,6 +98,30 @@ function mapFormat($format){
 	$formatData->Attivo = utf8_encode($format['Attivo']);
 
 	return $formatData;
+}
+
+function active($active){
+	$db=new Connection();
+	$db->connetti();
+	$response = new ResponseObject();
+
+	$postdata = file_get_contents("php://input");
+	$request = json_decode($postdata);
+	
+	$userId = $request->userId;
+	$id = $request->formatId;
+
+	$show = new Show($db);
+	if($show->publishShow($userId, $id, $active)){
+		$response->status = 200;
+		$response->body = 'Pubblicato';
+		return $response;
+	}else{
+		$response = new ResponseObject();
+		$response->status = 500;
+		$response->body = 'Internal Server Error';
+		return $response;
+	}
 }
 
 ?>

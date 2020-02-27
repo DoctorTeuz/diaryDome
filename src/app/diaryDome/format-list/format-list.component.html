@@ -1,0 +1,50 @@
+<div class="tableWrapper">
+    <div class="filterRow" *ngIf="viewFormat">
+        <div class='formatNameCell'>
+            <mat-form-field class="formBase">
+                <input matInput type="text" placeholder="Nome Format" class="formField"
+                [matAutocomplete]="formatNameAutocomplete" [(ngModel)]="formatNameFilter" (ngModelChange)="filterFormat()">
+            </mat-form-field>
+            <mat-autocomplete #formatNameAutocomplete="matAutocomplete">
+                <mat-option *ngFor="let option of distinctFormat" [value]="option">{{option}}</mat-option>
+            </mat-autocomplete>
+        </div>
+        <div class='formatTypeCell'>
+            <mat-form-field class="formBase">
+                <mat-select placeholder="Tipo Evento" class="formField" [(ngModel)]="formatTypeFilter" (ngModelChange)="filterFormat()">
+                    <mat-option></mat-option>
+                    <mat-option *ngFor="let st of formatTypeFilterType" [value]="st">
+                        {{st}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="soldOutCell">
+            <mat-checkbox [(ngModel)]="alsoNotAttivo" (ngModelChange)="filterFormat()">Mostra Inattivi</mat-checkbox>
+        </div>
+        <div class='paginationCell'>
+            <mat-form-field class="formBase">
+                <mat-select placeholder="N° Format" class="formField" [(ngModel)]="numFormat" (ngModelChange)="filterFormat()">
+                    <mat-option *ngFor="let pg of paginationType" [value]="pg">
+                        {{pg}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="paginationRow" *ngIf="viewFormat">
+        <ng-container *ngFor="let page of pagesToShow; let i = index" >
+            <button mat-raised-button [color]='page == actualPage ? "warn" : "primary"' class='numberCell' (click)="goToPage(page)">		
+                {{page}}
+            </button>
+        </ng-container>
+    </div>
+    <diaryDome-format-row *ngFor="let format of viewFormat" 
+        [formatData]="format"></diaryDome-format-row>
+    <div class="firstFormat bold" *ngIf="noFormat">
+        Benvenuto nel Diary Dome, per creare il tuo primo format <span (click)="newFormat()">clicca qui</span>
+    </div>
+</div>
+
+<button mat-fab class="floatingButton" *ngIf="viewFormat" (click)="newFormat()"><mat-icon 
+    class="floatingIcon mat-icon-reverse">add</mat-icon></button>

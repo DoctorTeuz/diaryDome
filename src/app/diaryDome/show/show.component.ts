@@ -118,6 +118,7 @@ export class ShowComponent implements OnInit, OnDestroy {
             type = 'match';
             format = 'Short';
             service = 'matchGenerator'
+            break;
           case 'Plain':
             type = 'plain';
             break;

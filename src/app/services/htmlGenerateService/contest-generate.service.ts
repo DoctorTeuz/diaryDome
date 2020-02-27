@@ -49,7 +49,7 @@ export class ContestGenerateService {
     finalString = finalString + '<br>';
   }
 
-	if(!isNaN(show.pubblico)){
+	if(show.pubblico && show.pubblico != 'NULL' && !isNaN(show.pubblico)){
 		finalString = finalString + '<b>' + show.pubblico + ' Spettatori';
 		if(show.soldOut == 1){
 			finalString = finalString + ' - <span style="color: ' + show.baseColor + '" class="soldOutColorValue">SOLD OUT</span>';
@@ -101,7 +101,7 @@ export class ContestGenerateService {
       finalString = finalString + '<br>';
     }
   
-    if(!isNaN(show.pubblico)){
+    if(show.pubblico && show.pubblico != 'NULL' && !isNaN(show.pubblico)){
       finalString = finalString + '<b>' + show.pubblico + ' Spettatori';
       if(show.soldOut == 1){
         finalString = finalString + ' - <span style="color: ' + show.baseColor + '" class="soldOutColorValue">SOLD OUT</span>';
@@ -149,7 +149,7 @@ export class ContestGenerateService {
       finalString = finalString + '<br>';
     }
   
-    if(!isNaN(show.pubblico)){
+    if(show.pubblico && show.pubblico != 'NULL' && !isNaN(show.pubblico)){
       finalString = finalString + '<b>' + show.pubblico + ' Spettatori';
       if(show.soldOut == 1){
         finalString = finalString + ' - <span style="color: ' + show.baseColor + '" class="soldOutColorValue">SOLD OUT</span>';
@@ -197,7 +197,7 @@ export class ContestGenerateService {
       finalString = finalString + '<br>';
     }
   
-    if(!isNaN(show.pubblico)){
+    if(show.pubblico && show.pubblico != 'NULL' && !isNaN(show.pubblico)){
       finalString = finalString + '<b>' + show.pubblico + ' Spettatori';
       if(show.soldOut == 1){
         finalString = finalString + ' - <span style="color: ' + show.baseColor + '" class="soldOutColorValue">SOLD OUT</span>';

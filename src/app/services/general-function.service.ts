@@ -379,15 +379,6 @@ export class GeneralFunctionService {
         dataParsed = dataParsed.split("<br>").join("\n");
         dataParsed = dataParsed.split("<br/>").join("\n");
         dataParsed = dataParsed.split("<br />").join("\n");
-/*         dataParsed = dataParsed.split("<b>").join("<strong>");
-        dataParsed = dataParsed.split("</b>").join("</strong>");
-        dataParsed = dataParsed.split("<i>").join("<em>");
-        dataParsed = dataParsed.split("</i>").join("</em>");
-        dataParsed = dataParsed.split("<u>").join("<span style='text-decoration: underline;'>");
-        dataParsed = dataParsed.split("</u>").join("</span>"); */
-
-        
-
         return dataParsed;
     }
 

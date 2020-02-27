@@ -6,6 +6,7 @@ import { AlboComponent } from './WWEATeuz_History/albo/albo.component';
 import { LoginComponent } from './shared/login/login.component';
 import { ShowListComponent } from './diaryDome/show-list/show-list.component';
 import { ShowComponent } from './diaryDome/show/show.component';
+import { FormatListComponent } from './diaryDome/format-list/format-list.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path:'showList', component: ShowListComponent},
   {path:'show', component: ShowComponent},
+  {path:'formatList', component: FormatListComponent}
 ];
 
 @NgModule({

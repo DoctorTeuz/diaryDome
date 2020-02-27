@@ -55,6 +55,8 @@ import { PopupTopBarComponent } from './shared/popup-top-bar/popup-top-bar.compo
 import { CreateSegmentPopupComponent } from './diaryDome/create-segment-popup/create-segment-popup.component';
 import { WorkerListImagesComponent } from './diaryDome/create-segment-popup/worker-list-images/worker-list-images.component';
 import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
+import { FormatListComponent } from './diaryDome/format-list/format-list.component';
+import { FormatRowComponent } from './diaryDome/format-list/format-row/format-row.component';
 
 const MatModules = [
   BrowserModule,
@@ -112,6 +114,8 @@ const MatModules = [
     PopupTopBarComponent,
     CreateSegmentPopupComponent,
     WorkerListImagesComponent,
+    FormatListComponent,
+    FormatRowComponent,
   ],
   imports: [
     AppRoutingModule,

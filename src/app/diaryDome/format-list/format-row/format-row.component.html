@@ -1,0 +1,34 @@
+<div class="checkBlock">
+    <mat-icon class="icon OKIcon" *ngIf="formatData.Attivo == '1'">play_circle_outline</mat-icon>
+    <mat-icon class="icon KOIcon" *ngIf="formatData.Attivo != '1'">pause_circle_outline</mat-icon>
+</div>
+<div class="formatLogo">
+    <img 
+    [src]="GFService.createPath(GFService.user.ID, 
+                                formatData.Picture.split('.')[0], 
+                                formatData.Picture.split('.')[1], 
+                                'Loghi')" 
+    class='image'>
+</div>
+<div class="dataBlock">
+    <div class="bold">
+        {{formatData.Name}}
+    </div>
+    <div>
+        {{formatData.EventType == 'PPV' ? 'Pay-Per-View' : formatData.EventType}}
+    </div>
+    <div vclass="small">
+        {{formatData.DayWeek}}
+    </div>
+</div>
+
+<div class="iconBlock">
+    <mat-icon [matTooltip]="'Rendi Attivo ' + formatData.Name" *ngIf="formatData.Attivo != '1'" class="icon" (click)="activateFormat(formatData)">
+        play_arrow</mat-icon>
+    <mat-icon [matTooltip]="'Rendi Inattivo ' + formatData.Name" *ngIf="formatData.Attivo != '0'" class="icon" (click)="deactivateFormat(formatData)">
+        pause</mat-icon>
+    <mat-icon [matTooltip]="'Duplica ' + formatData.Name" class="icon" (click)="duplicateFormat(formatData)">
+        file_copy</mat-icon>
+</div>
+
+

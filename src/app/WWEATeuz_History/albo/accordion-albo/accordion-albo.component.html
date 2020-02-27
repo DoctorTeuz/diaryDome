@@ -32,7 +32,7 @@
                         <br>
                         <ng-container *ngIf="!(pickedTitleAlbo[0].Type == 'MITB' && pickedTitleAlbo[0].CashIn != 'Wait')">
                             <img *ngFor="let champ of pickedTitleAlbo[0].ChampionsImageLink"
-                            [src]="GFService.createPath(1, champ, 'jpg', null)"
+                            [src]="GFService.createPath(1, champ.split('.')[0], champ.split('.')[1], null)"
                             class="champion">
                         </ng-container>
                         <ng-container *ngIf="(pickedTitleAlbo[0].Type == 'MITB' && pickedTitleAlbo[0].CashIn != 'Wait')">
