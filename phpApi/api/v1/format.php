@@ -114,7 +114,7 @@ function active($active){
 	$show = new Show($db);
 	if($show->publishShow($userId, $id, $active)){
 		$response->status = 200;
-		$response->body = 'Pubblicato';
+		$response->body = 'OK';
 		return $response;
 	}else{
 		$response = new ResponseObject();

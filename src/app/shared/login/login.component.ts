@@ -75,7 +75,6 @@ export class LoginComponent implements OnInit {
     ).subscribe(
       (res: any) => {
         userData['formats'] = res.body.formats;
-        console.log(userData['formats']);
         this.GFService.countThread(false);
         this.GFService.setUser(userData);
         this.GFService.filterMenu('login');

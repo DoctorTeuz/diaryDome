@@ -23,7 +23,8 @@
 </div>
 
 <div class="iconBlock">
-    <mat-icon [matTooltip]="'Rendi Attivo ' + formatData.Name" *ngIf="formatData.Attivo != '1'" class="icon" (click)="activateFormat(formatData)">
+    <mat-icon [matTooltip]="'Rendi Attivo ' + formatData.Name" 
+    *ngIf="formatData.Attivo != '1'" class="icon" (click)="activateFormat(formatData)">
         play_arrow</mat-icon>
     <mat-icon [matTooltip]="'Rendi Inattivo ' + formatData.Name" *ngIf="formatData.Attivo != '0'" class="icon" (click)="deactivateFormat(formatData)">
         pause</mat-icon>

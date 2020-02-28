@@ -12,6 +12,9 @@ export class FormatRowComponent implements OnInit {
   @Input() formatData;
   image;
   format;
+  
+  @Output() active = new EventEmitter();
+  @Output() deactive = new EventEmitter();
 
   constructor(
     public GFService: GeneralFunctionService,
@@ -20,4 +23,11 @@ export class FormatRowComponent implements OnInit {
   ngOnInit() {
   }
 
+  activateFormat(format){
+    this.active.emit(format)
+  }
+
+  deactivateFormat(format){
+    this.deactive.emit(format)
+  }
 }

@@ -108,12 +108,12 @@ export class AngleGenerateService {
 	/* let color = format.angleFirstBorderColor; */
 	let finalString = "";
 
-	finalString = '';
+	finalString = '<div style="width:100%;">';
 	if(segment.shownTitle){
 		finalString = finalString + "<u><b><span class='maiuscolo'>"+ segment.shownTitle +"</span></b></u>: ";
 	}
 
-	finalString = finalString + segment.content;
+	finalString = finalString + segment.content + "</div>";
 
 	return finalString;
   }

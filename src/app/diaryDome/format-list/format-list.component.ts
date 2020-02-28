@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GeneralFunctionService } from 'src/app/services/general-function.service';
 import { MatDialog } from '@angular/material';
+import { FormatService } from 'src/app/services/format.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'diaryDome-format-list',
@@ -33,6 +35,7 @@ export class FormatListComponent implements OnInit {
   constructor(
     public GFService: GeneralFunctionService,
     public dialog: MatDialog,
+    public formatService: FormatService,
     ) {
   }
 
@@ -99,6 +102,28 @@ export class FormatListComponent implements OnInit {
       this.pagination = page - 1;
       this.filterFormat();
     }
+  }
+
+  activateFormat(format){
+    this.formatService.activateFormat(format.formatId).pipe(
+      switchMap(res => this.formatService.getFormats(this.GFService.user.ID))
+    ).subscribe(
+      (res:any) => {
+        this.GFService.user.formats = res.body.formats;
+        this.ngOnInit();
+      }
+    )
+  }
+
+  deactivateFormat(format){
+    this.formatService.deactivateFormat(format.formatId).pipe(
+      switchMap(res => this.formatService.getFormats(this.GFService.user.ID))
+    ).subscribe(
+      (res:any) => {
+        this.GFService.user.formats = res.body.formats;
+        this.ngOnInit();
+      }
+    )
   }
 
   newShow(){

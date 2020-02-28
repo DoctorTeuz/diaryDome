@@ -19,4 +19,21 @@ export class FormatService {
     const params = new HttpParams().set('userId', ID);
     return this.http.get(this.formatsPath + '/getFormatList', {params: params})
   }
+
+
+  activateFormat(formatId){
+    const params = {
+      userId: this.GFService.user.ID.toString(),
+      formatId: formatId.toString()
+    }
+    return this.http.post(this.formatsPath + '/active', params)
+  }
+
+  deactivateFormat(formatId){
+    const params = {
+      userId: this.GFService.user.ID.toString(),
+      formatId: formatId.toString()
+    }
+    return this.http.post(this.formatsPath + '/deactive', params)
+  }
 }

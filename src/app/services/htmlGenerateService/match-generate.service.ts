@@ -310,7 +310,7 @@ export class MatchGenerateService {
 	return finalString;
 }
 
-matchStyle5(segment, format){
+	matchStyle5(segment, format){
 
 		let soldOutColor = format.soldOutColor;
 		let color1 = format.matchFirstBorderColor;
@@ -381,7 +381,7 @@ matchStyle5(segment, format){
 		return finalString;
 	}
 
-matchStyle6(segment, format){
+	matchStyle6(segment, format){
 
 		let soldOutColor = format.soldOutColor;
 		let color1 = format.matchFirstBorderColor;
@@ -711,7 +711,7 @@ matchStyle6(segment, format){
 		return finalString;
 	}
 
-matchStyle11(segment, format){
+	matchStyle11(segment, format){
 
 		let soldOutColor = format.soldOutColor;
 		let color1 = format.matchFirstBorderColor;
@@ -783,7 +783,7 @@ matchStyle11(segment, format){
 		return finalString;
 }
 
-matchStyle12(segment, format){
+	matchStyle12(segment, format){
 
 		let soldOutColor = format.soldOutColor;
 		let color1 = format.matchFirstBorderColor;
@@ -856,7 +856,7 @@ matchStyle12(segment, format){
 }
 
 
-matchStyle13(segment, format){
+	matchStyle13(segment, format){
 
 		let soldOutColor = format.soldOutColor;
 		let color1 = format.matchFirstBorderColor;
@@ -866,7 +866,7 @@ matchStyle13(segment, format){
 		let color2 = format.matchSecondBorderColor;
 
 		let finalString = "";
-		finalString = finalString + '<center>';
+		finalString = finalString + '<div style="width:100%;"><center>';
 
 		if(segment.matchWorkers){
 			let matchWorker = !segment.matchWorkers ? [] : segment.matchWorkers.split("|");
@@ -910,10 +910,10 @@ matchStyle13(segment, format){
 		}
 
 
-		return finalString;
+		return finalString + '</div>';
 	}
 
-matchStyle14(segment, format){
+	matchStyle14(segment, format){
 
 		let soldOutColor = format.soldOutColor;
 		let color1 = format.matchFirstBorderColor;
@@ -922,7 +922,7 @@ matchStyle14(segment, format){
 		}
 		let color2 = format.matchSecondBorderColor;
 
-		let finalString = "";
+		let finalString = '<div style="width:100%;">';
 		
 		if(segment.championship){
 			finalString = finalString + '<b>' + segment.championship + ' Championship</b><br>';
@@ -958,7 +958,7 @@ matchStyle14(segment, format){
 			}
 		}
 
-		return finalString;
+		return finalString + '</div>';
 	}
 
 	matchStyle15(segment, format){
@@ -970,7 +970,7 @@ matchStyle14(segment, format){
 		}
 		let color2 = format.matchSecondBorderColor;
 
-		let finalString = "";
+		let finalString = '<div style="width:100%;">';
 		finalString = "<b><u><font color='" + soldOutColor + "'>MATCH</font></u></b> - ";
 		if(segment.championship){
 			finalString = finalString + '<b>' + segment.championship + ' Championship</b><br>';
@@ -1005,7 +1005,7 @@ matchStyle14(segment, format){
 			}
 		}
 
-		return finalString;
+		return finalString + '</div>';
 	}
 
 	matchStyle16(segment, format){
@@ -1076,16 +1076,3 @@ matchStyle14(segment, format){
 		return finalString;
 	}
 }
-
-
-/**
- * 
- * 
-
-
-
-
-
-
-
- */

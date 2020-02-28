@@ -40,7 +40,9 @@
         </ng-container>
     </div>
     <diaryDome-format-row *ngFor="let format of viewFormat" 
-        [formatData]="format"></diaryDome-format-row>
+        [formatData]="format"
+        (active)="activateFormat($event)"
+        (deactive)="deactivateFormat($event)"></diaryDome-format-row>
     <div class="firstFormat bold" *ngIf="noFormat">
         Benvenuto nel Diary Dome, per creare il tuo primo format <span (click)="newFormat()">clicca qui</span>
     </div>
