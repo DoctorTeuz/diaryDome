@@ -1,0 +1,21 @@
+.wrapper{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    .allWidth{
+        width: 100%;
+
+    }
+}
+
+.stepContainer{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    .formatNameCell{
+        width: 50%;
+    }
+}

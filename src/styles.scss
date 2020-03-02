@@ -207,6 +207,22 @@ textarea.mat-input-element{
     background-color: $diaryDome_darkBlue !important;
 }
 
+mat-horizontal-stepper{
+    background-color: $diaryDome_backgroundComponent !important;
+}
+
+.mat-step-header .mat-step-icon{
+    background-color: $diaryDome_darkBlue !important;
+}
+
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit{
+    background-color: $diaryDome_lightBlue !important;
+    color: $diaryDome_darkBlue !important;
+}
+
+.mat-step-label.mat-step-label-active, .mat-step-header .mat-step-label, .mat-step-header .mat-step-optional{
+    color: $diaryDome_labelTextColor !important;
+}
 //SCROLLBAR
 
 /* width */

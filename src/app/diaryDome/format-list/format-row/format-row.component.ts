@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
-import { EventEmitter } from 'events';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GeneralFunctionService } from 'src/app/services/general-function.service';
 
 @Component({
@@ -12,7 +11,6 @@ export class FormatRowComponent implements OnInit {
   @Input() formatData;
   image;
   format;
-  
   @Output() active = new EventEmitter();
   @Output() deactive = new EventEmitter();
 

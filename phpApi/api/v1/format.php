@@ -42,7 +42,15 @@ if($method != 'OPTIONS'){
 					$response = $th;
 				}
 				echo json_encode($response);
-				break;		
+				break;
+		case 'craeteNewFormat':
+			try {
+				$response = createNewFormat();
+			} catch (Throwable $th) {
+				$response = $th;
+			}
+			echo json_encode($response);
+			break;
 		default:
 			$response = new ResponseObject();
 			$response->status = 404;
@@ -111,8 +119,8 @@ function active($active){
 	$userId = $request->userId;
 	$id = $request->formatId;
 
-	$show = new Show($db);
-	if($show->publishShow($userId, $id, $active)){
+	$frmt = new Format($db);
+	if($frmt->activeFormat($userId, $id, $active)){
 		$response->status = 200;
 		$response->body = 'OK';
 		return $response;
@@ -122,6 +130,15 @@ function active($active){
 		$response->body = 'Internal Server Error';
 		return $response;
 	}
+}
+
+createNewFormat(){
+	$db=new Connection();
+	$db->connetti();
+	$response = new ResponseObject();
+
+	$postdata = file_get_contents("php://input");
+	$request = json_decode($postdata);
 }
 
 ?>

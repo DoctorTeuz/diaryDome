@@ -57,6 +57,7 @@ import { WorkerListImagesComponent } from './diaryDome/create-segment-popup/work
 import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
 import { FormatListComponent } from './diaryDome/format-list/format-list.component';
 import { FormatRowComponent } from './diaryDome/format-list/format-row/format-row.component';
+import { CreateFormatPopupComponent } from './diaryDome/create-format-popup/create-format-popup.component';
 
 const MatModules = [
   BrowserModule,
@@ -116,6 +117,7 @@ const MatModules = [
     WorkerListImagesComponent,
     FormatListComponent,
     FormatRowComponent,
+    CreateFormatPopupComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -129,6 +131,7 @@ const MatModules = [
     GenericAlertPopupComponent,
     CreateSegmentPopupComponent,
     WorkerListImagesComponent,
+    CreateFormatPopupComponent,
   ],
   providers: [
     { 

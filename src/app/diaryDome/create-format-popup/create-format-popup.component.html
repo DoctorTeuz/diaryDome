@@ -1,0 +1,29 @@
+<diaryDome-popup-top-bar [title]="'Crea Nuovo Format'" [dialogRef]="dialogRef"></diaryDome-popup-top-bar>
+<div class="wrapper">
+    <mat-horizontal-stepper [linear]="true" #stepper class="allWidth">
+        <mat-step [completed]="contextGroup" label="Informazioni Base">
+            <div class="stepContainer">
+                <div class="formatNameCell">
+                    <mat-form-field class="formBase">
+                        <input matInput type="text" 
+                            placeholder="Nome del format" class="formField"
+                            [(ngModel)]="format.Name">
+                            <mat-hint>Il nome del Format. Verrà automaticamente assegnato a tutti gli show che useranno questo format.</mat-hint>
+                    </mat-form-field> 
+                </div>
+            </div>
+        </mat-step>
+        <mat-step [completed]="matchGroup" label="Match">
+            
+        </mat-step>
+        <mat-step [completed]="angleGroup" label="Angle">
+            
+        </mat-step>
+        <mat-step [completed]="infoGroup" label="Infografiche">
+            
+        </mat-step>
+        <mat-step label="Conferma">
+            
+        </mat-step>
+    </mat-horizontal-stepper>
+</div>

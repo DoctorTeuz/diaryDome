@@ -4,6 +4,7 @@ import { GeneralFunctionService } from 'src/app/services/general-function.servic
 import { LoginService } from 'src/app/services/login.service';
 import { MatDialog } from '@angular/material';
 import { CreateShowPopupComponent } from 'src/app/diaryDome/create-show-popup/create-show-popup.component'
+import { CreateFormatPopupComponent } from 'src/app/diaryDome/create-format-popup/create-format-popup.component';
 
 @Component({
   selector: 'diaryDome-menu',
@@ -85,7 +86,8 @@ export class MenuComponent implements OnInit {
       case 'CreateShowPopupComponent':
         component = CreateShowPopupComponent;
         break;
-    
+      case 'CreateFormatPopupComponent':
+        component = CreateFormatPopupComponent;
       default:
         break;
     }

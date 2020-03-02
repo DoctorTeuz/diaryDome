@@ -3,6 +3,7 @@ import { GeneralFunctionService } from 'src/app/services/general-function.servic
 import { MatDialog } from '@angular/material';
 import { FormatService } from 'src/app/services/format.service';
 import { switchMap } from 'rxjs/operators';
+import { CreateFormatPopupComponent } from '../create-format-popup/create-format-popup.component';
 
 @Component({
   selector: 'diaryDome-format-list',
@@ -130,9 +131,9 @@ export class FormatListComponent implements OnInit {
     const config = {
       component: this
     };
-/*     let dialogRef  = this.dialog.open(CreateShowPopupComponent, {
+    let dialogRef  = this.dialog.open(CreateFormatPopupComponent, {
       width: '800px',
       data: config
-    }) */
+    })
   }
 }
