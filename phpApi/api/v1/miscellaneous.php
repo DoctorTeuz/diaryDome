@@ -199,7 +199,8 @@ function grabImage($targetDir, $workerImg, $holdTitle){
     $targetDir = '../../../../DiaryDome/'.$targetDir;
 	$files = glob($targetDir.$workerImg."*".$holdTitle.".*");
 	if(count($files)==0){
-		$files = glob($targetDir.$workerImg.".*");
+        $files = glob($targetDir.$workerImg."*.*");
+        $holdTitle = "";
 	}
 	$img = $workerImg."_2";
 	$max = 100;

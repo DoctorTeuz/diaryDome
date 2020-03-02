@@ -26,7 +26,7 @@ export class ContestGenerateService {
     const url = this.GFService.createPath(this.GFService.user.ID, show.imageUrl.split('.')[0], show.imageUrl.split('.')[1], 'Loghi')
 		finalString = finalString + '<img src="' + url + '"><br>';
 	}
-	if(show.showName != format.label){
+	if(show.showName != format.Label){
 		finalString = finalString + "<b>" + show.showName + "</b><br>";
 	}
 	if(this.GFService.user.dateFormat == 'TEW'){
@@ -78,7 +78,7 @@ export class ContestGenerateService {
       const url = this.GFService.createPath(this.GFService.user.ID, show.imageUrl.split('.')[0], show.imageUrl.split('.')[1], 'Loghi')
       finalString = finalString + '<img src="' + url + '"><br>';
     }
-    if(show.showName != format.label){
+    if(show.showName != format.Label){
       finalString = finalString + "<b>" + show.showName + "</b><br>";
     }
     if(this.GFService.user.dateFormat == 'TEW'){
@@ -126,7 +126,7 @@ export class ContestGenerateService {
       const url = this.GFService.createPath(this.GFService.user.ID, show.imageUrl.split('.')[0], show.imageUrl.split('.')[1], 'Loghi')
       finalString = finalString + '<img src="' + url + '"><br>';
     }
-    if(show.showName != format.label){
+    if(show.showName != format.Label){
       finalString = finalString + "<b>" + show.showName + "</b><br>";
     }
     if(this.GFService.user.dateFormat == 'TEW'){
@@ -174,7 +174,7 @@ export class ContestGenerateService {
       const url = this.GFService.createPath(this.GFService.user.ID, show.imageUrl.split('.')[0], show.imageUrl.split('.')[1], 'Loghi')
       finalString = finalString + '<img src="' + url + '"><br>';
     }
-    if(show.showName != format.label){
+    if(show.showName != format.Label){
       finalString = finalString + "<b>" + show.showName + "</b><br>";
     }
     if(this.GFService.user.dateFormat == 'TEW'){
