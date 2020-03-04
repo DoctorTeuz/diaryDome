@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material';
 import { FormatService } from 'src/app/services/format.service';
 import { switchMap } from 'rxjs/operators';
 import { CreateFormatPopupComponent } from '../create-format-popup/create-format-popup.component';
+import { SHOW_TYPES } from 'src/app/enums/shared-select-info.enum';
 
 @Component({
   selector: 'diaryDome-format-list',
@@ -21,9 +22,7 @@ export class FormatListComponent implements OnInit {
   pagination = 0;
   formatNameFilter;
   formatTypeFilter;
-  formatTypeFilterType = [
-    'House Show', 'Live Event', 'PPV', 'Television'
-  ];
+  formatTypeFilterType = SHOW_TYPES;
   actualPage = 1;
   numPage;
   paginationType = [
@@ -127,12 +126,12 @@ export class FormatListComponent implements OnInit {
     )
   }
 
-  newShow(){
+  newFormat(){
     const config = {
       component: this
     };
     let dialogRef  = this.dialog.open(CreateFormatPopupComponent, {
-      width: '800px',
+      width: '1200px',
       data: config
     })
   }

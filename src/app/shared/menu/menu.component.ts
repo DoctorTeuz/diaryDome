@@ -81,22 +81,24 @@ export class MenuComponent implements OnInit {
   }
 
   openPopup(path){
-    let component
+    let component;
+    let width = '800px';
     switch (path) {
       case 'CreateShowPopupComponent':
         component = CreateShowPopupComponent;
         break;
       case 'CreateFormatPopupComponent':
         component = CreateFormatPopupComponent;
+        width= '1200px';
       default:
         break;
     }
     const config = {
         redirect: true,
       };
-      let dialogRef  = this.dialog.open(component, {
-        width: '800px',
-        data: config
-      })
+    let dialogRef  = this.dialog.open(component, {
+      width: width,
+      data: config
+    })
   }
 }

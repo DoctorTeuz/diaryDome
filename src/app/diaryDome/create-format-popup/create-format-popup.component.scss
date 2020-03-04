@@ -15,7 +15,23 @@
     width: 100%;
     display: flex;
     flex-flow: row wrap;
-    .formatNameCell{
+    .halfRowCell{
         width: 50%;
     }
+    .fullRowCell{
+        width: 100%;
+        .logoImage{
+            width: 300px;
+        }
+    }
+    .buttonRow{
+        width: 100%;
+        display: flex;
+        flex-flow: row;
+        justify-content: flex-end;
+    }
+    .centered{
+        text-align: center;
+    }
 }
+

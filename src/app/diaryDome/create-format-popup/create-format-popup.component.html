@@ -1,15 +1,80 @@
 <diaryDome-popup-top-bar [title]="'Crea Nuovo Format'" [dialogRef]="dialogRef"></diaryDome-popup-top-bar>
 <div class="wrapper">
-    <mat-horizontal-stepper [linear]="true" #stepper class="allWidth">
-        <mat-step [completed]="contextGroup" label="Informazioni Base">
+    <mat-horizontal-stepper [linear]="false" #stepper class="allWidth">
+        <mat-step [completed]="baseGroup" label="Informazioni Base">
             <div class="stepContainer">
-                <div class="formatNameCell">
+                <div class="halfRowCell">
                     <mat-form-field class="formBase">
                         <input matInput type="text" 
                             placeholder="Nome del format" class="formField"
                             [(ngModel)]="format.Name">
                             <mat-hint>Il nome del Format. Verrà automaticamente assegnato a tutti gli show che useranno questo format.</mat-hint>
                     </mat-form-field> 
+                </div>
+                <div class="halfRowCell">
+                    <mat-form-field class="formBase">
+                        <mat-select placeholder="Tipo di Show" class="formField" 
+                        [(ngModel)]="format.EventType">
+                            <mat-option></mat-option>
+                            <mat-option *ngFor="let item of showType" [value]="item.value">
+                                {{item.label}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field> 
+                </div>
+                <div class="halfRowCell">
+                    <mat-form-field class="formBase">
+                        <mat-select placeholder="Giorno di svolgimento" class="formField" 
+                        [(ngModel)]="format.DayWeek">
+                            <mat-option></mat-option>
+                            <mat-option *ngFor="let item of dayWeek" [value]="item.value">
+                                {{item.label}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field> 
+                </div>
+                <div class="halfRowCell">
+                    <button mat-raised-button color="primary" (click)="fileToUpload.click()">Scegli il logo dello show</button>
+                    <input hidden type="file" #fileToUpload id="formatLogo"
+                        (change)="fileUploaded($event)">
+                </div>
+                <div class="buttonRow">
+                    <button mat-button color="primary" (click)="close()">ANNULLA</button>
+                    <!-- <button mat-button color="warn" matStepperPrevious>INDIETRO</button> -->
+                    <button mat-raised-button color="primary" matStepperNext
+                    [disabled]="checkNext(0)">AVANTI</button>
+                </div>
+                <div class="fullRowCell centered" *ngIf="format.Picture">
+                    <img [src]="format.Picture" class="logoImage">
+                </div>
+            </div>
+        </mat-step>
+        <mat-step [completed]="contextGroup" label="Contesto">
+            <div class="stepContainer">
+                <div class="halfRowCell">
+                    <mat-form-field class="formBase">
+                        <mat-select placeholder="Formattazione base" class="formField" 
+                        [(ngModel)]="format.headerFormat">
+                            <mat-option></mat-option>
+                            <mat-option *ngFor="let item of headerStyles" [value]="item.value">
+                                {{item.label}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field> 
+                </div>
+
+
+
+
+
+                <div class="buttonRow">
+                    <button mat-button color="primary" (click)="close()">ANNULLA</button>
+                    <button mat-button color="warn" matStepperPrevious>INDIETRO</button>
+                    <button mat-raised-button color="primary" matStepperNext
+                    [disabled]="checkNext(0)">AVANTI</button>
+                </div>
+                <div class="fullRowCell" *ngIf="format.headerFormat" 
+                    [innerHTML]="sanitizer.bypassSecurityTrustHtml(getHeader())">
                 </div>
             </div>
         </mat-step>

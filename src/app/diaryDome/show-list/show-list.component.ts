@@ -4,6 +4,7 @@ import { GeneralFunctionService } from 'src/app/services/general-function.servic
 import { MatDialog } from '@angular/material';
 import { CreateShowPopupComponent } from 'src/app/diaryDome/create-show-popup/create-show-popup.component'
 import { GenericAlertPopupComponent } from 'src/app/shared/generic-alert-popup/generic-alert-popup.component';
+import { SHOW_TYPES } from 'src/app/enums/shared-select-info.enum';
 
 @Component({
   selector: 'diaryDome-show-list',
@@ -20,9 +21,7 @@ export class ShowListComponent implements OnInit {
   showNameFilter;
   showTypeFilter;
   showSoldOutFilter;
-  showTypeFilterType = [
-    'House Show', 'Live Event', 'PPV', 'Television'
-  ];
+  showTypeFilterType = SHOW_TYPES;
   actualPage = 1;
   numPage;
   paginationType = [

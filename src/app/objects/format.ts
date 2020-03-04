@@ -19,4 +19,5 @@ export class Format {
     public matchFormat;
     public infographicFormat;
     public Attivo;
+    public File?;
 }
