@@ -2,13 +2,14 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Format } from 'src/app/objects/format';
 import { GeneralFunctionService } from 'src/app/services/general-function.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { SHOW_TYPES, SHOW_TYPES_SELECT, WEEK_DAYS, CONTEXT_TYPE } from 'src/app/enums/shared-select-info.enum';
+import { SHOW_TYPES, SHOW_TYPES_SELECT, WEEK_DAYS, CONTEXT_TYPE, MATCH_TYPE, ANGLE_TYPE} from 'src/app/enums/shared-select-info.enum';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AngleGenerateService } from 'src/app/services/htmlGenerateService/angle-generate.service';
 import { InfoGenerateService } from 'src/app/services/htmlGenerateService/info-generate.service';
 import { MatchGenerateService } from 'src/app/services/htmlGenerateService/match-generate.service';
 import { ContestGenerateService } from 'src/app/services/htmlGenerateService/contest-generate.service';
 import { Show } from 'src/app/objects/show';
+import { Segment } from 'src/app/objects/segment';
 import { redo } from '@syncfusion/ej2-angular-richtexteditor';
 
 @Component({
@@ -24,9 +25,15 @@ export class CreateFormatPopupComponent implements OnInit {
   imgFakeUrl;
 
   headerStyles = CONTEXT_TYPE;
+  matchStyles = MATCH_TYPE;
+  angleStyles = ANGLE_TYPE;
 
-  baseGroup = false;
+  baseGroup: boolean = false;
+  contextGroup: boolean = false;
+  matchGroup: boolean = false;
 
+
+  loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
   angles = "Acute";
   dimension = false;
   border = false;
@@ -46,7 +53,7 @@ export class CreateFormatPopupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.format.soldOutColor = '#FF0000';
+
   }
 
   fileUploaded(event) { // called each time file input changes
@@ -66,7 +73,12 @@ export class CreateFormatPopupComponent implements OnInit {
       case 0:
         this.baseGroup = (this.format.Name && this.format.EventType && this.dayWeek && this.format.File);
         return !this.baseGroup;
-        break;
+      case 1:
+        this.contextGroup = (this.format.headerFormat);
+        return !this.contextGroup;
+      case 2:
+        this.matchGroup = (this.format.matchFormat);
+        return !this.matchGroup;
       default:
         break;
     }
@@ -86,16 +98,46 @@ export class CreateFormatPopupComponent implements OnInit {
       soldOut: 1,
       baseColor: this.format.soldOutColor ? this.format.soldOutColor : 'red',
     };
-
-    const loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-
+    
     return this.contestGenerator['showStyleOpening' + this.format.headerFormat]() 
           + this.contestGenerator['showStyleHeader' + this.format.headerFormat](show, this.format)
-          + loremIpsum + this.contestGenerator.showStyleEnding();
+          + this.loremIpsum + this.contestGenerator.showStyleEnding();
+  }
+
+  getMatch(){
+    let segment : Segment = new Segment();
+    segment.content = this.loremIpsum;
+    segment.showId = 0;
+    segment.championship = "WWE Universal";
+    segment.matchType = "Single Match";
+    segment.matchScheme = "??? vs ???";
+    segment.matchWorkers = "Unknownkyky_2|VVSS|Unknownkyky_2";
+    segment.matchWinner = "???";
+    segment.titleChange = true;
+
+    return this.matchGenerator['matchStyle' + this.format.matchFormat](segment, this.format);
   }
   
+  getAngle(){
+    let segment : Segment = new Segment();
+    segment.content = this.loremIpsum;
+    segment.showId = 0;
+    segment.shownTitle = "Titolo";
+
+    return this.angleGenerator['angleStyle' + this.format.angleFormat](segment, this.format);
+  }
+
+  getInfo(){
+    let segment : Segment = new Segment();
+    segment.content = this.loremIpsum;
+    segment.showId = 0;
+    segment.shownTitle = "Titolo";
+
+    return this.infoGenerator['infoStyle' + this.format.infographicFormat](segment, this.format);
+  }
+
   buildWorkerPicture(){
-    let infos: Array<any>;
+    let infos: Array<any> = [];
     if(this.dimension){
       infos.push('Little');
     }
@@ -106,7 +148,7 @@ export class CreateFormatPopupComponent implements OnInit {
       infos.push(this.angles)
     }
 
-    this.format.workerImageShape = infos.join(" ");
+    this.format.workerImageShape = infos.length > 0 ? infos.join(" ") : "";
   }
 
 

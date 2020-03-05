@@ -60,10 +60,11 @@
                 </div>
                 <div class="thirdRowCell cell">
                     <mat-checkbox [(ngModel)]="dimension" (ngModelChange)="buildWorkerPicture()">Immagine lottatore ridimensionata</mat-checkbox>
-                    <mat-checkbox [(ngModel)]="border">Immagine lottatore con il bordo</mat-checkbox>
+                    <mat-checkbox [(ngModel)]="border" (ngModelChange)="buildWorkerPicture()">Immagine lottatore con il bordo</mat-checkbox>
                 </div>
                 <div class="thirdRowCell cell">
-                    <mat-radio-group placeholder="Forma dell'immagine del lottatore" [(ngModel)]="angles">
+                    <mat-radio-group placeholder="Forma dell'immagine del lottatore" [(ngModel)]="angles" 
+                    (ngModelChange)="buildWorkerPicture()">
                         <mat-radio-button value="Acute">Nessuna modifica all'immagine</mat-radio-button><br>
                         <mat-radio-button value="Blunt">Immagine con angoli smussati</mat-radio-button><br>
                         <mat-radio-button value="Round">Immagine a forma circolare</mat-radio-button>
@@ -87,7 +88,7 @@
                     <button mat-button color="primary" (click)="close()">ANNULLA</button>
                     <button mat-button color="warn" matStepperPrevious>INDIETRO</button>
                     <button mat-raised-button color="primary" matStepperNext
-                    [disabled]="checkNext(0)">AVANTI</button>
+                    [disabled]="checkNext(1)">AVANTI</button>
                 </div>
                 <div class="fullRowCell" *ngIf="format.headerFormat" 
                     [innerHTML]="sanitizer.bypassSecurityTrustHtml(getHeader())">
@@ -95,16 +96,111 @@
             </div>
         </mat-step>
         <mat-step [completed]="matchGroup" label="Match">
-            
+            <div class="stepContainer">
+                <div class="halfRowCell cell">
+                    <mat-form-field class="formBase">
+                        <mat-select placeholder="Formattazione Match" class="formField" 
+                        [(ngModel)]="format.matchFormat">
+                            <mat-option></mat-option>
+                            <mat-option *ngFor="let item of matchStyles" [value]="item.value">
+                                {{item.label}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field> 
+                </div>
+
+                <div class="quarterRowCell cell">
+                    <mat-form-field class="formBase">
+                        <input matInput type="color" 
+                            placeholder="Colore principale dei Match" class="formField"
+                            [(ngModel)]="format.matchFirstBorderColor">
+                    </mat-form-field> 
+                </div>
+
+                <div class="quarterRowCell cell">
+                    <mat-form-field class="formBase">
+                        <input matInput type="color" 
+                            placeholder="Colore secondario dei Match" class="formField"
+                            [(ngModel)]="format.matchSecondBorderColor">
+                    </mat-form-field> 
+                </div>
+
+                <div class="buttonRow">
+                    <button mat-button color="primary" (click)="close()">ANNULLA</button>
+                    <button mat-button color="warn" matStepperPrevious>INDIETRO</button>
+                    <button mat-raised-button color="primary" matStepperNext
+                    [disabled]="checkNext(2)">AVANTI</button>
+                </div>
+                <div class="fullRowCell" *ngIf="format.matchFormat" 
+                    [innerHTML]="sanitizer.bypassSecurityTrustHtml(getMatch())">
+                </div>
+            </div>           
         </mat-step>
         <mat-step [completed]="angleGroup" label="Angle">
-            
+            <div class="stepContainer">
+                <div class="halfRowCell cell">
+                    <mat-form-field class="formBase">
+                        <mat-select placeholder="Formattazione Angle" class="formField" 
+                        [(ngModel)]="format.angleFormat">
+                            <mat-option></mat-option>
+                            <mat-option *ngFor="let item of angleStyles" [value]="item.value">
+                                {{item.label}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field> 
+                </div>
+
+                <div class="halfRowCell cell">
+                    <mat-form-field class="formBase">
+                        <input matInput type="color" 
+                            placeholder="Colore principale dell'angle" class="formField"
+                            [(ngModel)]="format.angleFirstBorderColor">
+                    </mat-form-field> 
+                </div>
+
+                <div class="buttonRow">
+                    <button mat-button color="primary" (click)="close()">ANNULLA</button>
+                    <button mat-button color="warn" matStepperPrevious>INDIETRO</button>
+                    <button mat-raised-button color="primary" matStepperNext
+                    [disabled]="checkNext(3)">AVANTI</button>
+                </div>
+                <div class="fullRowCell" *ngIf="format.angleFormat" 
+                    [innerHTML]="sanitizer.bypassSecurityTrustHtml(getAngle())">
+                </div>
+            </div>              
         </mat-step>
-        <mat-step [completed]="infoGroup" label="Infografiche">
-            
-        </mat-step>
-        <mat-step label="Conferma">
-            
+        <mat-step label="Infografiche">
+            <div class="stepContainer">
+                <div class="halfRowCell cell">
+                    <mat-form-field class="formBase">
+                        <mat-select placeholder="Formattazione Infografica" class="formField" 
+                        [(ngModel)]="format.infographicFormat">
+                            <mat-option></mat-option>
+                            <mat-option *ngFor="let item of angleStyles" [value]="item.value">
+                                {{item.label}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field> 
+                </div>
+
+                <div class="halfRowCell cell">
+                    <mat-form-field class="formBase">
+                        <input matInput type="color" 
+                            placeholder="Colore principale dell'infografica" class="formField"
+                            [(ngModel)]="format.infographicFirstBorderColor">
+                    </mat-form-field> 
+                </div>
+
+                <div class="buttonRow">
+                    <button mat-button color="primary" (click)="close()">ANNULLA</button>
+                    <button mat-button color="warn" matStepperPrevious>INDIETRO</button>
+                    <button mat-raised-button color="primary" (click)="createFormat()"
+                    [disabled]="checkNext(4)">CONFERMA</button>
+                </div>
+                <div class="fullRowCell" *ngIf="format.infographicFormat" 
+                    [innerHTML]="sanitizer.bypassSecurityTrustHtml(getInfo())">
+                </div>
+            </div>    
         </mat-step>
     </mat-horizontal-stepper>
 </div>

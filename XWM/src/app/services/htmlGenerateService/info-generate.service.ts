@@ -16,10 +16,10 @@ export class InfoGenerateService {
   
     let finalString = "";
     finalString = '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; text-align: left; ' + 
-                  'border: 0px;background: none; color: white; font-style: normal; text-align: justify;" align="left">' +
+                  'border: 0px;background: none; font-style: normal; text-align: justify;" align="left">' +
                   '<i>' + segment.shownTitle + '</i></div><div class=" InfoSegmentBorderOne" align="center" ' + 
                   'style="border-width: 0px; border-top-style: solid; background: none;border-radius: 20px; border-top-width: 2px; ' + 
-                  'border-top-color: ' + color + '; color: white; font-style: normal; text-align: justify; padding: 9px; ' + 
+                  'border-top-color: ' + color + '; font-style: normal; text-align: justify; padding: 9px; ' + 
                   'padding-bottom: 10px;">' +
                   segment.content + '</div></div>';
   
@@ -35,10 +35,10 @@ export class InfoGenerateService {
     let finalString = "";
   
     finalString = '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; text-align: left; ' +
-                  'border: 0px; background: none; color: white; font-style: normal; text-align: justify; " align="left">' + 
+                  'border: 0px; background: none; font-style: normal; text-align: justify; " align="left">' + 
                   '<i>' + segment.shownTitle + '</i></div><div class=" InfoSegmentBorderOne" align="center" ' + 
                   'style="border-width: 0px; border-top-style: solid; background: none; border-radius: 20px; border-top-width: 2px; ' + 
-                  'border-top-color: ' + color + '; color: white; font-style: normal; text-align: center; padding: 9px; ' + 
+                  'border-top-color: ' + color + '; font-style: normal; text-align: center; padding: 9px; ' + 
                   'padding-bottom: 10px;">' +
                   segment.content + '</div></div>';
   
@@ -54,10 +54,10 @@ export class InfoGenerateService {
     let finalString = "";
   
     finalString = '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto;text-align: left;border: 0px; ' +
-                  'background: none; color: white; font-style: normal; text-align: justify; " align="left">' + 
+                  'background: none; font-style: normal; text-align: justify; " align="left">' + 
                   '<i>' + segment.shownTitle + '</i></div><div class=" InfoSegmentBorderOne" align="center" ' + 
                   'style="border-width: 0px; border-style: solid; background: none; border-radius: 20px; border-width: 2px; ' + 
-                  'border-color: ' + color + '; color: white; font-style: normal; text-align: justify; padding: 9px; ' +
+                  'border-color: ' + color + '; font-style: normal; text-align: justify; padding: 9px; ' +
                   'padding-bottom: 10px;">' +
                   segment.content + '</div></div>';
   
@@ -73,10 +73,10 @@ export class InfoGenerateService {
     let finalString = "";
     
     finalString = '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; ' + 
-                  'text-align: left; border: 0px; background: none;color: white; font-style: normal; text-align: justify;" ' +
+                  'text-align: left; border: 0px; background: none;font-style: normal; text-align: justify;" ' +
                   'align="left"><i>' + segment.shownTitle + '</i></div><div class=" InfoSegmentBorderOne" align="center" ' + 
                   'style="border-width: 0px; border-style: solid; background: none;border-radius: 20px; border-width: 2px; ' + 
-                  'border-color: ' + color + '; color: white; font-style: normal; text-align: center; padding: 9px; ' + 
+                  'border-color: ' + color + '; font-style: normal; text-align: center; padding: 9px; ' + 
                   'padding-bottom: 10px;">' +
                   segment.content + '</div></div>';
     return finalString;
@@ -90,10 +90,10 @@ export class InfoGenerateService {
     let finalString = "";
   
     finalString = '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; ' + 
-                  'text-align: left; border: 0px; background: none;color: white; font-style: normal; text-align: justify;" ' + 
+                  'text-align: left; border: 0px; background: none;font-style: normal; text-align: justify;" ' + 
                   'align="left"><i>' + segment.shownTitle + '</i></div><div class="InfoSegmentBorderOne" align="center" ' + 
                   'style="border-width: 0px; border-style: solid; background: none; border-width: 2px; ' + 
-                  'border-color: ' + color + '; color: white; font-style: normal; text-align: justify; padding: 9px; ' + 
+                  'border-color: ' + color + '; font-style: normal; text-align: justify; padding: 9px; ' + 
                   'padding-bottom: 10px;">' +
                   segment.content + '</div></div>';
   
@@ -110,12 +110,12 @@ export class InfoGenerateService {
     finalString = '<div align="center" style="width: 100%;">';
     if(segment.shownTitle){
       finalString = finalString + '<div class="_top" style="font-size: 9px; height: auto;text-align: left; ' + 
-                    'border: 0px; background: none;color: white; font-style: normal; text-align: justify; " align="left">' + 
+                    'border: 0px; background: none;font-style: normal; text-align: justify; " align="left">' + 
                     '<i>' + segment.shownTitle + '</i></div>';
     }
   
     finalString = finalString + '<div class=" InfoSegmentBorderOne" align="center" style="border-width: 0px; border-style: solid; ' + 
-                  'background: none; border-width: 2px; border-color: ' + color + '; color: white; font-style: normal; ' + 
+                  'background: none; border-width: 2px; border-color: ' + color + '; font-style: normal; ' + 
                   'text-align: center; padding: 9px;padding-bottom: 10px;">' +
                   segment.content + '</div></div>';
   

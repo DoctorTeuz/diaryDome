@@ -20,7 +20,7 @@ export class MatchGenerateService {
 
     let finalString = "";
     finalString = "<div style='width: 100%; text-align: left; border-width: 0px; background-color: rgba(0,0,0,0); " +
-                  "color: white;'><b><u><font color='" + soldOutColor +"'>MATCH</font></u></b> - ";
+                  "'><b><u><font color='" + soldOutColor +"'>MATCH</font></u></b> - ";
   
     if(segment.championship){
       finalString = finalString + '<b>' + segment.championship + ' Championship</b><br>';
@@ -72,7 +72,7 @@ export class MatchGenerateService {
 		let finalString = "";
 		
 		finalString = finalString + '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; ' + 
-					'text-align: left; border: 0px;background: none;color: white; font-style: normal; text-align: justify;" ' + 
+					'text-align: left; border: 0px;background: none;font-style: normal; text-align: justify;" ' + 
 					'align="left"><b>';
 
 		if(segment.championship){
@@ -82,7 +82,7 @@ export class MatchGenerateService {
 		finalString = finalString + segment.matchType + "</b><br><i>" + segment.matchScheme + "</i></div>";
 
 		finalString = finalString + '<div class="" align="center" style="background-color:#3D3B3A; border-radius: 20px; border:none; ' + 
-					'color: white; font-style: normal; text-align: justify; padding: 9px;"><center>';
+					'font-style: normal; text-align: justify; padding: 9px;"><center>';
 
 		if(segment.championship){
 			finalString = finalString + this.GFService.findTitle(segment.championship, segment.showId);
@@ -99,7 +99,7 @@ export class MatchGenerateService {
 		finalString = finalString + segment.content + '</div>';
 
 		finalString = finalString + '<div class="_top" style="font-size: 9px; height: auto;text-align: right;border: 0px; ' + 
-						'background: none;color: white; font-style: normal" align="right"><i><b>';
+						'background: none;font-style: normal" align="right"><i><b>';
 		if(!segment.matchWinner){
 			finalString = finalString + 'No Contest</b></i>';
 		}
@@ -141,7 +141,7 @@ export class MatchGenerateService {
 
 		let finalString = "";
 		finalString = finalString + '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; ' + 
-					'height: auto;text-align: left;border: 0px;background: none;color: white; font-style: normal; ' + 
+					'height: auto;text-align: left;border: 0px;background: none;font-style: normal; ' + 
 					'text-align: justify; " align="left"><b>';
 
 		if(segment.championship){
@@ -150,7 +150,7 @@ export class MatchGenerateService {
 			
 		finalString = finalString + segment.matchType + "</b><br><i>" + segment.matchScheme + "</i></div>";
 
-		finalString = finalString + '<div class="" align="center" style="border-radius: 20px; border:none; color: white; ' + 
+		finalString = finalString + '<div class="" align="center" style="border-radius: 20px; border:none; ' + 
 					'font-style: normal; text-align: justify; padding: 9px;"><center>';
 
 		if(segment.championship){
@@ -166,7 +166,7 @@ export class MatchGenerateService {
 		finalString = finalString + '</center><br>';
 		finalString = finalString + segment.content + '</div>';
 		finalString = finalString + '<div class="_top" style="font-size: 9px; height: auto; text-align: right; border: 0px; ' + 
-					'background: none;color: white; font-style: normal" align="right"><i><b>';
+					'background: none;font-style: normal" align="right"><i><b>';
 		if(!segment.matchWinner){
 			finalString = finalString + 'No Contest</b></i>';
 		}
@@ -207,7 +207,7 @@ export class MatchGenerateService {
 
 		let finalString = "";
 		finalString = finalString + '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; ' +
-						'text-align: left;border: 0px;background: none;color: white; font-style: normal; text-align: justify;" ' +
+						'text-align: left;border: 0px;background: none;font-style: normal; text-align: justify;" ' +
 						'align="left"><b>';
 
 		if(segment.championship){
@@ -217,12 +217,12 @@ export class MatchGenerateService {
 		finalString = finalString + segment.matchType + "</b><br><i>" + segment.matchScheme + "</i></div>";
 
 		finalString = finalString + '<div class="" align="center" style="background-color:#3D3B3A; border-radius: 20px; border:none; ' + 
-					'color: white; font-style: normal; text-align: justify; padding: 9px;">';
+					'font-style: normal; text-align: justify; padding: 9px;">';
 
 		finalString = finalString + segment.content + '</div>';
 
 		finalString = finalString + '<div class="_top" style="font-size: 9px; height: auto;text-align: right;border: 0px; ' + 
-						'background: none;color: white; font-style: normal" align="right"><i><b>';
+						'background: none;font-style: normal" align="right"><i><b>';
 		if(!segment.matchWinner){
 			finalString = finalString + 'No Contest</b></i>';
 		}
@@ -265,7 +265,7 @@ export class MatchGenerateService {
 
 	let finalString = "";
 	finalString = finalString + '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; ' +
-					'text-align: left;border: 0px;background: none;color: white; font-style: normal; text-align: justify;" ' + 
+					'text-align: left;border: 0px;background: none;font-style: normal; text-align: justify;" ' + 
 					'align="left"><b>';
 
 	if(segment.championship){
@@ -274,13 +274,13 @@ export class MatchGenerateService {
 		
 	finalString = finalString + segment.matchType + "</b><br><i>" + segment.matchScheme + "</i></div>";
 
-	finalString = finalString + '<div class="" align="center" style="border-radius: 20px; border:none; color: white; ' + 
+	finalString = finalString + '<div class="" align="center" style="border-radius: 20px; border:none; ' + 
 					'font-style: normal; text-align: justify; padding: 9px;">';
 
 	finalString = finalString + segment.content + '</div>';
 
 	finalString = finalString + '<div class="_top" style="font-size: 9px; height: auto;text-align: right; border: 0px; ' + 
-				'background: none;color: white; font-style: normal" align="right"><i><b>';
+				'background: none;font-style: normal" align="right"><i><b>';
 	if(!segment.matchWinner){
 		finalString = finalString + 'No Contest</b></i>';
 	}
@@ -322,7 +322,7 @@ export class MatchGenerateService {
 
 		let finalString = "";
 		finalString = finalString + '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; '
-						'text-align: left;border: 0px;background: none;color: white; font-style: normal; text-align: justify;" ' + 
+						'text-align: left;border: 0px;background: none;font-style: normal; text-align: justify;" ' + 
 						'align="left"><b>';
 
 		if(segment.championship){
@@ -332,7 +332,7 @@ export class MatchGenerateService {
 		finalString = finalString + segment.matchType + "</b><br><i>" + segment.matchScheme + "</i></div>";
 
 		finalString = finalString + '<div class=" MatchSegmentBorderOne" align="center" style="background-color:#3D3B3A; ' + 
-						'border-radius: 20px; border:none; color: white; font-style: normal; text-align: justify; padding: 9px; ' + 
+						'border-radius: 20px; border:none; font-style: normal; text-align: justify; padding: 9px; ' + 
 						'border-style: solid; border-width: 2px; border-color: ' + color1 + ';"><center>';
 
 		if(segment.championship){
@@ -350,7 +350,7 @@ export class MatchGenerateService {
 		finalString = finalString + segment.content + '</div>';
 
 		finalString = finalString + '<div class="_top" style="font-size: 9px; height: auto;text-align: right;border: 0px; ' +
-						'background: none;color: white; font-style: normal" align="right"><i><b>';
+						'background: none;font-style: normal" align="right"><i><b>';
 		if(!segment.matchWinner){
 			finalString = finalString + 'No Contest</b></i>';
 		}
@@ -393,7 +393,7 @@ export class MatchGenerateService {
 
 		let finalString = "";
 		finalString = finalString + '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; ' +
-						'text-align: left;border: 0px;background: none;color: white; font-style: normal; text-align: justify;" ' + 
+						'text-align: left;border: 0px;background: none;font-style: normal; text-align: justify;" ' + 
 						'align="left"><b>';
 
 		if(segment.championship){
@@ -403,7 +403,7 @@ export class MatchGenerateService {
 		finalString = finalString + segment.matchType + "</b><br><i>" + segment.matchScheme + "</i></div>";
 
 		finalString = finalString + '<div class=" MatchSegmentBorderOne" align="center" style="border-radius: 20px; border:none; ' + 
-					'color: white; font-style: normal; text-align: justify; padding: 9px; border-style: solid; border-width: 2px; ' + 
+					'font-style: normal; text-align: justify; padding: 9px; border-style: solid; border-width: 2px; ' + 
 					'border-color: ' + color1 + ';"><center>';
 
 		if(segment.championship){
@@ -422,7 +422,7 @@ export class MatchGenerateService {
 		finalString = finalString + segment.content + '</div>';
 
 		finalString = finalString + '<div class="_top" style="font-size: 9px; height: auto;text-align: right; border: 0px; ' + 
-					'background: none;color: white; font-style: normal" align="right"><i><b>';
+					'background: none;font-style: normal" align="right"><i><b>';
 		if(!segment.matchWinner){
 			finalString = finalString + 'No Contest</b></i>';
 		}
@@ -462,7 +462,7 @@ export class MatchGenerateService {
 
 		let finalString = "";
 		finalString = finalString + '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; ' +
-					'text-align: left;border: 0px;background: none;color: white; font-style: normal; text-align: justify;" ' + 
+					'text-align: left;border: 0px;background: none;font-style: normal; text-align: justify;" ' + 
 					'align="left"><b>';
 
 		if(segment.championship){
@@ -472,13 +472,13 @@ export class MatchGenerateService {
 		finalString = finalString + segment.matchType + "</b><br><i>" + segment.matchScheme + "</i></div>";
 
 		finalString = finalString + '<div class=" MatchSegmentBorderOne" align="center" style="background-color:#3D3B3A; ' + 
-					'border-radius: 20px; border:none; color: white; font-style: normal; text-align: justify; padding: 9px; ' + 
+					'border-radius: 20px; border:none; font-style: normal; text-align: justify; padding: 9px; ' + 
 					'border-style: solid; border-width: 2px; border-color: ' + color1 + ';">';
 
 		finalString = finalString + segment.content + '</div>';
 
 		finalString = finalString + '<div class="_top" style="font-size: 9px; height: auto;text-align: right; border: 0px; ' + 
-					'background: none;color: white; font-style: normal" align="right"><i><b>';
+					'background: none;font-style: normal" align="right"><i><b>';
 		if(!segment.matchWinner){
 			finalString = finalString + 'No Contest</b></i>';
 		}
@@ -519,7 +519,7 @@ export class MatchGenerateService {
 
 		let finalString = "";
 		finalString = finalString + '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; ' + 
-						'text-align: left;border: 0px;background: none;color: white; font-style: normal; text-align: justify;" ' + 
+						'text-align: left;border: 0px;background: none;font-style: normal; text-align: justify;" ' + 
 						'align="left"><b>';
 
 		if(segment.championship){
@@ -529,13 +529,13 @@ export class MatchGenerateService {
 		finalString = finalString + segment.matchType + "</b><br><i>" + segment.matchScheme + "</i></div>";
 
 		finalString = finalString + '<div class=" MatchSegmentBorderOne" align="center" style="border-radius: 20px; border:none; ' + 
-						'color: white; font-style: normal; text-align: justify; padding: 9px; border-style: solid; ' + 
+						'font-style: normal; text-align: justify; padding: 9px; border-style: solid; ' + 
 						'border-width: 2px; border-color: ' + color1 + ';">';
 
 		finalString = finalString + segment.content + '</div>';
 
 		finalString = finalString + '<div class="_top" style="font-size: 9px; height: auto;text-align: right; border: 0px; ' + 
-						'background: none;color: white; font-style: normal" align="right"><i><b>';
+						'background: none;font-style: normal" align="right"><i><b>';
 		if(!segment.matchWinner){
 			finalString = finalString + 'No Contest</b></i>';
 		}
@@ -577,7 +577,7 @@ export class MatchGenerateService {
 
 		let finalString = "";
 		finalString = finalString + '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; ' + 
-						'text-align: left;border: 0px;background: none;color: white; font-style: normal; text-align: justify;" ' + 
+						'text-align: left;border: 0px;background: none;font-style: normal; text-align: justify;" ' + 
 						'align="left"><b>';
 
 		if(segment.championship){
@@ -587,10 +587,10 @@ export class MatchGenerateService {
 		finalString = finalString + segment.matchType + "</b><br><i>" + segment.matchScheme + "</i></div>";
 
 		finalString = finalString + '<div class=" MatchSegmentBorderOne" align="center" style="background-color:#3D3B3A; ' + 
-					'border-radius: 20px; border:none; color: white; font-style: normal; text-align: justify; padding: 9px; ' + 
+					'border-radius: 20px; border:none; font-style: normal; text-align: justify; padding: 9px; ' + 
 					'border-style: solid; border-width: 2px; border-color: ' + color1 + ';">';
 
-		finalString = finalString + '<div class=" MatchSegmentBorderTwo" align="center" style="border-radius: 20px; color: white; ' + 
+		finalString = finalString + '<div class=" MatchSegmentBorderTwo" align="center" style="border-radius: 20px; ' + 
 						'font-style: normal; text-align: justify; padding: 9px; border-style: solid; border-width: 2px; ' + 
 						'border-color: ' + color2 + '; margin-left: 30px; margin-right: 30px;"><center>';
 
@@ -608,7 +608,7 @@ export class MatchGenerateService {
 		finalString = finalString + segment.content + '</div>';
 
 		finalString = finalString + '<div class="_top" style="font-size: 9px; height: auto; text-align: right; border: 0px; ' + 
-						'background: none;color: white; font-style: normal" align="right"><i><b>';
+						'background: none;font-style: normal" align="right"><i><b>';
 		if(!segment.matchWinner){
 			finalString = finalString + 'No Contest</b></i>';
 		}
@@ -650,7 +650,7 @@ export class MatchGenerateService {
 
 		let finalString = "";
 		finalString = finalString + '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; ' +
-						'text-align: left;border: 0px;background: none;color: white; font-style: normal; text-align: justify;" ' + 
+						'text-align: left;border: 0px;background: none;font-style: normal; text-align: justify;" ' + 
 						'align="left"><b>';
 
 		if(segment.championship){
@@ -660,10 +660,10 @@ export class MatchGenerateService {
 		finalString = finalString + segment.matchType + "</b><br><i>" + segment.matchScheme + "</i></div>";
 
 		finalString = finalString + '<div class=" MatchSegmentBorderOne" align="center" style="border-radius: 20px; border:none; ' + 
-						'color: white; font-style: normal; text-align: justify; padding: 9px; border-style: solid; border-width: 2px; ' + 
+						'font-style: normal; text-align: justify; padding: 9px; border-style: solid; border-width: 2px; ' + 
 						'border-color: ' + color1 + ';">';
 
-		finalString = finalString + '<div class=" MatchSegmentBorderTwo" align="center" style="border-radius: 20px; color: white; ' +
+		finalString = finalString + '<div class=" MatchSegmentBorderTwo" align="center" style="border-radius: 20px; ' +
 						'font-style: normal; text-align: justify; padding: 9px; border-style: solid; border-width: 2px; ' + 
 						'border-color: ' + color2 + '; margin-left: 30px; margin-right: 30px;"><center>';
 
@@ -681,7 +681,7 @@ export class MatchGenerateService {
 		finalString = finalString + segment.content + '</div>';
 
 		finalString = finalString + '<div class="_top" style="font-size: 9px; height: auto;text-align: right;border: 0px; ' + 
-						'background: none;color: white; font-style: normal" align="right"><i><b>';
+						'background: none;font-style: normal" align="right"><i><b>';
 		if(!segment.matchWinner){
 			finalString = finalString + 'No Contest</b></i>';
 		}
@@ -723,7 +723,7 @@ export class MatchGenerateService {
 
 		let finalString = "";
 		finalString = finalString + '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; ' +
-						'text-align: left;border: 0px;background: none;color: white; font-style: normal; ' + 
+						'text-align: left;border: 0px;background: none;font-style: normal; ' + 
 						'text-align: justify; " align="left"><b>';
 
 		if(segment.championship){
@@ -733,9 +733,9 @@ export class MatchGenerateService {
 		finalString = finalString + segment.matchType + "</b><br><i>" + segment.matchScheme + "</i></div>";
 
 		finalString = finalString + '<div class=" MatchSegmentBorderOne" align="center" style="background-color:#3D3B3A; ' + 
-						'border-radius: 20px; border:none; color: white; font-style: normal; text-align: justify; padding: 9px;">';
+						'border-radius: 20px; border:none; font-style: normal; text-align: justify; padding: 9px;">';
 
-		finalString = finalString + '<div class=" MatchSegmentBorderTwo" align="center" style="border-radius: 20px; color: white; ' + 
+		finalString = finalString + '<div class=" MatchSegmentBorderTwo" align="center" style="border-radius: 20px; ' + 
 						'font-style: normal; text-align: justify; padding: 9px; border-style: solid; ' + 
 						'border-width: 2px; border-color: ' + color2 + '; margin-left: 20px; margin-right: 20px;"><center>';
 
@@ -753,7 +753,7 @@ export class MatchGenerateService {
 		finalString = finalString + segment.content + '</div>';
 
 		finalString = finalString + '<div class="_top" style="font-size: 9px; height: auto;text-align: right;border: 0px; ' + 
-						'background: none;color: white; font-style: normal" align="right"><i><b>';
+						'background: none;font-style: normal" align="right"><i><b>';
 		if(!segment.matchWinner){
 			finalString = finalString + 'No Contest</b></i>';
 		}
@@ -795,7 +795,7 @@ export class MatchGenerateService {
 
 		let finalString = "";
 		finalString = finalString + '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; ' + 
-						'height: auto;text-align: left;border: 0px;background: none;color: white; font-style: normal; ' + 
+						'height: auto;text-align: left;border: 0px;background: none;font-style: normal; ' + 
 						'text-align: justify; " align="left"><b>';
 
 		if(segment.championship){
@@ -805,9 +805,9 @@ export class MatchGenerateService {
 		finalString = finalString + segment.matchType + "</b><br><i>" + segment.matchScheme + "</i></div>";
 
 		finalString = finalString + '<div class=" MatchSegmentBorderOne" align="center" style="border-radius: 20px; border:none; ' + 
-					'color: white; font-style: normal; text-align: justify; padding: 9px;">';
+					'font-style: normal; text-align: justify; padding: 9px;">';
 
-		finalString = finalString + '<div class=" MatchSegmentBorderTwo" align="center" style="border-radius: 20px; color: white; ' + 
+		finalString = finalString + '<div class=" MatchSegmentBorderTwo" align="center" style="border-radius: 20px; ' + 
 						'font-style: normal; text-align: justify; padding: 9px; border-style: solid; border-width: 2px; ' + 
 						'border-color: ' + color2 + '; margin-left: 20px; margin-right: 20px;"><center>';
 
@@ -825,7 +825,7 @@ export class MatchGenerateService {
 		finalString = finalString + segment.content + '</div>';
 
 		finalString = finalString + '<div class="_top" style="font-size: 9px; height: auto;text-align: right;border: 0px; ' + 
-							'background: none;color: white; font-style: normal" align="right"><i><b>';
+							'background: none;font-style: normal" align="right"><i><b>';
 		if(!segment.matchWinner){
 			finalString = finalString + 'No Contest</b></i>';
 		}
@@ -1020,7 +1020,7 @@ export class MatchGenerateService {
 
 		let finalString = "";
 		finalString = finalString + '<div align="center" style="width: 100%;"><div class="_top" style="font-size: 9px; height: auto; ' +
-						'text-align: left;border: 0px;background: none;color: white; font-style: normal; text-align: justify;" ' +
+						'text-align: left;border: 0px;background: none;font-style: normal; text-align: justify;" ' +
 						'align="left"><b>';
 
 		if(segment.championship){
@@ -1046,7 +1046,7 @@ export class MatchGenerateService {
 		finalString = finalString + segment.content + '</div>';
 
 		finalString = finalString + '<div class="_top" style="font-size: 9px; height: auto;text-align: right;border: 0px; ' + 
-						'background: none;color: white; font-style: normal" align="right"><i><b>';
+						'background: none;font-style: normal" align="right"><i><b>';
 		if(!segment.matchWinner){
 			finalString = finalString + 'No Contest</b></i>';
 		}

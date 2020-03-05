@@ -290,8 +290,11 @@ export class GeneralFunctionService {
             width = 'width:75px;';
             widthVVSS = 'style= "height: 70px;"';
         }
+        else if(show == 0){
+            widthVVSS = 'style= "height: 140px;"';
+        }
         if(style.indexOf('Border') > -1){
-            border = 'border-color: ' + showColor + '; border-width: 1px;';
+            border = 'border-color: ' + showColor + ';border-width: 1px;border-style: solid;';
         }
         if(style.indexOf('Blunt') > -1){
             shape = 'border-radius: 20px;';
@@ -303,7 +306,7 @@ export class GeneralFunctionService {
         let targetDir = "";
         if(worker == "VVSS"){
             if(show == 0){
-                return '<img src="' + this.createShowImagePath(1, 'VS', 'jpg', 'Loghi') + '" ' + widthVVSS + '>';
+                return '<img src="' + this.createShowImagePath(1, 'VS', 'png', 'Loghi') + '" ' + widthVVSS + '>';
             }
             else{
                 if(this.user.VSurl){

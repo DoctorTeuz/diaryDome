@@ -202,7 +202,7 @@ export class ShowComponent implements OnInit, OnDestroy {
     if(!isAnteprima && spoilerText){
       completeShow = completeShow + '[SPOILER]' + spoilerText + '[/SPOILER]';
     }
-    return completeShow;
+    return this.GFService.richText(this.GFService.clearText(completeShow));
   }
 
   segmentEdit(segment, Event){
