@@ -15,8 +15,17 @@
     width: 100%;
     display: flex;
     flex-flow: row wrap;
+    .cell{
+        min-height: 50px;
+    }
     .halfRowCell{
         width: 50%;
+    }
+    .quarterRowCell{
+        width: 25%;
+    }
+    .thirdRowCell{
+        width: 33%;
     }
     .fullRowCell{
         width: 100%;

@@ -27,6 +27,10 @@ export class CreateFormatPopupComponent implements OnInit {
 
   baseGroup = false;
 
+  angles = "Acute";
+  dimension = false;
+  border = false;
+
 
   constructor(    
       public GFService: GeneralFunctionService,
@@ -42,6 +46,7 @@ export class CreateFormatPopupComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.format.soldOutColor = '#FF0000';
   }
 
   fileUploaded(event) { // called each time file input changes
@@ -89,5 +94,23 @@ export class CreateFormatPopupComponent implements OnInit {
           + loremIpsum + this.contestGenerator.showStyleEnding();
   }
   
+  buildWorkerPicture(){
+    let infos: Array<any>;
+    if(this.dimension){
+      infos.push('Little');
+    }
+    if(this.border){
+      infos.push('Border')
+    }
+    if(this.angles != 'Acute'){
+      infos.push(this.angles)
+    }
 
+    this.format.workerImageShape = infos.join(" ");
+  }
+
+
+  close(){
+    this.dialogRef.close()
+  }
 }
