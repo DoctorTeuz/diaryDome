@@ -43,9 +43,17 @@ if($method != 'OPTIONS'){
 				}
 				echo json_encode($response);
 				break;
-		case 'craeteNewFormat':
+		case 'createFormat':
 			try {
 				$response = createNewFormat();
+			} catch (Throwable $th) {
+				$response = $th;
+			}
+			echo json_encode($response);
+			break;
+		case 'uploadLogo':
+			try {
+				$response = uploadLogo();
 			} catch (Throwable $th) {
 				$response = $th;
 			}
@@ -132,13 +140,71 @@ function active($active){
 	}
 }
 
-createNewFormat(){
+function createNewFormat(){
 	$db=new Connection();
 	$db->connetti();
 	$response = new ResponseObject();
 
 	$postdata = file_get_contents("php://input");
 	$request = json_decode($postdata);
+
+	$frmt = new Format($db);
+	$userId = $request->userId;
+	$format = $request->format;
+	$last_ID = $frmt->createFormat($format, $userId);
+	if($frmt->createFormatBridge($userId, $last_ID)){
+		$response = getFormats($request->userId);
+		return $response;
+	}else{
+		$response = new ResponseObject();
+		$response->status = 500;
+		$response->body = 'Internal Server Error';
+		return $response;
+	}
+}
+
+function uploadLogo(){
+
+	$name = var_dump($_FILES);
+	echo $name;
+	/* $showLogoName = $_FILES["showLogo"]["name"];
+	$showLogoName = str_replace(" ", "_", $showLogoName);
+	$showLogoName = str_replace("'", "", $showLogoName);
+	$targetFile = $targetDir.basename($showLogoName);
+	$imageFileType = strtolower(pathinfo($targetFile,PATHINFO_EXTENSION));
+	move_uploaded_file($_FILES["showLogo"]["tmp_name"], $targetFile);
+
+	if($logo){
+		$targetDir = '../../../../DiaryDome/'.$userId."/Loghi/";
+		$showLogoName = $format->Name;
+		$showLogoName = str_replace(" ", "_", $showLogoName);
+		$showLogoName = str_replace("'", "", $showLogoName);
+
+		$files = glob($targetDir.$showLogoName.".*");
+
+		if(count($files)!=0){
+			$image = $files;
+			if(count($image)>0){
+				for($k = 2; $k<100; $k++){
+					$files = glob($targetDir.$showLogoName."_".$k.".*");
+					if(count($files)>0){
+					}
+					else{
+						$showLogoName = $showLogoName."_".$k;
+						break;
+					}
+				}
+			}
+		}
+		$splitImage=explode(".",$logo->name);
+		$imageFileType = $splitImage[count($splitImage)-1];
+		$targetFile = $targetDir.basename($showLogoName).'.'.$imageFileType;
+		move_uploaded_file($logo->name, $targetFile);
+		$picture = str_replace($targetDir, "",$targetFile);
+	}
+	else{
+		$picture = $format->Picture;
+	} */
 }
 
 ?>
