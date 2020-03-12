@@ -378,7 +378,7 @@ export class GeneralFunctionService {
         dataParsed = dataParsed.split("&Igrave;").join('Ì');
         dataParsed = dataParsed.split("&Ograve;").join('Ò');
         dataParsed = dataParsed.split("&Ugrave;").join('Ù');
-        dataParsed = dataParsed.split("''").join("'");
+        dataParsed = dataParsed.split('"').join("'");
         dataParsed = dataParsed.split("<br>").join("\n");
         dataParsed = dataParsed.split("<br/>").join("\n");
         dataParsed = dataParsed.split("<br />").join("\n");
@@ -401,7 +401,7 @@ export class GeneralFunctionService {
         dataParsed = dataParsed.split('Ì').join("&Igrave;");
         dataParsed = dataParsed.split('Ò').join("&Ograve;");
         dataParsed = dataParsed.split('Ù').join("&Ugrave;");
-        dataParsed = dataParsed.split("'").join("''");
+        /* dataParsed = dataParsed.split("'").join('"'); */
         dataParsed = dataParsed.split("\n").join("<br>");
 
         return dataParsed;

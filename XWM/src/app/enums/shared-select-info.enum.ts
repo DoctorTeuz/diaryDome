@@ -98,7 +98,7 @@ export const ANGLE_TYPE = [
     },
     {
         value: 5,
-        label: "Stile 4",
+        label: "Stile 5",
         description: 'Il segmento è contornato da un bordo colorato e stondato. Il contenuto è centrato. In alto a sinistra è presente una tag per indicare il titolo del segmento o la zona dove viene svolto.'
     },
     {
