@@ -11,6 +11,8 @@ import { ContestGenerateService } from 'src/app/services/htmlGenerateService/con
 import { Show } from 'src/app/objects/show';
 import { Segment } from 'src/app/objects/segment';
 import { redo } from '@syncfusion/ej2-angular-richtexteditor';
+import { FormatService } from 'src/app/services/format.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'diaryDome-create-format-popup',
@@ -31,7 +33,9 @@ export class CreateFormatPopupComponent implements OnInit {
   baseGroup: boolean = false;
   contextGroup: boolean = false;
   matchGroup: boolean = false;
-
+  angleGroup: boolean = false;
+  infoGroup: boolean = false;
+  formData:FormData;
 
   loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
   angles = "Acute";
@@ -48,8 +52,10 @@ export class CreateFormatPopupComponent implements OnInit {
       public infoGenerator: InfoGenerateService,
       public matchGenerator: MatchGenerateService,
       public contestGenerator: ContestGenerateService,
+      public formatService: FormatService,
     ) {
       dialogRef.disableClose = true;
+      this.formData = new FormData();
   }
 
   ngOnInit() {
@@ -57,15 +63,18 @@ export class CreateFormatPopupComponent implements OnInit {
   }
 
   fileUploaded(event) { // called each time file input changes
-    if (event.target.files && event.target.files[0]) {
+    let fileList: FileList = event.target.files;
+    if (fileList && fileList[0]) {
+      let file: File = fileList[0];
       var reader = new FileReader();
 
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
-      this.format.File = event.target.files[0];
+      reader.readAsDataURL(fileList[0]); // read file as data url
+      this.format.File = file;
       reader.onload = (ev) => { // called once readAsDataURL is completed
         this.format.Picture = ev.target['result'];
       }
     }
+        
   }
 
   checkNext(page){
@@ -79,6 +88,12 @@ export class CreateFormatPopupComponent implements OnInit {
       case 2:
         this.matchGroup = (this.format.matchFormat);
         return !this.matchGroup;
+      case 3:
+        this.angleGroup = (this.format.angleFormat);
+        return !this.angleGroup;
+      case 4:
+        this.infoGroup = (this.format.infographicFormat);
+        return !this.infoGroup;
       default:
         break;
     }
@@ -151,6 +166,20 @@ export class CreateFormatPopupComponent implements OnInit {
     this.format.workerImageShape = infos.length > 0 ? infos.join(" ") : "";
   }
 
+  createFormat(){
+    this.format.Label = this.format.Name;
+    const formData = new FormData();
+    formData.append('formatLogo', this.format.File);
+
+/*     this.formatService.createFormat(this.format).pipe(
+        switchMap( res => this.formatService.uploadLogo(this.formData, headers))
+      ).subscribe(
+      res => {
+        console.log(res)
+      }
+    ) */
+    this.formatService.uploadLogo(formData).subscribe()
+  }
 
   close(){
     this.dialogRef.close()

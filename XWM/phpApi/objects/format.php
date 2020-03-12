@@ -52,7 +52,52 @@ class Format{
 		}
 	}
 
-	
+	function createFormat($format, $userId){
+		
+		$sql ="INSERT INTO 
+			`WWETeuz_Format`(`Name`, `Label`, `EventType`, `DayWeek`, `Picture`, `soldOutColor`, `angleFirstBorderColor`, `angleSecondBorderColor`, 
+			`matchFirstBorderColor`, `matchSecondBorderColor`, `infographicFirstBorderColor`, `infographicSecondBorderColor`, `workerImageShape`, 
+			`headerFormat`, `angleFormat`, `matchFormat`, `infographicFormat`) 
+			VALUES (
+				'$format->Name',
+				'$format->Label',
+				'$format->EventType',
+				'$format->DayWeek',
+				'',
+				'$format->soldOutColor',
+				'$format->angleFirstBorderColor',
+				'$format->angleSecondBorderColor',
+				'$format->matchFirstBorderColor',
+				'$format->matchSecondBorderColor',
+				'$format->infographicFirstBorderColor',
+				'$format->infographicSecondBorderColor',
+				'$format->workerImageShape',
+				'$format->headerFormat',
+				'$format->angleFormat',
+				'$format->matchFormat',
+				'$format->infographicFormat'
+				)";
+				
+		$stmt = $this->conn->query($sql);
+		$last_Id = mysql_insert_id();
+		return $last_Id;
+	}
+
+	function createFormatBridge($userId, $last_id){
+		try {
+			$sql ="INSERT INTO 
+					`WWETeuz_BridgeUserFormat` 
+						(`userId`, `formatId`) 
+					VALUES 
+						('$userId','$last_id')";
+						
+			$stmt = $this->conn->query($sql);
+			return true;
+		} catch (\Throwable $th) {
+			return false;
+		}
+		
+	}
 }
 
 ?>

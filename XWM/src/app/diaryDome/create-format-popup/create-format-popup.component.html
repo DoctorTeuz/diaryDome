@@ -1,6 +1,6 @@
 <diaryDome-popup-top-bar [title]="'Crea Nuovo Format'" [dialogRef]="dialogRef"></diaryDome-popup-top-bar>
 <div class="wrapper">
-    <mat-horizontal-stepper [linear]="false" #stepper class="allWidth">
+    <mat-horizontal-stepper [linear]="true" #stepper class="allWidth">
         <mat-step [completed]="baseGroup" label="Informazioni Base">
             <div class="stepContainer">
                 <div class="halfRowCell cell">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="halfRowCell cell">
                     <button mat-raised-button color="primary" (click)="fileToUpload.click()">Scegli il logo dello show</button>
-                    <input hidden type="file" #fileToUpload id="formatLogo"
+                    <input hidden type="file" #fileToUpload id="formatLogo" name="formatLogo"
                         (change)="fileUploaded($event)">
                 </div>
                 <div class="buttonRow">
