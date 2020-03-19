@@ -1,36 +1,38 @@
 Valle d'Aosta
 
-A)
+In mezzo alle alpi
+Dora Baltea
+La parte meridionale del territorio è occupata dal Parco Nazionale del Gran Paradiso (Parc National du Grand-Paradis), il primo parco nazionale italiano istituito nel 1922, per salvaguardare alcune specie di flora e fauna alpina in via d'estinzione come stambecchi, camosci, marmotte ed ermellini. Il Parco naturale del Mont Avic (Parc naturel du Mont-Avic) è il primo parco regionale della Valle d'Aosta e si estende tra il vallone di Champdepraz e la Valle di Champorcher.
+Nocciolo
+Stambecco
+
+A) Skiddo
 B)
 C)
 
 Piemonte
 
-A)
+Fiume Po
+
+A) Yamask
 B)
 C)
 
 Lombardia
 
 A)
-B)
+B) Deerling
 C)
 
 Trentino - Alto Adige
 
-A)
-B)
-C)
-
-Piemonte
-
-A)
+A) 
 B)
 C)
 
 Veneto
 
-A)
+A) Ducklett
 B)
 C)
 
@@ -42,7 +44,7 @@ C)
 
 Liguria
 
-A)
+A) Wingull
 B)
 C)
 
@@ -72,8 +74,8 @@ C)
 
 Lazio
 
-A)
-B)
+A) Karrablast
+B) Poochyena
 C)
 
 Abruzzo
@@ -90,9 +92,9 @@ C)
 
 Campania
 
-A)
-B)
-C)
+A) Horsea
+B) Trubbish
+C) 
 
 Puglia
 
@@ -114,13 +116,13 @@ C)
 
 Sicilia
 
-A)
+A) Numel
 B)
 C)
 
 Sardegna
 
-A)
+A) Mareep
 B)
 C)
 
