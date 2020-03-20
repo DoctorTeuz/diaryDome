@@ -1,128 +1,120 @@
 Valle d'Aosta
 
-In mezzo alle alpi
-Dora Baltea
-La parte meridionale del territorio è occupata dal Parco Nazionale del Gran Paradiso (Parc National du Grand-Paradis), il primo parco nazionale italiano istituito nel 1922, per salvaguardare alcune specie di flora e fauna alpina in via d'estinzione come stambecchi, camosci, marmotte ed ermellini. Il Parco naturale del Mont Avic (Parc naturel du Mont-Avic) è il primo parco regionale della Valle d'Aosta e si estende tra il vallone di Champdepraz e la Valle di Champorcher.
-Nocciolo
-Stambecco
-
-A) Skiddo
-B)
+A) Skiddo (Grass)
+B) Bergmite (Ice)
 C)
 
 Piemonte
 
-Fiume Po
-
-A) Yamask
-B)
+A) Yamask (Ghost)
+B) Klink (Steel)
 C)
 
 Lombardia
 
-A)
-B) Deerling
-C)
+A) Timburr (Fight)
+B) Deerling (Normal/Grass)
+C) Magnemite (Electric/Steel)
 
 Trentino - Alto Adige
 
-A) 
-B)
-C)
+A) Sunkern (Grass)
+B) Cubchoo (Ice)
+C) 
 
 Veneto
 
-A) Ducklett
+A) Litleo (Fire)
 B)
 C)
 
 Friuli - Venezia Giulia
 
-A)
+A) Poochyena (Dark)
 B)
 C)
 
 Liguria
 
-A) Wingull
+A) Wingull (Water/Flying)
 B)
 C)
 
 Emilia Romagna
 
-A)
-B)
+A) Ducklett (Water/Flying)
+B) Dwebble (Bug/Rock)
 C)
 
 Toscana
 
-A)
-B)
+A) Roggenrola (Rock)
+B) Mudbray (Ground)
 C)
 
 Umbria
 
-A)
+A) Skorupi (Poison/Bug)
 B)
 C)
 
 Marche
 
-A)
+A) Inkay (Dark/Psychic)
 B)
 C)
 
 Lazio
 
-A) Karrablast
-B) Poochyena
+A) Karrablast (Bug)
+B) Rockruff (Rock)
 C)
 
 Abruzzo
 
-A)
-B)
-C)
+A) Combee (Bug/Flying)
+B) Fletchling (Normal/Flying)
+C) 
 
 Molise
 
-A)
-B)
+A) Chingling (Psychic)
+B) Helioptile (Electric/Normal)
 C)
 
 Campania
 
-A) Horsea
-B) Trubbish
+A) Horsea (Water)
+B) Trubbish (Poison)
 C) 
 
 Puglia
 
-A)
-B)
+A) Meowth (Normal)
+B) 
 C)
 
 Basilicata
 
-A)
-B)
-C)
+A) Geodude (Rock/Ground)
+B) Slakoth (Normal)
+C) Finneon (Water)
 
 Calabria
 
-A)
-B)
+A) Munchlax (Normal)
+B) Vanillite (Ice)
 C)
 
 Sicilia
 
-A) Numel
-B)
+A) Numel (Fire/Ground)
+B) Murkrow (Dark/Flying)
 C)
 
 Sardegna
 
-A) Mareep
+A) Mareep (Electric)
 B)
 C)
 
