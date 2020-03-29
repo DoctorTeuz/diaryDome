@@ -1,40 +1,39 @@
+Palestra delle Contrade (Siena, Classe C)
+
+A Siena c'è la palestra più peculiare della nazione, data la situazione di tensione interna alla città a causa degli odi tra contrade e la voglia di superiorità ogni giorno viene selezionata una contrada a caso per difendere l'onore della palestra Senese. Affisso fuori dalla palestra c'è indicato, giorno per giorno, le ultime tre contrade ad aver difeso la palestra. In questo modo si da la possibilità agli allenatori di sapere cosa non possono incontrare nella giornata odierna. Secondo i bisbigli di corte che ti capitò di sentire e di leggere è meglio girare al largo dalla Contrada del Charizard, dalla contrada del Blastoise e da quella del Hydreigon. Più facili, si dice, quella del Girafarig e quella del Pikachu.
+
+Aquila -> Braviary
+Bruco -> Wurmple
+Chiocciola -> Magcargo
+Civetta -> Noctowl
+Drago -> Hydreigon
+Giraffa -> Girafarig
+Istrice -> Pikachu
+Leocorno -> Rapidash
+Lupa -> Poochyena
+Nicchio -> Shellder
+Oca -> Ducklett
+Onda -> Barboach
+Pantera -> Torracat
+Selva -> Trevenant
+Tartuca -> Blastoise
+Torre -> Charizard
+Valdimontone -> Gogoat
+
+
+Palestra De' Medici (Firenze, Classe A)
+
+A Firenze viene ospitata la palestra De' Medici, dove il capopalestra sfrutta la sua ampia conoscenza dei pokemon terra per difendere il proprio onore e le proprie medaglie. Rhyperior guida la carica in questa palestra.
 
 
 
 
+Cava de' Tirreni (Carrara, Classe B)
+
+A Carrara, nella cava del marmo bianco, è situata la palestra di Cava De' Tirreno. L'allenatore da affrontare e da battere è un grande studioso dei pokemon di tipo Roccia. Organizza lotte in doppio, dove ogni allenatore ha la possibilità di selezionare solo quattro dei pokemon della propria squadra.
 
 
 
+Padoglione Nord (Lucca, Classe C)
 
-Firenze -> Gigliopoli
-Matera (sassi)
-Avellino
-Benevento
-Caserta
-Ferrara
-Carrara -> Cava de' Marmi
-Ravenna
-Trieste
-Savona
-Bergamo
-Sondrio
-Campobasso
-Ascoli Piceno
-Verbano-Cusio-Ossola
-Barletta-Andria-Trani
-Taranto
-Agrigento
-Lucca
-Siena
-Bolzano
-Aosta
-Vicenza
-Verona
-Bologna
-Cagliari
-Catania
-Genova
-Milano
-Napoli
-Roma
-Venezia
+Nel padiglione Nord di Lucca il capopalestra affronta l'intera squadra degli avversari con i propri pokemon regionali. A fare da guida alla sua squadra c'è un dolcissimo Sandslash del Trentino.
