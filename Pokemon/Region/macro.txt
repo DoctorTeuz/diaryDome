@@ -1,0 +1,8 @@
+[?{Zona di Cattura&#124;
+Bosco&#44;Bosco&#124;
+Campo Fiorito&#44;Campo-Fiorito&#124;
+Deserto di Accona&#44;Deserto-di-Accona&#124;
+Isola del Giglio&#44;Isola-del-Giglio&#124;
+Maremma&#44;Maremma&#124;
+Padule di Fuceccio&#44;Padule-di-Fucecchio&#124;
+Passo della Pradarena&#44;Passo-della-Pradarena&#125;]
