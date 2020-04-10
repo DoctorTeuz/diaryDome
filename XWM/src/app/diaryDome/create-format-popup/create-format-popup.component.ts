@@ -13,6 +13,7 @@ import { Segment } from 'src/app/objects/segment';
 import { redo } from '@syncfusion/ej2-angular-richtexteditor';
 import { FormatService } from 'src/app/services/format.service';
 import { switchMap } from 'rxjs/operators';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'diaryDome-create-format-popup',
@@ -41,6 +42,7 @@ export class CreateFormatPopupComponent implements OnInit {
   angles = "Acute";
   dimension = false;
   border = false;
+  picture;
 
 
   constructor(    
@@ -62,20 +64,23 @@ export class CreateFormatPopupComponent implements OnInit {
 
   }
 
-  fileUploaded(event) { // called each time file input changes
-    let fileList: FileList = event.target.files;
-    if (fileList && fileList[0]) {
-      let file: File = fileList[0];
-      var reader = new FileReader();
-
-      reader.readAsDataURL(fileList[0]); // read file as data url
-      this.format.File = file;
-      reader.onload = (ev) => { // called once readAsDataURL is completed
-        this.format.Picture = ev.target['result'];
-      }
+  fileUploaded(event){
+    let reader = new FileReader();
+    if(event.target.files && event.target.files.length > 0) {
+        let file:File = event.target.files[0];
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          this.format.File = {
+                fileName: this.format.Name,
+                fileType: file.type,
+                fileExtension: file.name.slice((file.name.lastIndexOf(".") - 1 >>> 0) + 2),
+                value: reader.result.toString().split(',')[1],
+            };
+            this.picture = reader.result;
+            /* this.profilapi.updateProfil(fielToUpload).subscribe(res => // do whatever you want here); */
+        };
     }
-        
-  }
+}
 
   checkNext(page){
     switch (page) {
@@ -167,6 +172,7 @@ export class CreateFormatPopupComponent implements OnInit {
   }
 
   createFormat(){
+    this.format.File.fileName = this.format.Name;
     this.format.Label = this.format.Name;
     const formData = new FormData();
     formData.append('formatLogo', this.format.File);
@@ -178,7 +184,23 @@ export class CreateFormatPopupComponent implements OnInit {
         console.log(res)
       }
     ) */
-    this.formatService.uploadLogo(formData).subscribe()
+    this.formatService.uploadLogo(this.format.File).pipe(
+      switchMap((res: any) => {
+        if(res.body.imageFinalName){
+          this.format.Picture = res.body.imageFinalName;
+          return this.formatService.createFormat(this.format);
+        }
+        else{
+          return from('X');
+        }
+      })
+    ).subscribe(
+      res => {
+        if(res != 'X'){
+          this.close();
+        }
+      }
+    )
   }
 
   close(){
