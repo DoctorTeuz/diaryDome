@@ -49,9 +49,9 @@ export class FormatService {
   }
 
   uploadLogo(formData){
-    
+    formData.userId = this.GFService.user.ID.toString();
     let headers = new HttpHeaders();
-    headers.append('Content-Type', 'multipart/form-data');
+    headers.append('Content-Type', 'application/json');
     /* headers.append('Accept', 'application/json'); */
     let options = { headers: headers }
     return this.http.post(this.formatsPath + '/uploadLogo', formData, options);

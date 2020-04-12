@@ -1,11 +1,11 @@
-[?{Zona di Cattura&#124;
-Bosco&#44;Bosco&#124;
-Campo Fiorito&#44;Campo-Fiorito&#124;
-Deserto di Accona&#44;Deserto-di-Accona&#124;
-Isola del Giglio&#44;Isola-del-Giglio&#124;
-Maremma&#44;Maremma&#124;
-Padule di Fuceccio&#44;Padule-di-Fucecchio&#124;
-Passo della Pradarena&#44;Passo-della-Pradarena&#125;]
+?{Zona di Cattura&#124;
+Bosco&#44;si avventura nelle zone boschive alla ricerca di pokemon e trova un [[1t[Bosco&#93&#93&#93;&#124;
+Campo Fiorito&#44;raggiunge i prati fioriti della Toscana alla ricerca di pokemon e trova un [[1t[Campo-Fiorito&#93&#93&#93;&#124;
+Deserto di Accona&#44;si avventura nell'impervio Deserto di Accona alla ricerca di pokemon e trova un [[1t[Deserto-di-Accona&#93&#93&#93;&#124;
+Isola del Giglio&#44;va alla scoperta dell'Area Cattura dell'Isola del Giglio alla ricerca di pokemon e trova un [[1t[Isola-del-Giglio&#93&#93&#93;&#124;
+Maremma&#44;percorre le ampie praterie della Maremma alla ricerca di pokemon e trova un [[1t[Maremma&#93&#93&#93;&#124;
+Padule di Fuceccio&#44;visita le umide Padule di Fucecchio alla ricerca di pokemon e trova un [[1t[Padule-di-Fucecchio&#93&#93&#93;&#124;
+Passo della Pradarena&#44;raggiunge le impervie vette del Passo della Pradarena alla ricerca di pokemon e trova un [[1t[Passo-della-Pradarena&#93&#93&#93;&#125;
 
 ?{Pokeballs|
    Poke Ball, &{template:default&#125; {{name=**Tentativo di Cattura**&#125;&#125; {{*Poke Ball*=[[2d6>4]]&#125;&#125;|

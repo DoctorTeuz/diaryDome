@@ -63,7 +63,7 @@ class Format{
 				'$format->Label',
 				'$format->EventType',
 				'$format->DayWeek',
-				'',
+				'$format->Picture',
 				'$format->soldOutColor',
 				'$format->angleFirstBorderColor',
 				'$format->angleSecondBorderColor',
