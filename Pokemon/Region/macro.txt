@@ -6,3 +6,8 @@ Isola del Giglio&#44;Isola-del-Giglio&#124;
 Maremma&#44;Maremma&#124;
 Padule di Fuceccio&#44;Padule-di-Fucecchio&#124;
 Passo della Pradarena&#44;Passo-della-Pradarena&#125;]
+
+?{Pokeballs|
+   Poke Ball, &{template:default&#125; {{name=**Tentativo di Cattura**&#125;&#125; {{*Poke Ball*=[[2d6>4]]&#125;&#125;|
+   Mega Ball, &{template:default&#125; {{name=**Tentativo di Cattura**&#125;&#125; {{*Mega Ball*=[[4d6>4]]&#125;&#125;|
+   Ultra Ball,  &{template:default&#125; {{name=**Tentativo di Cattura**&#125;&#125; {{*Ultra Ball*=[[6d6>4]]&#125;&#125;}
