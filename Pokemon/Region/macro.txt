@@ -6,3 +6,8 @@ Isola del Giglio&#44;va alla scoperta dell'Area Cattura dell'Isola del Giglio al
 Maremma&#44;percorre le ampie praterie della Maremma alla ricerca di pokemon e trova un [[1t[Maremma&#93&#93&#93;&#124;
 Padule di Fuceccio&#44;visita le umide Padule di Fucecchio alla ricerca di pokemon e trova un [[1t[Padule-di-Fucecchio&#93&#93&#93;&#124;
 Passo della Pradarena&#44;raggiunge le impervie vette del Passo della Pradarena alla ricerca di pokemon e trova un [[1t[Passo-della-Pradarena&#93&#93&#93;&#125;
+
+?{Pokeballs|
+   Poke Ball, &{template:default&#125; {{name=**Tentativo di Cattura**&#125;&#125; {{*Poke Ball*=[[2d6>4]]&#125;&#125;|
+   Mega Ball, &{template:default&#125; {{name=**Tentativo di Cattura**&#125;&#125; {{*Mega Ball*=[[4d6>4]]&#125;&#125;|
+   Ultra Ball,  &{template:default&#125; {{name=**Tentativo di Cattura**&#125;&#125; {{*Ultra Ball*=[[6d6>4]]&#125;&#125;}
