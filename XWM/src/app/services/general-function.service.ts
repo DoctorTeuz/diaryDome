@@ -409,4 +409,27 @@ export class GeneralFunctionService {
 
         return dataParsed;
     }
+
+    richTextCode(text){
+        let dataParsed = text;
+        dataParsed = dataParsed.split('è').join("&egrave;");
+        dataParsed = dataParsed.split('à').join("&agrave;");
+        dataParsed = dataParsed.split('ì').join("&igrave;");
+        dataParsed = dataParsed.split('ù').join("&ugrave;");
+        dataParsed = dataParsed.split('ò').join("&ograve;");
+        dataParsed = dataParsed.split('é').join("&eacute;");
+        dataParsed = dataParsed.split('°').join("&#176;");
+        dataParsed = dataParsed.split('©').join("&copy;");
+        dataParsed = dataParsed.split('À').join("&Agrave;");
+        dataParsed = dataParsed.split('È').join("&Egrave;");
+        dataParsed = dataParsed.split('É').join("&Eacute;");
+        dataParsed = dataParsed.split('Ì').join("&Igrave;");
+        dataParsed = dataParsed.split('Ò').join("&Ograve;");
+        dataParsed = dataParsed.split('Ù').join("&Ugrave;");
+        dataParsed = dataParsed.split("'").join("\'");
+        dataParsed = dataParsed.split('"').join('\"');
+        dataParsed = dataParsed.split("\n").join("<br>");
+
+        return dataParsed;
+    }
 }

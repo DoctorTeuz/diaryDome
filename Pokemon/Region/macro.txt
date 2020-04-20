@@ -11,3 +11,13 @@ Passo della Pradarena&#44;raggiunge le impervie vette del Passo della Pradarena 
    Poke Ball, &{template:default&#125; {{name=**Tentativo di Cattura**&#125;&#125; {{*Poke Ball*=[[2d6>4]]&#125;&#125;|
    Mega Ball, &{template:default&#125; {{name=**Tentativo di Cattura**&#125;&#125; {{*Mega Ball*=[[4d6>4]]&#125;&#125;|
    Ultra Ball,  &{template:default&#125; {{name=**Tentativo di Cattura**&#125;&#125; {{*Ultra Ball*=[[6d6>4]]&#125;&#125;}
+
+
+?{Status Aterato|Bruciatura Livello 1,&{template:default&#125; {{name=Bruciatura Livello 1 &#125;&#125; {{*Danno*=[[1 - [[@{selected|vitality} - 2]]d6>4]]&#125;&#125; {{*Estinzione* (5)=[[[[@{selected|dexterity} + @{selected|survival}]]d6>4]]&#125;&#125; |
+Bruciatura Livello 2,&{template:default&#125; {{name=Bruciatura Livello 2 &#125;&#125; {{*Danno*=[[2 - [[@{selected|vitality} - 4]]d6>4]]&#125;&#125; {{*Estinzione* (5)=[[[[@{selected|dexterity} + @{selected|survival}]]d6>4]]&#125;&#125; |
+Bruciatura Livello 3,&{template:default&#125; {{name=Bruciatura Livello 3 &#125;&#125; {{*Danno*=[[3 - [[@{selected|vitality} - 6]]d6>4]]&#125;&#125; {{*Estinzione* (8)=[[[[@{selected|dexterity} + @{selected|survival}]]d6>4]]&#125;&#125; |
+Congelamento,&{template:default&#125; {{name=Congelamento &#125;&#125; {{*Danno al ghiaccio*=[[[[@{selected|strength} - 2]]d6>4]]&#125;&#125;|
+Avvelenamento,&{template:default&#125; {{name=Avvelenamento &#125;&#125; {{*Danno*=[[2 - [[@{selected|vitality} - 2]]d6>4]]&#125;&#125; |
+IperAvvelenamento,&{template:default&#125; {{name=IperAvvelenamento &#125;&#125; {{*Danno*=[[2 - [[@{selected|vitality} - (2 + ?{Malus&#124;0&#125;)]]d6>4]]&#125;&#125; |
+Addormentato, &{template:default&#125; {{name=Addormentato&#125;&#125; {{*Tiro*=[[[[@{selected|insight} ]]d6>4]]&#125;&#125;
+}
