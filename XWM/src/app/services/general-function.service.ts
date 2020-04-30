@@ -327,6 +327,9 @@ export class GeneralFunctionService {
         }
         else{
             const workerFinalName = this.user.workerImageList.filter(wrk => wrk.split('.')[0] === workerName)[0];
+            if(workerFinalName.length === 0){
+                return workerData[0];
+            }
             return '<img src="' + this.createShowImagePath(this.user.ID, workerFinalName.split('.')[0], workerFinalName.split('.')[1]) + '" ' + styleFinal + '>';
         }        
     }
