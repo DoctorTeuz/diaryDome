@@ -74,22 +74,22 @@ function mapAlbo($m){
 		array_push($tagComp, utf8_encode($m['TagPartner1']));
 		$workerImg = str_replace(" ", "_", $m['TagPartner1']);
 		$workerImg = str_replace("'", "", $workerImg);
-		array_push($tagCompImageLink, grabImage("1/", $workerImg, ""));
+		array_push($tagCompImageLink, grabImage("1/", $workerImg, titleHolded($albo->Title)));
 		array_push($tagComp, utf8_encode($m['TagPartner2']));
 		$workerImg = str_replace(" ", "_", $m['TagPartner2']);
 		$workerImg = str_replace("'", "", $workerImg);
-		array_push($tagCompImageLink, grabImage("1/", $workerImg, ""));
+		array_push($tagCompImageLink, grabImage("1/", $workerImg, titleHolded($albo->Title)));
 		if(!is_null($m['TagPartner3'])){
 			array_push($tagComp, utf8_encode($m['TagPartner3']));
 			$workerImg = str_replace(" ", "_", $m['TagPartner3']);
 			$workerImg = str_replace("'", "", $workerImg);
-			array_push($tagCompImageLink, grabImage("1/", $workerImg, ""));
+			array_push($tagCompImageLink, grabImage("1/", $workerImg, titleHolded($albo->Title)));
 		}
 	}
 	if(count($tagCompImageLink) == 0){
 		$workerImg = str_replace(" ", "_", $albo->Champion);
 		$workerImg = str_replace("'", "", $workerImg);
-		array_push($tagCompImageLink, grabImage("1/", $workerImg, ""));
+		array_push($tagCompImageLink, grabImage("1/", $workerImg, titleHolded($albo->Title)));
 	}
 	
 	$albo->ChampionsImageLink = $tagCompImageLink;

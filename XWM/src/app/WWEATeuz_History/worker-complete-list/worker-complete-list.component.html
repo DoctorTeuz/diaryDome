@@ -14,7 +14,7 @@
 <div class="workerList">
     <ng-container *ngFor="let worker of filteredWorkerList">
         <img class="workerImage"
-            [src]="GFService.createPath(1, worker.ImageLink.split('.')[0], 'jpg', null)"
+            [src]="GFService.createPath(1, worker.ImageLink.split('.')[0], worker.ImageLink.split('.')[1], null)"
             (click)="openWorkerInformation(worker)">
     </ng-container>
 </div>

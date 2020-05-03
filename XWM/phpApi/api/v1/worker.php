@@ -106,6 +106,7 @@ function getWorkerFunction(){
 		$workerArr = array();
 		$workerArr = mapWorker($workers, $brands, $divisions, $champions);
 		$body->workers = $workerArr;
+		$body->workerImageList = getUserWorkerList(1);
 		$response->body = $body;
 		$response->status = 200;
 		return $response;

@@ -272,4 +272,86 @@ function getUserWorkerList($userId){
     $imageRes = mapImageList($images, $targetDir);
     return $imageRes;
 }
+
+function titleHolded($title){
+	$holdTitle = "";
+    switch($title){
+        case 'NXT':
+            $holdTitle = $holdTitle."_NXTChamp";
+            break;
+        case 'NXT Network':
+            $holdTitle = $holdTitle."_NXTNetworkChamp";
+            break;
+        case 'NXT Tag Team':
+            $holdTitle = $holdTitle."_NXTTagTeamChamp";
+            break;
+        case 'NXT Women':
+            $holdTitle = $holdTitle."_NXTWomenChamp";
+            break;
+        case 'WWE Cruiserweight':
+            $holdTitle = $holdTitle."_CruiserweightChamp";
+            break;
+        case 'WWE HeavyWeight':
+            $holdTitle = $holdTitle."_WWEChamp";
+            break;
+        case 'WWE Intercontinental':
+            $holdTitle = $holdTitle."_IntercontinentalChamp";
+            break;
+        case 'WWE RAW Tag Team':
+            $holdTitle = $holdTitle."_RAWTagTeamChamp";
+            break;
+        case 'WWE RAW Women':
+            $holdTitle = $holdTitle."_RAWWomenChamp";
+            break;
+        case 'WWE SmackDown Tag Team':
+            $holdTitle = $holdTitle."_SDTagTeamChamp";
+            break;
+        case 'WWE SmackDown Women':
+            $holdTitle = $holdTitle."_SDWomenChamp";
+            break;
+        case 'WWE United Kingdom':
+            $holdTitle = $holdTitle."_WWEUKChamp";
+            break;
+        case 'WWE United States':
+            $holdTitle = $holdTitle."_USChamp";
+            break;
+        case 'WWE Universal':
+            $holdTitle = $holdTitle."_UniversalChamp";
+            break;
+        case 'WWE Universal Women':
+            $holdTitle = $holdTitle."_UniversalWomenChamp";
+            break;
+        case 'WWE Women Tag Team':
+            $holdTitle = $holdTitle."_WomenTagTeamChamp";
+            break;	
+        case 'WWE Internet Women':
+            $holdTitle = $holdTitle."_InternetWomenChamp";
+            break;
+        case 'WWE Cruiserweight Tag Team':
+            $holdTitle = $holdTitle."_CruiserweightTagTeamChamp";
+            break;
+        case 'NXT European':
+            $holdTitle = $holdTitle. '_NXTEuropean';
+            break;
+        case "NXT European Women's":
+        case "NXT European Women":
+            $holdTitle = $holdTitle. '_NXTEuropeanWomen';
+            break;
+        case 'NXT European Tag Team':
+            $holdTitle = $holdTitle. '_NXTEuropeanTagTeam';
+            break;
+        case 'NXT Performance Center':
+            $holdTitle = $holdTitle. '_NXTPerformanceCenter';
+            break;
+        case 'NXT Performance Center Women':
+        case "NXT Performance Center Women's":
+            $holdTitle = $holdTitle. '_NXTPerformanceCenterWomen';
+            break;
+        case 'NXT Performance Center Tag Team':
+            $holdTitle = $holdTitle. '_NXTPerformanceCenterTagTeam';
+            break;
+
+    }
+	return $holdTitle;
+}
 ?>
