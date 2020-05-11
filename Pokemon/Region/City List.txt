@@ -7,9 +7,9 @@ Bruco -> Wurmple
 Chiocciola -> Magcargo
 Civetta -> Noctowl
 Drago -> Hydreigon
-Giraffa -> Girafarig
+--Giraffa -> Girafarig
 Istrice -> Pikachu
-Leocorno -> Rapidash
+--Leocorno -> Rapidash
 Lupa -> Poochyena
 Nicchio -> Shellder
 Oca -> Ducklett
@@ -17,7 +17,7 @@ Onda -> Barboach
 Pantera -> Torracat
 Selva -> Trevenant
 Tartuca -> Blastoise
-Torre -> Charizard
+--Torre -> Charizard
 Valdimontone -> Gogoat
 
 
