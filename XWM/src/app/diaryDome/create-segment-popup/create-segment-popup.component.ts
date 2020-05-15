@@ -221,6 +221,7 @@ public height: number = 300;
     seg['titleChange'] = seg['titleChange'] ? 1 : 0;
     seg['orderAppear'] = seg['orderAppear'] ? seg['orderAppear'] : this.showService.showDetail.length + 1;
     seg['shownTitle'] = seg['shownTitle'] ? this.GFService.richText(seg['shownTitle']) : seg['shownTitle'];
+    seg['title'] = seg['title'] ? this.GFService.richText(seg['title']) : seg['title'];
     return seg;
   }
 
